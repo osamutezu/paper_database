@@ -124,6 +124,8 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
 .fr input,.fr textarea,.fr select{width:100%;border:1px solid #ddd;border-radius:8px;padding:8px 11px;font-size:13px;background:#fafaf8;color:#1a1a18;font-family:inherit;}
 .fr input:focus,.fr textarea:focus,.fr select:focus{outline:2px solid #b5c4e0;outline-offset:-1px;}
 .fr textarea{resize:vertical;min-height:62px;line-height:1.55;}
+.journal-new{display:none;margin-top:7px;}
+.journal-new.on{display:block;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
 .m-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:1.2rem;padding-top:1rem;border-top:1px solid #f0eee8;}
 .sec-l{font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:.06em;margin:8px 0 5px;}
@@ -205,7 +207,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
     </div>
   </div>
   <div class="stats" id="stats">
-    <div class="stat"><div class="stat-n">54</div><div class="stat-l">登録論文数</div></div>
+    <div class="stat"><div class="stat-n">58</div><div class="stat-l">登録論文数</div></div>
     <div class="stat"><div class="stat-n">9</div><div class="stat-l">タグ種類数</div></div></div>
   <div class="toolbar">
     <input type="text" id="q" placeholder="タイトル・著者・メモ・キーワードで検索…" oninput="render()">
@@ -223,6 +225,66 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
   </div>
   <div class="fbar-wrap" id="fbar-wrap"><div class="fbar-label">タグで絞り込み（複数AND）：</div><div class="fbar"><span class="ftag" onclick="togF('○既読')">○既読</span><span class="ftag" onclick="togF('あふれ出し')">あふれ出し</span><span class="ftag" onclick="togF('ポケットパーク')">ポケットパーク</span><span class="ftag" onclick="togF('街路空間')">街路空間</span><span class="ftag" onclick="togF('共同利用')">共同利用</span><span class="ftag" onclick="togF('表出')">表出</span><span class="ftag" onclick="togF('密集市街地')">密集市街地</span><span class="ftag" onclick="togF('路地')">路地</span><span class="ftag" onclick="togF('曖昧な空間')">曖昧な空間</span></div></div>
   <div class="list" id="list"><div class="card">
+      <div class="card-h">
+        <div class="card-t">住宅密集市街地のまちづくりにおけるポケットパークと近隣住民の関係に関する考察</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783516430759)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783516430759)">削除</button>
+        </div>
+      </div>
+      <div class="meta">横田 健一, 中村 攻, 木下 勇, 轟 慎一　/　1996年　/　ランドスケープ研究</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/jila1994/60/5/60_5_695/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/jila1994/60/5/60_5…</a></div>
+      
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">密集市街地における小規模空地の整備効果に関する研究 豊島区東池袋地区の辻広場を対象として</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783516339544)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783516339544)">削除</button>
+        </div>
+      </div>
+      <div class="meta">宮崎 友宏, 高見沢 実　/　都市計画論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/journalcpij/58/3/58_1296/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/journalcpij/58/3/5…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 密集市街地, 小規模空地, 存在効果, 利用効果</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 住宅密集市街地のまちづくりにおけるポケットパークと近隣住民の…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">密集市街地における大地震時の避難困難率について</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783516189903)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783516189903)">削除</button>
+        </div>
+      </div>
+      <div class="meta">大佛 俊泰, 沖 拓弥　/　2012年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/77/681/77_2561/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/77/681/77_256…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 広域避難, 道路閉塞, 市街地火災, 避難困難率, 時空間分布</div>
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">広域避難の困難性からみた木造住宅密集地域整備事業の評価</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783516116629)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783516116629)">削除</button>
+        </div>
+      </div>
+      <div class="meta">大佛 俊泰, 沖 拓弥　/　2014年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/79/696/79_437/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/79/696/79_437…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 大地震, 避難困難, 木造住宅密集地域, 物的被害, 整備事業, マルチエージェント・シミュレーション</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における大地震時の避難困難率について</span></div>
+      
+    </div><div class="card">
       <div class="card-h">
         <div class="card-t">密集市街地における小規模空地の利用実態に関する研究 －墨田区京島 2,3 丁目の広場・緑地・ポケットパークを対象として－</div>
         <div class="card-act">
@@ -1070,7 +1132,105 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
         <button class="btn btn-s" onclick="openHistoryEditor()">生成結果を編集・保存</button>
       </div>
     </div>
-    <div class="history-panel-body history-panel-empty" id="history-panel-body">生成用プロンプトをコピーし、AIで生成した文章を保存するとここに表示されます。</div>
+    <div class="history-panel-body" id="history-panel-body">研究史の変遷：路地研究から小規模空地・生活空間デザインへ
+
+1. 1990年代：路地を「生活の領域」として捉える研究の始まり
+1990年代は、本データベースにおいて路地を都市インフラではなく「生活の場」として再評価する研究が本格化した時期である。
+青木・湯浅ら（1993・1994）は「あふれ出し」を私有物の放置ではなく、住民が公共空間を生活領域として拡張する現象と位置付け、その社会心理学的効果まで分析した。この研究は、路地研究において現在まで引用され続ける基盤となっている。
+同時期には、密集住宅地の路地や隙間（1995）、密集市街地の狭小外部空間（1999）、住宅街路の公私境界（1999）、窓や共有空間の占有（1999）など、建築と外部空間との境界領域へ研究対象が広がっていく。
+また、建築単体においても外部空間の構成形式（1997）や立体街路（1999）が扱われ、屋外空間そのものを計画論として捉える研究も進み始めた。
+・この時代の特徴（事実）
+路地・あふれ出し・領域形成が主要テーマ/公私境界や外部空間の構成への関心/行動観察や現地調査を中心とした分析
+・推論
+この時期は、「道路」や「広場」ではなく、住民の日常行為そのものが都市空間を形成しているという視点への転換点であったと考えられる。
+
+2. 2000年代：生活行為から「空間利用メカニズム」へ
+2000年代に入ると、研究対象は路地そのものから、生活行為が空間形成へ与える仕組みへと広がっていく。
+「行為の跡」（2001）は、生活者が環境制約を乗り越えながら空間を使いこなす過程を扱い、「お隣への信頼」（2005）は空間利用と近隣関係を結び付けた。
+さらに、
+公私混交利用（2008）/表出要素を含む住宅団地再生（2006）/視線・景観認識（2007）
+など、物理空間だけでなく心理・社会・認知まで含めて外部空間を説明しようとする研究が増えている。
+一方で都市計画分野では、京島を対象とした建替え意識（2001）や木造密集市街地の更新（2008）など、防災・更新を目的とした研究も継続している。
+・この時代の特徴（事実）
+「あふれ出し」から生活行動一般へ対象が拡張/公私混交や信頼形成など社会関係を分析/密集市街地では更新・建替え研究が進展
+・推論
+1990年代が「あふれ出しという現象の発見」だったのに対し、2000年代はその背景にある人間関係や空間利用原理の解明へ関心が移ったと考えられる。
+
+3. 2010年代：路地を「更新・継承する空間」として捉える時代
+2010年代になると、研究の焦点は既存路地をどう維持・更新するかへ変化する。
+代表的なのは
+路地を活かした密集市街地整備（2010）/長屋・路地のコンバージョン（2011）/デザインコード（2015）
+などであり、防災だけではなく地域性を維持しながら更新する議論が現れる。
+また2017年の小林・藤谷は1993年研究を継承しながら、
+開口部/表出/あふれ出し/住民開放性
+との関係を実証しており、「あふれ出し」が建築の開き方と結び付けられた。
+さらに2018年には、
+植木鉢表出を促す道路条件/共用廊下のあふれ出し/公共空間の私的利用
+など、研究対象が住宅地以外にも広がっていく。
+・この時代の特徴（事実）
+路地更新・リノベーション/建築開口部と生活領域の関係/表出を生む物理条件の分析/公共空間への展開
+・推論
+「あふれ出し」はこの頃には単なる現象ではなく、空間設計によって誘発・継承できる都市資源として扱われ始めたと考えられる。
+
+4. 2020年代：路地から都市ネットワーク・小規模空地へ
+2020年代になると、研究対象はさらに拡張し、
+密集市街地の類型化/小規模空地/ポケットパーク/ウォーカビリティ/アイレベル景観
+など都市全体の構造へ接続される。
+特に京島の小規模空地研究（2022）は、防災空地を日常利用の視点から評価した点で特徴的である。
+さらに東池袋の辻広場研究（2023）は
+存在効果/利用効果
+という二重評価を導入し、「使われるか」だけではなく「そこにある価値」を評価している。
+近年は、
+横道景観（2025）/軒先利用（2025）/路地空間の使われ方（2025）
+など、空間の印象や体験、設えまで分析対象が広がっている。
+この時代の特徴（事実）
+ポケットパーク・小規模空地研究/ウォーカビリティ/景観評価/アイレベル分析/空間体験の評価
+・推論
+研究対象は「一本の路地」から、「街区全体の歩行環境」や「点在する小規模公共空間」へと拡張していると考えられる。
+
+概念の接続と転化
+・路地
+1990年代には生活領域そのものとして扱われた路地は、2010年代には更新対象となり、2020年代には都市ネットワークの一部として位置付けられるようになっている。
+・あふれ出し
+当初は住民による私的利用の現象として扱われたが、その後、
+領域形成/建築開放性/表出条件/相互作用/共用空間/公共空間
+へと研究対象が広がっている。
+つまり「あふれ出し」は、単なるモノではなく生活が空間へ現れる指標へ変化している。
+・密集市街地
+初期は防災・建替えが中心であったが、
+近年では
+更新/類型化/小規模空地/日常利用
+へ関心が広がり、防災だけでは説明できない都市生活の質が議論され始めている。
+・外部空間
+建築外部空間の構成論（1997）から始まり、
+生活行為→領域形成→中間領域→景観→アイレベル
+へと、人の体験を中心とする分析へ変化している。
+
+小規模空地・ポケットパーク
+2020年代になって初めて独立した研究対象となる。
+興味深いのは、利用実態研究では
+「狭いから使われない」のではなく、
+「目的がないから使われない」
+ことが示されている点である。
+これは1990年代の「あふれ出し」が示した、人が空間を使う理由は面積ではなく生活との関係であるという視点と連続している可能性がある。
+
+研究史から見える継承と断絶
+・事実として言えること
+路地研究は1990年代以降継続している。
+あふれ出し研究は領域形成から建築開放性・公共空間・共用空間へ対象を広げている。
+密集市街地研究は、防災中心から生活利用や小規模空地へ関心が広がっている。
+2020年代は景観評価や歩行体験を扱う研究が増加している。
+・データからの推論
+一方で、「路地研究」と「ポケットパーク研究」は現在でも十分には接続されていないように見える。
+前者は生活現象や領域形成を扱い、後者は整備効果や利用実態を扱うため、両者の評価指標が異なる。
+しかし実際には、どちらも密集市街地の日常生活を支える小規模外部空間であり、「生活がどのように空間へ現れるか」という共通の問いを持つと考えられる。
+
+今後の研究課題（推論）
+この研究史を踏まえると、今後は**「住民による領域化」と「計画的に整備された小規模空地」を同じ評価軸で比較する研究**が求められる可能性がある。
+例えば、路地のどんつきとポケットパークを比較し、
+建築との関係/開口部/表出・あふれ出し/滞留/領域形成/更新の継続性
+を共通指標で分析することで、「生活が生まれる小規模外部空間の条件」を統合的に説明できる可能性がある。
+この視点は、現在の研究群の間に残る「路地研究」と「ポケットパーク研究」のギャップを埋める新たな研究課題として位置付けられるだろう。</div>
   </div>
 </div>
 
@@ -1085,7 +1245,11 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
     <div class="fr"><label>著者</label><input type="text" id="f-author" placeholder="著者名"></div>
     <div class="fr"><label>年</label><input type="number" id="f-year" placeholder="2024" min="1900" max="2099"></div>
   </div>
-  <div class="fr"><label>雑誌名 / 学会名</label><input type="text" id="f-journal" placeholder="例：都市計画論文集"></div>
+  <div class="fr">
+    <label>雑誌名 / 学会名</label>
+    <select id="f-journal" onchange="onJournalSelectChange()"></select>
+    <input type="text" id="f-journal-new" class="journal-new" placeholder="新しい雑誌名 / 学会名を入力">
+  </div>
   <div class="fr"><label>DOI / URL</label><input type="url" id="f-url" placeholder="https://..."></div>
   <div class="fr"><label>キーワード</label><input type="text" id="f-keywords" placeholder="例：街路空間、アクティビティ、歩行者（カンマ区切り）"></div>
 
@@ -1174,7 +1338,7 @@ let sortOrder='desc';   // 'asc' | 'desc'
 let showSummary=false;
 const STORAGE_KEY='pdb54';
 const HISTORY_STORAGE_KEY='pdb54_history';
-const EMBEDDED_HISTORY_ANALYSIS = ``;
+const EMBEDDED_HISTORY_ANALYSIS = "研究史の変遷：路地研究から小規模空地・生活空間デザインへ\n\n1. 1990年代：路地を「生活の領域」として捉える研究の始まり\n1990年代は、本データベースにおいて路地を都市インフラではなく「生活の場」として再評価する研究が本格化した時期である。\n青木・湯浅ら（1993・1994）は「あふれ出し」を私有物の放置ではなく、住民が公共空間を生活領域として拡張する現象と位置付け、その社会心理学的効果まで分析した。この研究は、路地研究において現在まで引用され続ける基盤となっている。\n同時期には、密集住宅地の路地や隙間（1995）、密集市街地の狭小外部空間（1999）、住宅街路の公私境界（1999）、窓や共有空間の占有（1999）など、建築と外部空間との境界領域へ研究対象が広がっていく。\nまた、建築単体においても外部空間の構成形式（1997）や立体街路（1999）が扱われ、屋外空間そのものを計画論として捉える研究も進み始めた。\n・この時代の特徴（事実）\n路地・あふれ出し・領域形成が主要テーマ/公私境界や外部空間の構成への関心/行動観察や現地調査を中心とした分析\n・推論\nこの時期は、「道路」や「広場」ではなく、住民の日常行為そのものが都市空間を形成しているという視点への転換点であったと考えられる。\n\n2. 2000年代：生活行為から「空間利用メカニズム」へ\n2000年代に入ると、研究対象は路地そのものから、生活行為が空間形成へ与える仕組みへと広がっていく。\n「行為の跡」（2001）は、生活者が環境制約を乗り越えながら空間を使いこなす過程を扱い、「お隣への信頼」（2005）は空間利用と近隣関係を結び付けた。\nさらに、\n公私混交利用（2008）/表出要素を含む住宅団地再生（2006）/視線・景観認識（2007）\nなど、物理空間だけでなく心理・社会・認知まで含めて外部空間を説明しようとする研究が増えている。\n一方で都市計画分野では、京島を対象とした建替え意識（2001）や木造密集市街地の更新（2008）など、防災・更新を目的とした研究も継続している。\n・この時代の特徴（事実）\n「あふれ出し」から生活行動一般へ対象が拡張/公私混交や信頼形成など社会関係を分析/密集市街地では更新・建替え研究が進展\n・推論\n1990年代が「あふれ出しという現象の発見」だったのに対し、2000年代はその背景にある人間関係や空間利用原理の解明へ関心が移ったと考えられる。\n\n3. 2010年代：路地を「更新・継承する空間」として捉える時代\n2010年代になると、研究の焦点は既存路地をどう維持・更新するかへ変化する。\n代表的なのは\n路地を活かした密集市街地整備（2010）/長屋・路地のコンバージョン（2011）/デザインコード（2015）\nなどであり、防災だけではなく地域性を維持しながら更新する議論が現れる。\nまた2017年の小林・藤谷は1993年研究を継承しながら、\n開口部/表出/あふれ出し/住民開放性\nとの関係を実証しており、「あふれ出し」が建築の開き方と結び付けられた。\nさらに2018年には、\n植木鉢表出を促す道路条件/共用廊下のあふれ出し/公共空間の私的利用\nなど、研究対象が住宅地以外にも広がっていく。\n・この時代の特徴（事実）\n路地更新・リノベーション/建築開口部と生活領域の関係/表出を生む物理条件の分析/公共空間への展開\n・推論\n「あふれ出し」はこの頃には単なる現象ではなく、空間設計によって誘発・継承できる都市資源として扱われ始めたと考えられる。\n\n4. 2020年代：路地から都市ネットワーク・小規模空地へ\n2020年代になると、研究対象はさらに拡張し、\n密集市街地の類型化/小規模空地/ポケットパーク/ウォーカビリティ/アイレベル景観\nなど都市全体の構造へ接続される。\n特に京島の小規模空地研究（2022）は、防災空地を日常利用の視点から評価した点で特徴的である。\nさらに東池袋の辻広場研究（2023）は\n存在効果/利用効果\nという二重評価を導入し、「使われるか」だけではなく「そこにある価値」を評価している。\n近年は、\n横道景観（2025）/軒先利用（2025）/路地空間の使われ方（2025）\nなど、空間の印象や体験、設えまで分析対象が広がっている。\nこの時代の特徴（事実）\nポケットパーク・小規模空地研究/ウォーカビリティ/景観評価/アイレベル分析/空間体験の評価\n・推論\n研究対象は「一本の路地」から、「街区全体の歩行環境」や「点在する小規模公共空間」へと拡張していると考えられる。\n\n概念の接続と転化\n・路地\n1990年代には生活領域そのものとして扱われた路地は、2010年代には更新対象となり、2020年代には都市ネットワークの一部として位置付けられるようになっている。\n・あふれ出し\n当初は住民による私的利用の現象として扱われたが、その後、\n領域形成/建築開放性/表出条件/相互作用/共用空間/公共空間\nへと研究対象が広がっている。\nつまり「あふれ出し」は、単なるモノではなく生活が空間へ現れる指標へ変化している。\n・密集市街地\n初期は防災・建替えが中心であったが、\n近年では\n更新/類型化/小規模空地/日常利用\nへ関心が広がり、防災だけでは説明できない都市生活の質が議論され始めている。\n・外部空間\n建築外部空間の構成論（1997）から始まり、\n生活行為→領域形成→中間領域→景観→アイレベル\nへと、人の体験を中心とする分析へ変化している。\n\n小規模空地・ポケットパーク\n2020年代になって初めて独立した研究対象となる。\n興味深いのは、利用実態研究では\n「狭いから使われない」のではなく、\n「目的がないから使われない」\nことが示されている点である。\nこれは1990年代の「あふれ出し」が示した、人が空間を使う理由は面積ではなく生活との関係であるという視点と連続している可能性がある。\n\n研究史から見える継承と断絶\n・事実として言えること\n路地研究は1990年代以降継続している。\nあふれ出し研究は領域形成から建築開放性・公共空間・共用空間へ対象を広げている。\n密集市街地研究は、防災中心から生活利用や小規模空地へ関心が広がっている。\n2020年代は景観評価や歩行体験を扱う研究が増加している。\n・データからの推論\n一方で、「路地研究」と「ポケットパーク研究」は現在でも十分には接続されていないように見える。\n前者は生活現象や領域形成を扱い、後者は整備効果や利用実態を扱うため、両者の評価指標が異なる。\nしかし実際には、どちらも密集市街地の日常生活を支える小規模外部空間であり、「生活がどのように空間へ現れるか」という共通の問いを持つと考えられる。\n\n今後の研究課題（推論）\nこの研究史を踏まえると、今後は**「住民による領域化」と「計画的に整備された小規模空地」を同じ評価軸で比較する研究**が求められる可能性がある。\n例えば、路地のどんつきとポケットパークを比較し、\n建築との関係/開口部/表出・あふれ出し/滞留/領域形成/更新の継続性\nを共通指標で分析することで、「生活が生まれる小規模外部空間の条件」を統合的に説明できる可能性がある。\nこの視点は、現在の研究群の間に残る「路地研究」と「ポケットパーク研究」のギャップを埋める新たな研究課題として位置付けられるだろう。";
 let historyAnalysis='';
 
 function sv(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}catch(e){}}
@@ -1182,6 +1346,44 @@ function ld(){try{const d=localStorage.getItem(STORAGE_KEY);if(d)db=JSON.parse(d
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function allTags(){const s=new Set();db.forEach(p=>(p.tags||[]).forEach(t=>s.add(t)));return[...s].sort((a,b)=>a.localeCompare(b,'ja'));}
 function isPre(t){return ALL_PRE.includes(t);}
+function allJournals(){
+  const s=new Set();
+  db.forEach(p=>{const v=(p.journal||'').trim();if(v)s.add(v);});
+  return [...s].sort((a,b)=>a.localeCompare(b,'ja'));
+}
+
+function buildJournalSelect(selected=''){
+  const sel=document.getElementById('f-journal');
+  if(!sel)return;
+  const journals=allJournals();
+  const hasSelected=selected && journals.includes(selected);
+  sel.innerHTML=[
+    '<option value="">未選択</option>',
+    ...journals.map(j=>`<option value="${esc(j)}">${esc(j)}</option>`),
+    '<option value="__new__">＋ 新規追加</option>'
+  ].join('');
+  sel.value=hasSelected?selected:(selected?'__new__':'');
+  const newInput=document.getElementById('f-journal-new');
+  if(newInput){
+    newInput.value=hasSelected?'':selected;
+    newInput.classList.toggle('on',sel.value==='__new__');
+  }
+}
+
+function onJournalSelectChange(){
+  const sel=document.getElementById('f-journal');
+  const newInput=document.getElementById('f-journal-new');
+  if(!sel||!newInput)return;
+  newInput.classList.toggle('on',sel.value==='__new__');
+  if(sel.value==='__new__')newInput.focus();
+}
+
+function currentJournalValue(){
+  const sel=document.getElementById('f-journal');
+  const newInput=document.getElementById('f-journal-new');
+  if(!sel)return'';
+  return sel.value==='__new__'?((newInput&&newInput.value)||'').trim():(sel.value||'').trim();
+}
 
 function downloadEmbeddedHtml(){
   const data=JSON.stringify(db,null,2);
@@ -1518,9 +1720,10 @@ function renderRefPrev(){
    モーダル open/close
 ════════════════════════════════ */
 function resetForm(){
-  ['title','author','year','journal','url','keywords','purpose','method','result','memo'].forEach(f=>{
+  ['title','author','year','url','keywords','purpose','method','result','memo'].forEach(f=>{
     const el=document.getElementById('f-'+f);if(el)el.value='';
   });
+  buildJournalSelect('');
   document.getElementById('ctinp').value='';
   document.getElementById('ref-search').value='';
 }
@@ -1528,7 +1731,7 @@ function resetForm(){
 function openAdd(){
   eid=null;sp=[];ct=[];selRefs=[];
   document.getElementById('m-ttl').textContent='論文を追加';
-  resetForm();buildPGrid();renderCT();renderRefList();renderRefPrev();
+  resetForm();buildJournalSelect('');buildPGrid();renderCT();renderRefList();renderRefPrev();
   document.getElementById('ov').style.display='flex';
 }
 
@@ -1542,7 +1745,7 @@ function openEdit(id){
   document.getElementById('f-title').value=p.title||'';
   document.getElementById('f-author').value=p.author||'';
   document.getElementById('f-year').value=p.year||'';
-  document.getElementById('f-journal').value=p.journal||'';
+  buildJournalSelect(p.journal||'');
   document.getElementById('f-url').value=p.url||'';
   document.getElementById('f-keywords').value=p.keywords||'';
   document.getElementById('f-purpose').value=p.purpose||'';
@@ -1560,7 +1763,7 @@ function savePaper(){
   const data={title,tags:[...sp,...ct],refs:[...selRefs],
     author:(document.getElementById('f-author').value||'').trim(),
     year:parseInt(document.getElementById('f-year').value)||null,
-    journal:(document.getElementById('f-journal').value||'').trim(),
+    journal:currentJournalValue(),
     url:(document.getElementById('f-url').value||'').trim(),
     keywords:(document.getElementById('f-keywords').value||'').trim(),
     purpose:(document.getElementById('f-purpose').value||'').trim(),
@@ -2562,8 +2765,72 @@ function renderGraph(){
     "result": "空地利用につながる要素として以下の点が結論付けられている。\n利用の阻害要因: 利用されない主な理由は、物理的な「狭さ」以上に、「用事がない」ことや「使い方が分からない」ことにある。\n利用を促進する物理的特性: 面積が広く、1か所にまとまっている空地ほど利用されやすい傾向がある。また、主要生活道路など通行量が多い道路沿いに位置することも重要な要素。\n設備と特徴による差異化: 面積が狭くても、ベンチや遊具などの設備が充実している、あるいは桜などの象徴的な植物があるといった「他の空地にはない特徴」を持つ場所は、特定の目的（休憩や自然を楽しむなど）で利用されている。\n今後の工夫: ハード面（設備の充実、緑の増加）とソフト面（イベントや活動の実施）の両軸での工夫が必要。特に、用事がなくてもふらっと立ち寄れるようなベンチの配置や、用途を特定しやすい特徴づくり（差異化）が、利用促進に効果的であると示された。",
     "memo": "",
     "id": 1781106170536
+  },
+  {
+    "title": "広域避難の困難性からみた木造住宅密集地域整備事業の評価",
+    "tags": [],
+    "refs": [
+      1783516189903
+    ],
+    "author": "大佛 俊泰, 沖 拓弥",
+    "year": 2014,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/79/696/79_437/_pdf/-char/ja",
+    "keywords": "大地震, 避難困難, 木造住宅密集地域, 物的被害, 整備事業, マルチエージェント・シミュレーション",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783516116629
+  },
+  {
+    "title": "密集市街地における大地震時の避難困難率について",
+    "tags": [],
+    "refs": [],
+    "author": "大佛 俊泰, 沖 拓弥",
+    "year": 2012,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/77/681/77_2561/_pdf/-char/ja",
+    "keywords": "広域避難, 道路閉塞, 市街地火災, 避難困難率, 時空間分布",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783516189903
+  },
+  {
+    "title": "密集市街地における小規模空地の整備効果に関する研究 豊島区東池袋地区の辻広場を対象として",
+    "tags": [],
+    "refs": [
+      1783516430759
+    ],
+    "author": "宮崎 友宏, 高見沢 実",
+    "year": null,
+    "journal": "都市計画論文集",
+    "url": "https://www.jstage.jst.go.jp/article/journalcpij/58/3/58_1296/_pdf/-char/ja",
+    "keywords": "密集市街地, 小規模空地, 存在効果, 利用効果",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783516339544
+  },
+  {
+    "title": "住宅密集市街地のまちづくりにおけるポケットパークと近隣住民の関係に関する考察",
+    "tags": [],
+    "refs": [],
+    "author": "横田 健一, 中村 攻, 木下 勇, 轟 慎一",
+    "year": 1996,
+    "journal": "ランドスケープ研究",
+    "url": "https://www.jstage.jst.go.jp/article/jila1994/60/5/60_5_695/_pdf/-char/ja",
+    "keywords": "",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783516430759
   }
-  ];
+];
   try{
     const existing = localStorage.getItem(STORAGE_KEY);
     const parsed = existing && existing !== 'null' ? JSON.parse(existing) : [];
@@ -2578,6 +2845,7 @@ function renderGraph(){
 
 ld();loadHistoryAnalysis();render();renderHistoryPanel();
 </script>
+
 
 
 </body></html>
