@@ -1661,12 +1661,8 @@ function renderGraph(){
 /* ════════════════════════════════
    初期化
 ════════════════════════════════ */
-// 既存データの移行：localStorageにデータがなければ初期データを投入
+// 既存データの移行：埋め込みデータの方が多い場合はlocalStorageを更新
 (function injectLegacyData(){
-  try{
-    const existing = localStorage.getItem('pdb2');
-    if(existing && existing !== 'null' && JSON.parse(existing).length > 0) return;
-  }catch(e){}
   const legacy = [
   {
     "id": 1,
@@ -2438,8 +2434,14 @@ function renderGraph(){
     "memo": "",
     "id": 1781106170536
   }
-];
+  ];
   try{
+    const existing = localStorage.getItem('pdb2');
+    const parsed = existing && existing !== 'null' ? JSON.parse(existing) : [];
+    if(Array.isArray(parsed) && parsed.length >= legacy.length){
+      db = parsed;
+      return;
+    }
     localStorage.setItem('pdb2', JSON.stringify(legacy));
     db = legacy;
   }catch(e){console.error('データ移行失敗',e);}
