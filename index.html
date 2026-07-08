@@ -117,6 +117,9 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
 .paper-detail-section-title{font-size:11px;font-weight:700;color:#4a6fa5;letter-spacing:.06em;margin-bottom:.4rem;}
 .paper-detail-text{font-size:13px;line-height:1.75;color:#333;white-space:pre-wrap;overflow-wrap:anywhere;}
 .paper-detail-empty{color:#aaa;font-style:italic;}
+.paper-detail-cats{display:flex;flex-wrap:wrap;gap:6px;}
+.paper-detail-cat{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#333;}
+.paper-detail-cat-dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
 .graph-paper-title{cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:2px;}
 .graph-paper-title:hover{text-decoration-color:#4a6fa5;fill:#2044a0;}
 .fr{margin-bottom:11px;}
@@ -3373,6 +3376,88 @@ function delP(id){
 
 function closeOv(){document.getElementById('ov').style.display='none';}
 
+const GRAPH_CATEGORIES=[
+  {
+    id:'roji',
+    label:'路地・細街路',
+    color:'#4a6fa5',
+    fill:'#f4f8ff',
+    priorityTerms:['路地','細街路','袋路','生活領域','接道','長屋'],
+    terms:['路地','細街路','袋路','街路','生活領域','接道','長屋','隙間','町家','街路幅員','道路']
+  },
+  {
+    id:'afuredashi',
+    label:'あふれ出し・表出・公私境界',
+    color:'#b88020',
+    fill:'#fff8ea',
+    priorityTerms:['あふれ出し','表出','公私','境界','植木鉢','鉢植え','開放性','共用廊下','軒先','設え','私的利用'],
+    terms:['あふれ出し','表出','公私','境界','領域','植木鉢','鉢植え','開放性','共用廊下','軒先','設え','私的利用']
+  },
+  {
+    id:'dense',
+    label:'密集市街地・防災・更新',
+    color:'#8b5a8c',
+    fill:'#fbf4fc',
+    priorityTerms:['密集','木造','防災','避難','建替','建替え','更新','不燃','狭小','地震','火災','減災'],
+    terms:['密集','木造','防災','避難','建替','建替え','更新','不燃','狭小','接道不良','地震','火災','洪水','減災','整備']
+  },
+  {
+    id:'pocket',
+    label:'小規模空地・ポケットパーク・まちかど',
+    color:'#2f7d57',
+    fill:'#f2fbf6',
+    priorityTerms:['小規模空地','ポケットパーク','辻広場','まちかど','街角広場','空地','緑地'],
+    terms:['小規模空地','ポケットパーク','辻広場','広場','まちかど','街角','角地','空地','緑地','公共空間','公園','コモンズ']
+  }
+];
+
+function graphText(p){
+  return [p.title,p.author,p.journal,p.keywords,p.purpose,p.method,p.result,p.memo,(p.tags||[]).join(' ')].filter(Boolean).join(' ');
+}
+
+function graphCategoryScore(p,cat){
+  const txt=graphText(p);
+  let score=0;
+  cat.terms.forEach(term=>{
+    if(!term)return;
+    if((p.title||'').includes(term))score+=4;
+    if(((p.tags||[]).join(' ')).includes(term))score+=3;
+    if(((p.keywords||'')).includes(term))score+=2;
+    if(txt.includes(term))score+=1;
+  });
+  return score;
+}
+
+function graphCategoriesForPaper(p){
+  const coreText=[p.title,p.keywords,(p.tags||[]).join(' ')].filter(Boolean).join(' ');
+  const matches=GRAPH_CATEGORIES
+    .map((cat,idx)=>{
+      const priority=cat.priorityTerms.some(term=>coreText.includes(term));
+      const score=graphCategoryScore(p,cat);
+      return{cat,idx,score,priority};
+    })
+    .filter(x=>x.priority||x.score>=2)
+    .sort((a,b)=>(b.priority-a.priority)||b.score-a.score||a.idx-b.idx)
+    .map(x=>x.cat);
+  return matches.length?matches:[GRAPH_CATEGORIES[0]];
+}
+
+function primaryGraphCategory(p){
+  const cats=graphCategoriesForPaper(p);
+  const priorityOrder=['pocket','afuredashi','dense','roji'];
+  const priority=cats.find(cat=>priorityOrder.includes(cat.id));
+  if(priority){
+    return [...cats].sort((a,b)=>priorityOrder.indexOf(a.id)-priorityOrder.indexOf(b.id))[0];
+  }
+  return cats[0];
+}
+
+function graphCategoryChipsHtml(p){
+  return graphCategoriesForPaper(p).map(cat=>`
+    <span class="paper-detail-cat"><span class="paper-detail-cat-dot" style="background:${cat.color}"></span>${esc(cat.label)}</span>
+  `).join('');
+}
+
 function showPaperDetail(id){
   const p=db.find(x=>x.id===id);if(!p)return;
   document.getElementById('detail-title').textContent=p.title||'無題';
@@ -3381,13 +3466,14 @@ function showPaperDetail(id){
     ['著者',p.author],
     ['年代',p.year?p.year+'年':''],
     ['学会名',p.journal],
+    ['分類',`<div class="paper-detail-cats">${graphCategoryChipsHtml(p)}</div>`],
     ['キーワード',p.keywords],
     ['URL',p.url?`<a class="ulink" href="${esc(p.url)}" target="_blank">${esc(p.url)}</a>`:'']
   ].filter(([,v])=>v);
 
   const meta=metaRows.map(([label,value])=>`
     <div class="paper-detail-label">${label}</div>
-    <div class="paper-detail-value">${label==='URL'?value:esc(value)}</div>
+    <div class="paper-detail-value">${(label==='URL'||label==='分類')?value:esc(value)}</div>
   `).join('');
 
   const summary=p.memo||'';
@@ -3520,74 +3606,15 @@ function renderGraph(){
   const yearMin=Math.min(...withYear.map(n=>n.year));
   const yearMax=Math.max(...withYear.map(n=>n.year));
 
-  const GRAPH_CATEGORIES=[
-    {
-      id:'roji',
-      label:'路地・細街路',
-      color:'#4a6fa5',
-      fill:'#f4f8ff',
-      priorityTerms:['路地','細街路','袋路','生活領域','接道','長屋'],
-      terms:['路地','細街路','袋路','街路','生活領域','接道','長屋','隙間','町家','街路幅員','道路']
-    },
-    {
-      id:'afuredashi',
-      label:'あふれ出し・表出・公私境界',
-      color:'#b88020',
-      fill:'#fff8ea',
-      priorityTerms:['あふれ出し','表出','公私','境界','植木鉢','鉢植え','開放性','共用廊下','軒先','設え','私的利用'],
-      terms:['あふれ出し','表出','公私','境界','領域','植木鉢','鉢植え','開放性','共用廊下','軒先','設え','私的利用']
-    },
-    {
-      id:'dense',
-      label:'密集市街地・防災・更新',
-      color:'#8b5a8c',
-      fill:'#fbf4fc',
-      priorityTerms:['密集','木造','防災','避難','建替','建替え','更新','不燃','狭小','地震','火災','減災'],
-      terms:['密集','木造','防災','避難','建替','建替え','更新','不燃','狭小','接道不良','地震','火災','洪水','減災','整備']
-    },
-    {
-      id:'pocket',
-      label:'小規模空地・ポケットパーク・まちかど',
-      color:'#2f7d57',
-      fill:'#f2fbf6',
-      priorityTerms:['小規模空地','ポケットパーク','辻広場','まちかど','街角広場','空地','緑地'],
-      terms:['小規模空地','ポケットパーク','辻広場','広場','まちかど','街角','角地','空地','緑地','公共空間','公園','コモンズ']
-    }
-  ];
-
-  function graphText(n){
-    return [n.title,n.author,n.journal,n.keywords,n.purpose,n.method,n.result,n.memo,(n.tags||[]).join(' ')].filter(Boolean).join(' ');
-  }
-
-  function classifyGraphNode(n){
-    const coreText=[n.title,n.keywords,(n.tags||[]).join(' ')].filter(Boolean).join(' ');
-    const priorityOrder=['pocket','afuredashi','dense','roji'];
-    for(const id of priorityOrder){
-      const cat=GRAPH_CATEGORIES.find(c=>c.id===id);
-      if(cat.priorityTerms.some(term=>coreText.includes(term)))return cat;
-    }
-    const txt=graphText(n);
-    const scores=GRAPH_CATEGORIES.map((cat,idx)=>{
-      let score=0;
-      cat.terms.forEach(term=>{
-        if(!term)return;
-        if((n.title||'').includes(term))score+=4;
-        if(((n.tags||[]).join(' ')).includes(term))score+=3;
-        if(((n.keywords||'')).includes(term))score+=2;
-        if(txt.includes(term))score+=1;
-      });
-      return{cat,idx,score};
-    });
-    scores.sort((a,b)=>b.score-a.score||a.idx-b.idx);
-    return scores[0].score>0?scores[0].cat:GRAPH_CATEGORIES[0];
-  }
-
-  nodes.forEach(n=>{n.graphCategory=classifyGraphNode(n);});
+  nodes.forEach(n=>{
+    n.graphCategories=graphCategoriesForPaper(n);
+    n.graphCategory=primaryGraphCategory(n);
+  });
 
   // ── レイアウト定数（ズームは縦方向のみ） ──
   const NODE_R_BASE=7;
   const NODE_SPACING_X=72;
-  const NODE_ROW_SPACING=34;
+  const NODE_ROW_SPACING=44;
   const YEAR_SPACING=96;
   const LANE_W=390;
   const MARGIN={top:92,bottom:86,left:92,right:48};
@@ -3708,13 +3735,20 @@ function renderGraph(){
     const col=nodeColor(n);
     const title=n.title.length>12?n.title.slice(0,12)+'…':n.title;
     const yr=n.year?`${n.year}`:'?';
-    const tooltip=`${n.title} (${yr}) ${n.graphCategory.label} 被引用:${n.citedCount}`;
+    const cats=n.graphCategories||[n.graphCategory];
+    const chipW=12,chipH=4,chipGap=3;
+    const chipsTotalW=cats.length*chipW+(cats.length-1)*chipGap;
+    const chipsX=pos.x-chipsTotalW/2;
+    const chipsY=pos.y+r+5;
+    const chips=cats.map((cat,i)=>`<rect x="${chipsX+i*(chipW+chipGap)}" y="${chipsY}" width="${chipW}" height="${chipH}" rx="2" fill="${cat.color}"><title>${esc(cat.label)}</title></rect>`).join('');
+    const tooltip=`${n.title} (${yr}) 主分類:${n.graphCategory.label} / 該当分類:${cats.map(c=>c.label).join('・')} 被引用:${n.citedCount}`;
     nodesSvg+=`<g>
       <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col.fill}" stroke="${n.graphCategory.color}" stroke-width="1.6" style="cursor:default;">
         <title>${esc(tooltip)}</title>
       </circle>
       <text x="${pos.x}" y="${pos.y+4}" text-anchor="middle" font-size="8" fill="${n.graphCategory.color}" font-weight="bold" font-family="sans-serif" pointer-events="none">${yr}</text>
-      <text class="graph-paper-title" x="${pos.x}" y="${pos.y+r+12}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(${n.id})">${esc(title)}</text>
+      ${chips}
+      <text class="graph-paper-title" x="${pos.x}" y="${pos.y+r+22}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(${n.id})">${esc(title)}</text>
     </g>`;
   });
 
