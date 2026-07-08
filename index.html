@@ -105,6 +105,21 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:200;}
 .modal{background:#fff;border-radius:14px;border:1px solid #e0ddd6;width:min(620px,97vw);max-height:94vh;overflow-y:auto;padding:1.5rem;}
 .m-title{font-size:17px;font-weight:600;margin-bottom:1.2rem;}
+.paper-detail-modal{width:min(560px,94vw);padding:0;overflow:hidden;}
+.paper-detail-head{padding:1.2rem 1.35rem 1rem;border-bottom:1px solid #f0eee8;background:#fbfaf7;}
+.paper-detail-title{font-size:16px;font-weight:700;line-height:1.55;margin-right:28px;}
+.paper-detail-close{position:absolute;top:14px;right:16px;border:none;background:transparent;font-size:24px;line-height:1;color:#999;cursor:pointer;}
+.paper-detail-close:hover{color:#333;}
+.paper-detail-body{padding:1.1rem 1.35rem 1.3rem;}
+.paper-detail-meta{display:grid;grid-template-columns:88px 1fr;gap:8px 12px;margin-bottom:1rem;font-size:13px;line-height:1.6;}
+.paper-detail-label{font-size:11px;font-weight:700;color:#999;letter-spacing:.04em;}
+.paper-detail-value{color:#333;min-width:0;overflow-wrap:anywhere;}
+.paper-detail-section{border-top:1px solid #f0eee8;padding-top:.85rem;margin-top:.85rem;}
+.paper-detail-section-title{font-size:11px;font-weight:700;color:#4a6fa5;letter-spacing:.06em;margin-bottom:.4rem;}
+.paper-detail-text{font-size:13px;line-height:1.75;color:#333;white-space:pre-wrap;overflow-wrap:anywhere;}
+.paper-detail-empty{color:#aaa;font-style:italic;}
+.graph-paper-title{cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:2px;}
+.graph-paper-title:hover{text-decoration-color:#4a6fa5;fill:#2044a0;}
 .fr{margin-bottom:11px;}
 .fr label{display:block;font-size:11px;color:#888;margin-bottom:4px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;}
 .fr input,.fr textarea,.fr select{width:100%;border:1px solid #ddd;border-radius:8px;padding:8px 11px;font-size:13px;background:#fafaf8;color:#1a1a18;font-family:inherit;}
@@ -282,6 +297,17 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
     <button class="btn" onclick="closeOv()">キャンセル</button>
     <button class="btn btn-p" onclick="savePaper()">保存</button>
   </div>
+</div>
+</div>
+
+<!-- ===== 論文詳細モーダル ===== -->
+<div class="ov" id="detail-ov" style="display:none" onclick="if(event.target===this)closePaperDetail()">
+<div class="modal paper-detail-modal" style="position:relative;">
+  <button class="paper-detail-close" onclick="closePaperDetail()" aria-label="閉じる">&times;</button>
+  <div class="paper-detail-head">
+    <div class="paper-detail-title" id="detail-title"></div>
+  </div>
+  <div class="paper-detail-body" id="detail-body"></div>
 </div>
 </div>
 
@@ -604,6 +630,50 @@ function delP(id){
 
 function closeOv(){document.getElementById('ov').style.display='none';}
 
+function showPaperDetail(id){
+  const p=db.find(x=>x.id===id);if(!p)return;
+  document.getElementById('detail-title').textContent=p.title||'無題';
+
+  const metaRows=[
+    ['著者',p.author],
+    ['年代',p.year?p.year+'年':''],
+    ['学会名',p.journal],
+    ['キーワード',p.keywords],
+    ['URL',p.url?`<a class="ulink" href="${esc(p.url)}" target="_blank">${esc(p.url)}</a>`:'']
+  ].filter(([,v])=>v);
+
+  const meta=metaRows.map(([label,value])=>`
+    <div class="paper-detail-label">${label}</div>
+    <div class="paper-detail-value">${label==='URL'?value:esc(value)}</div>
+  `).join('');
+
+  const summary=p.memo||'';
+  const structure=[
+    ['目的',p.purpose],
+    ['手法',p.method],
+    ['結果',p.result]
+  ].filter(([,v])=>v);
+
+  const structureHtml=structure.length?structure.map(([label,value])=>`
+    <div class="paper-detail-section">
+      <div class="paper-detail-section-title">${label}</div>
+      <div class="paper-detail-text">${esc(value)}</div>
+    </div>
+  `).join(''):'';
+
+  document.getElementById('detail-body').innerHTML=`
+    <div class="paper-detail-meta">${meta||'<div class="paper-detail-empty">基本情報は未入力です</div>'}</div>
+    <div class="paper-detail-section">
+      <div class="paper-detail-section-title">要約</div>
+      <div class="paper-detail-text${summary?'':' paper-detail-empty'}">${esc(summary||'メモ・要約は未入力です')}</div>
+    </div>
+    ${structureHtml}
+  `;
+  document.getElementById('detail-ov').style.display='flex';
+}
+
+function closePaperDetail(){document.getElementById('detail-ov').style.display='none';}
+
 /* ════════════════════════════════
    系譜図
 ════════════════════════════════ */
@@ -748,7 +818,7 @@ function renderGraph(){
         <title>${esc(tooltip)}</title>
       </circle>
       <text x="${pos.x}" y="${pos.y+4}" text-anchor="middle" font-size="8" fill="${col.stroke}" font-weight="bold" font-family="sans-serif" pointer-events="none">${yr}</text>
-      <text x="${pos.x}" y="${pos.y+r+11}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" pointer-events="none">${esc(title)}</text>
+      <text class="graph-paper-title" x="${pos.x}" y="${pos.y+r+11}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(${n.id})">${esc(title)}</text>
     </g>`;
   });
 
