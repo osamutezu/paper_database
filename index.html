@@ -168,6 +168,13 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
 .graph-legend{max-width:1280px;margin:.75rem auto 0;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#888;align-items:center;}
 .gl-item{display:flex;align-items:center;gap:5px;}
 .gl-circle{border-radius:50%;display:inline-block;}
+.history-panel{max-width:1280px;margin:1rem auto 0;background:#fff;border:1px solid #e8e6e0;border-radius:10px;padding:1rem 1.1rem;}
+.history-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:.75rem;}
+.history-panel-title{font-size:15px;font-weight:700;}
+.history-panel-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.history-panel-body{font-size:13px;line-height:1.8;color:#333;white-space:pre-wrap;}
+.history-panel-empty{color:#aaa;font-style:italic;}
+.history-editor{min-height:320px;font-size:13px;line-height:1.7;}
 </style>
 </head>
 <body>
@@ -1055,6 +1062,16 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
     <span class="gl-item"><span class="gl-circle" style="width:18px;height:18px;background:#f8d890;border:1.5px solid #b88020;"></span>被引用多い</span>
     <span style="color:#aaa;">— 矢印：引用元→引用先</span>
   </div>
+  <div class="history-panel">
+    <div class="history-panel-head">
+      <div class="history-panel-title">研究史の流れ</div>
+      <div class="history-panel-actions">
+        <button class="btn btn-s" onclick="copyResearchHistoryPrompt()">生成用プロンプトをコピー</button>
+        <button class="btn btn-s" onclick="openHistoryEditor()">生成結果を編集・保存</button>
+      </div>
+    </div>
+    <div class="history-panel-body history-panel-empty" id="history-panel-body">生成用プロンプトをコピーし、AIで生成した文章を保存するとここに表示されます。</div>
+  </div>
 </div>
 
 <!-- ===== 追加/編集モーダル ===== -->
@@ -1119,7 +1136,22 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
   <div class="paper-detail-head">
     <div class="paper-detail-title" id="detail-title"></div>
   </div>
-  <div class="paper-detail-body" id="detail-body"></div>
+<div class="paper-detail-body" id="detail-body"></div>
+</div>
+</div>
+
+<!-- ===== 研究史編集モーダル ===== -->
+<div class="ov" id="history-ov" style="display:none" onclick="if(event.target===this)closeHistoryEditor()">
+<div class="modal">
+  <div class="m-title">研究史の流れを編集</div>
+  <div class="fr">
+    <label>AI生成結果</label>
+    <textarea class="history-editor" id="history-editor" placeholder="AIで生成した研究史の流れをここに貼り付けて保存"></textarea>
+  </div>
+  <div class="m-foot">
+    <button class="btn" onclick="closeHistoryEditor()">キャンセル</button>
+    <button class="btn btn-p" onclick="saveHistoryAnalysis()">保存</button>
+  </div>
 </div>
 </div>
 
@@ -1141,6 +1173,9 @@ let activeFilters=[];   // 複数タグフィルター
 let sortOrder='desc';   // 'asc' | 'desc'
 let showSummary=false;
 const STORAGE_KEY='pdb54';
+const HISTORY_STORAGE_KEY='pdb54_history';
+const EMBEDDED_HISTORY_ANALYSIS = ``;
+let historyAnalysis='';
 
 function sv(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}catch(e){}}
 function ld(){try{const d=localStorage.getItem(STORAGE_KEY);if(d)db=JSON.parse(d);}catch(e){}}
@@ -1150,10 +1185,15 @@ function isPre(t){return ALL_PRE.includes(t);}
 
 function downloadEmbeddedHtml(){
   const data=JSON.stringify(db,null,2);
+  const hist=JSON.stringify(historyAnalysis||'');
   const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-  const updated=html.replace(
+  let updated=html.replace(
     /const legacy = \[[\s\S]*?\n  \];/,
     'const legacy = '+data.replace(/</g,'\\u003c')+';'
+  );
+  updated=updated.replace(
+    /const EMBEDDED_HISTORY_ANALYSIS = (?:`[\s\S]*?`|"(?:\\.|[^"\\])*");/,
+    'const EMBEDDED_HISTORY_ANALYSIS = '+hist.replace(/</g,'\\u003c')+';'
   );
   if(updated===html){
     alert('HTML書き出し用のデータ位置を見つけられませんでした');
@@ -1169,6 +1209,84 @@ function downloadEmbeddedHtml(){
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);
 }
 
+function loadHistoryAnalysis(){
+  try{
+    const saved=localStorage.getItem(HISTORY_STORAGE_KEY);
+    historyAnalysis=saved!==null?saved:(EMBEDDED_HISTORY_ANALYSIS||'');
+  }catch(e){historyAnalysis=EMBEDDED_HISTORY_ANALYSIS||'';}
+}
+
+function renderHistoryPanel(){
+  const el=document.getElementById('history-panel-body');
+  if(!el)return;
+  const txt=(historyAnalysis||'').trim();
+  el.textContent=txt||'生成用プロンプトをコピーし、AIで生成した文章を保存するとここに表示されます。';
+  el.classList.toggle('history-panel-empty',!txt);
+}
+
+function openHistoryEditor(){
+  document.getElementById('history-editor').value=historyAnalysis||'';
+  document.getElementById('history-ov').style.display='flex';
+}
+
+function closeHistoryEditor(){document.getElementById('history-ov').style.display='none';}
+
+function saveHistoryAnalysis(){
+  historyAnalysis=document.getElementById('history-editor').value.trim();
+  try{localStorage.setItem(HISTORY_STORAGE_KEY,historyAnalysis);}catch(e){}
+  closeHistoryEditor();
+  renderHistoryPanel();
+}
+
+function buildResearchHistoryPrompt(){
+  const papers=[...db].filter(p=>p.year).sort((a,b)=>(a.year||0)-(b.year||0));
+  const grouped={};
+  papers.forEach(p=>{
+    const dec=Math.floor((p.year||0)/10)*10;
+    if(!grouped[dec])grouped[dec]=[];
+    grouped[dec].push({
+      year:p.year,
+      title:p.title||'',
+      author:p.author||'',
+      journal:p.journal||'',
+      keywords:p.keywords||'',
+      tags:p.tags||[],
+      purpose:p.purpose||'',
+      method:p.method||'',
+      result:p.result||'',
+      memo:p.memo||''
+    });
+  });
+  return `以下は建築・都市計画系の論文データベースです。タイトル、著者、年、掲載誌、キーワード、目的、手法、結果、メモをもとに、1990年代から2020年代までの研究史の流れを分析してください。
+
+要件:
+- 古い年代から新しい年代へ、議論がどのように移ったかを書く
+- 各年代で集中した論点、対象空間、方法論を整理する
+- 「路地」「あふれ出し」「密集市街地」「外部空間」「小規模空地」「ポケットパーク」などの概念がどう接続・転化したかを推論する
+- 単なる要約ではなく、研究関心の変化、継承、断絶、今後の問いまで述べる
+- 系譜図の横に掲載する文章として、読みやすい見出し付きで日本語で書く
+- 事実として言えることと、データからの推論を区別する
+
+論文データ:
+${JSON.stringify(grouped,null,2)}`;
+}
+
+async function copyResearchHistoryPrompt(){
+  const prompt=buildResearchHistoryPrompt();
+  try{
+    await navigator.clipboard.writeText(prompt);
+    alert('研究史生成用プロンプトをコピーしました。AIに貼り付けて生成し、結果を「生成結果を編集・保存」に貼り付けてください。');
+  }catch(e){
+    const w=window.open('','_blank');
+    if(w){
+      w.document.write('<pre style="white-space:pre-wrap;font-family:sans-serif;">'+esc(prompt)+'</pre>');
+      w.document.close();
+    }else{
+      alert('コピーできませんでした。ブラウザのクリップボード権限を確認してください。');
+    }
+  }
+}
+
 /* ════════════════════════════════
    ページ切替
 ════════════════════════════════ */
@@ -1177,7 +1295,7 @@ function showPage(name){
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('on'));
   document.getElementById('page-'+name).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach(t=>{if(t.textContent.trim()===(name==='list'?'一覧':'系譜図'))t.classList.add('on');});
-  if(name==='graph')renderGraph();
+  if(name==='graph'){renderGraph();renderHistoryPanel();}
 }
 
 /* ════════════════════════════════
@@ -2458,7 +2576,7 @@ function renderGraph(){
   }catch(e){console.error('データ移行失敗',e);}
 })();
 
-ld();render();
+ld();loadHistoryAnalysis();render();renderHistoryPanel();
 </script>
 
 
