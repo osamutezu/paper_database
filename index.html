@@ -157,17 +157,17 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
 
 /* ── 系譜図ページ ── */
 #page-graph{padding:1.5rem 1rem;}
-.graph-hdr{max-width:1280px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.graph-hdr{max-width:1800px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 .graph-title{font-size:18px;font-weight:600;}
 .graph-hint{font-size:12px;color:#888;margin-top:2px;}
-.graph-zoom-bar{max-width:1280px;margin:0 auto .75rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid #e8e6e0;border-radius:10px;padding:.55rem 1rem;}
+.graph-zoom-bar{max-width:1800px;margin:0 auto .75rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid #e8e6e0;border-radius:10px;padding:.55rem 1rem;}
 .zoom-label{font-size:12px;color:#888;white-space:nowrap;}
 .zoom-btn{white-space:nowrap;}
 #zoom-slider{flex:1;min-width:120px;max-width:260px;cursor:pointer;accent-color:#4a6fa5;}
 .zoom-val{font-size:13px;font-weight:600;color:#4a6fa5;min-width:36px;}
-#graph-canvas-wrap{max-width:1280px;margin:0 auto;overflow-x:auto;overflow-y:auto;}
+#graph-canvas-wrap{max-width:1800px;margin:0 auto;overflow-x:auto;overflow-y:auto;}
 #graph-svg{display:block;background:#fff;border-radius:12px;border:1px solid #e8e6e0;}
-.graph-legend{max-width:1280px;margin:.75rem auto 0;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#888;align-items:center;}
+.graph-legend{max-width:1800px;margin:.75rem auto 0;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#888;align-items:center;}
 .gl-item{display:flex;align-items:center;gap:5px;}
 .gl-circle{border-radius:50%;display:inline-block;}
 .history-panel{max-width:1280px;margin:1rem auto 0;background:#fff;border:1px solid #e8e6e0;border-radius:10px;padding:1rem 1.1rem;}
@@ -207,7 +207,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
     </div>
   </div>
   <div class="stats" id="stats">
-    <div class="stat"><div class="stat-n">94</div><div class="stat-l">登録論文数</div></div>
+    <div class="stat"><div class="stat-n">112</div><div class="stat-l">登録論文数</div></div>
     <div class="stat"><div class="stat-n">9</div><div class="stat-l">タグ種類数</div></div></div>
   <div class="toolbar">
     <input type="text" id="q" placeholder="タイトル・著者・メモ・キーワードで検索…" oninput="render()">
@@ -225,6 +225,321 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
   </div>
   <div class="fbar-wrap" id="fbar-wrap"><div class="fbar-label">タグで絞り込み（複数AND）：</div><div class="fbar"><span class="ftag" onclick="togF('○既読')">○既読</span><span class="ftag" onclick="togF('あふれ出し')">あふれ出し</span><span class="ftag" onclick="togF('ポケットパーク')">ポケットパーク</span><span class="ftag" onclick="togF('街路空間')">街路空間</span><span class="ftag" onclick="togF('共同利用')">共同利用</span><span class="ftag" onclick="togF('表出')">表出</span><span class="ftag" onclick="togF('密集市街地')">密集市街地</span><span class="ftag" onclick="togF('路地')">路地</span><span class="ftag" onclick="togF('曖昧な空間')">曖昧な空間</span></div></div>
   <div class="list" id="list"><div class="card">
+      <div class="card-h">
+        <div class="card-t">低層住宅地における敷地細分化を伴う小規模開発の共用空間に関する研究</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783534435313)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783534435313)">削除</button>
+        </div>
+      </div>
+      <div class="meta">天野 克也, 谷口 汎邦　/　1998年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/uhs1993/1998/23/1998_142/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/uhs1993/1998/23/19…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 共用空間, 小規模開発, 低層住宅地</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 防災性能からみた低層高密住宅市街地における小規模空地確保の計…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">戦災復興土地区画整理後における過小画地、袋路地発生経過の分析(都市計画・経済・防災)</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783534335957)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783534335957)">削除</button>
+        </div>
+      </div>
+      <div class="meta">野々村 五四男　/　1960年　/　日本建築学会計画系論文集報告集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aijsaxx/66.2/0/66.2_KJ00004443567/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aijsaxx/66.2/0/66.…</a></div>
+      
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">密集市街地における小規模空地整備による地区防火性能の向上</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783534195149)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783534195149)">削除</button>
+        </div>
+      </div>
+      <div class="meta">竹谷 修一　/　2010年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/jisss/13/0/13_149/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/jisss/13/0/13_149/…</a></div>
+      
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">住宅街路における公私間の仕切り方が人々に与える心理的影響</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783533784803)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783533784803)">削除</button>
+        </div>
+      </div>
+      <div class="meta">一海 有里, 清水 忠男, 佐藤 公信, 陳 明石　/　1999年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223561/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ0…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 街路空間, 公私間の仕切り方, 囲障, 地域イメージ</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査から…</span><span class="ref-pill">🗎 開放的路地空間での領域化としてのあふれ出し　路地空間へのあふ…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">既成住宅地における街角広場の住民による利用と評価に関する研究 : 世田谷区太子堂地区のポケットパークを事例として</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783533496748)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783533496748)">削除</button>
+        </div>
+      </div>
+      <div class="meta">藍澤 宏, 浅野 智　/　1996年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/61/490/61_KJ00004221852/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/61/490/61_KJ0…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 街角広場, 既成住宅地, 共有空間, 利用, 評価, 自主管理</div>
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">近隣住民による屋外共用空間の保全・再整備に関する研究 : 大都市の低層住宅地を対象として</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783533424401)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783533424401)">削除</button>
+        </div>
+      </div>
+      <div class="meta">藍澤 宏, 浅野 智, 鈴木 直子　/　1998年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ00004222606/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ0…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 屋外共用空間, 近隣住民, 認知領域, 保全, 再整備, 広場</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査から…</span><span class="ref-pill">🗎 密集住宅地の「住戸群」における路地と隙間の役割に関する研究</span><span class="ref-pill">🗎 既成住宅地における街角広場の住民による利用と評価に関する研究…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">密集市街地における接道部緑化と建築年代及び形態の関係</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783533273360)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783533273360)">削除</button>
+        </div>
+      </div>
+      <div class="meta">宇川 裕亮, 土屋 一彬, 大黒 俊哉　/　2015年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/reportscpij/14/3/14_192/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/reportscpij/14/3/1…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 景観形成, 都市緑化, 鉢植え, 密集市街地, 建築物類型</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 中央区月島を事例とした密集市街地の路地における植物の配置パタ…</span><span class="ref-pill">🗎 密集市街地における鉢植えの緑の配置と形態</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">路地園芸活動と社会関係資本および密集市街地整備事業の関係性 東京都足立区・荒川区を事例に</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783533167828)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783533167828)">削除</button>
+        </div>
+      </div>
+      <div class="meta">吉瀬 啓史, 土屋 一彬, 大黒 俊哉　/　2018年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/reportscpij/17/2/17_227/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/reportscpij/17/2/1…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 コミュニティ結合度, 景観評価, 世代交代, 鉢植え</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における鉢植えの緑の配置と形態</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">都心の公園際における空間形態とその利用に関する研究 大阪・靭公園内外のつながりに着目して</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783533043260)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783533043260)">削除</button>
+        </div>
+      </div>
+      <div class="meta">青戸 良宏, 嘉名 光市, 藤本 和男, 赤崎 弘平　/　2007年　/　都市計画学会論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/journalcpij/42.3/0/42.3_37/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/journalcpij/42.3/0…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 際, 空間利用, 空間形態, 靭公園</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における鉢植えの緑の配置と形態</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">ヴェネツィア・サンタクローチェ地区における街路公共空間と緑の表出の空間的関係 －建築街路境界部の空間的形態の観点からの分析－</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783532934185)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783532934185)">削除</button>
+        </div>
+      </div>
+      <div class="meta">緑, ヴェネツィア, 街路公共空間, 空間的関係, フォンダメンタ, カンポ／カンピエッロ　/　2015年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/80/710/80_883/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/80/710/80_883…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 客野 尚志, 加藤 晃規</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における鉢植えの緑の配置と形態</span><span class="ref-pill">🗎 中央区月島を事例とした密集市街地の路地における植物の配置パタ…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">密集市街地における鉢植えの緑の配置と形態</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783532832424)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783532832424)">削除</button>
+        </div>
+      </div>
+      <div class="meta">篠塚 香里, 横張 真, 栗田 英治, 渡辺 貴史　/　2003年　/　ランドスケープ研究</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/jila/66/5/66_5_825/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/jila/66/5/66_5_825…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 鉢植えの緑, 緑化, 密集市街地, 道路幅員</div>
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">中央区月島を事例とした密集市街地の路地における植物の配置パターンと空間特性</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783532775492)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783532775492)">削除</button>
+        </div>
+      </div>
+      <div class="meta">高橋 俊, 伊藤 弘, 下村 彰男　/　2005年　/　ランドスケープ研究</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/jila/68/5/68_5_879/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/jila/68/5/68_5_879…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 路地, 植物, 配置, 密集市街地, 空間特性</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査から…</span><span class="ref-pill">🗎 開放的路地空間での領域化としてのあふれ出し　路地空間へのあふ…</span><span class="ref-pill">🗎 密集住宅地の「住戸群」における路地と隙間の役割に関する研究</span><span class="ref-pill">🗎 密集市街地における鉢植えの緑の配置と形態</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">フォブール・サンタントワーヌ地区における公開された中庭空間の構成 パリにおける街区内部の外部空間の構成に関する研究</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783532329073)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783532329073)">削除</button>
+        </div>
+      </div>
+      <div class="meta">北原 寛司, 小林 はるか, 金子 晋也, 是永 美樹, 八木 幸二　/　2009年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/74/635/74_635_113/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/74/635/74_635…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 公開された中庭空間, 配置, 接続, 空間構成, フォブール・サンタントワーヌ, パリ</div>
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">街路網と画地の形成からみたフォブール・サンタントワーヌ地区の都市組織の特徴 パリにおける街区内部の外部空間の構成に関する研究 その３</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783532167800)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783532167800)">削除</button>
+        </div>
+      </div>
+      <div class="meta">北原 寛司, 金子 晋也, 是永 美樹, 八木 幸二　/　2010年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/75/655/75_655_2175/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/75/655/75_655…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 都市組織, 街路, 画地, 形成, フォブール・サンタントワーヌ, パリ</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 フォブール・サンタントワーヌ地区における公開された中庭空間の…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">折れ曲がり街路空間の期待感と物的要因の関係</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783532001187)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783532001187)">削除</button>
+        </div>
+      </div>
+      <div class="meta">松本 直司, 瀬田 忠之　/　1999年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223553/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ0…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 期待感, 折れ, 曲がり空間, 物的要因, 不可視領域, スケール補正高さ幅員比</div>
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">折れ曲がり街路空間における期待感最大位置とその強さについて : 街路空間の期待感に関する研究</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783531916593)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783531916593)">削除</button>
+        </div>
+      </div>
+      <div class="meta">松本 直司, 日比 淳, 磯和 孝史, 甲村 和三　/　2005年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/70/589/70_KJ00004396994/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/70/589/70_KJ0…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 期待感, 期待感最大位置, 期待感強さ, 折れ曲がり空間, 不可視領域, シークエンス</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 折れ曲がり街路空間の期待感と物的要因の関係</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">アートイベントによって顕在化する歴史的市街地の地域資源 -「からほりまちアート」を事例として-</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783531795219)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783531795219)">削除</button>
+        </div>
+      </div>
+      <div class="meta">上段 貴浩, 脇田 祥尚　/　2010年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/75/658/75_658_2873/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/75/658/75_658…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 ートイベント, 地域資源, 空堀地区, 空間特性, 展示空間</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 折れ曲がり街路空間における期待感最大位置とその強さについて …</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">京都の既成市街地における敷地の接道条件からみた路地空間の特徴 都心地区・今熊野地区・七条地区におけるケーススタディ</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783531622600)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783531622600)">削除</button>
+        </div>
+      </div>
+      <div class="meta">三森 弘, 花里 俊廣　/　2011年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/76/668/76_668_1839/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/76/668/76_668…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 無接道敷地, 路地, 制限緩和, 京都, 街区構造, 景観</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 京都の袋路における更新履歴と伝統的景観要素にもとづく空間の類…</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">京都の袋路における更新履歴と伝統的景観要素にもとづく空間の類型化 －本能明倫地区における袋路事例と連担建築物設計制度の新規適応事例との比較検討－</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783531560241)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783531560241)">削除</button>
+        </div>
+      </div>
+      <div class="meta">三森 弘, 貝島 桃代, 花里 俊廣　/　2010年</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/75/656/75_656_2381/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/75/656/75_656…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 連担建築物設計制度, 袋路, 制限緩和, 空間類型, 京都, 景観要素</div>
+      
+      
+      
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">大地震時における多様な避難行動を考慮した地域防災性能評価手法</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783531259035)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783531259035)">削除</button>
+        </div>
+      </div>
+      <div class="meta">楊 葉霊, 郷田 桃代, 李 厚君　/　2022年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/87/802/87_2469/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/87/802/87_246…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 大地震, 道路閉塞, 避難行動, 災害弱者, 防災性能評価</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における大地震時の避難困難率について</span><span class="ref-pill">🗎 広域避難の困難性からみた木造住宅密集地域整備事業の評価</span></div>
+      
+    </div><div class="card">
+      <div class="card-h">
+        <div class="card-t">建物間の隙間に関する定量的分析</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(1783531012210)">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(1783531012210)">削除</button>
+        </div>
+      </div>
+      <div class="meta">松宮 かおる, 鷲崎 桃子, 及川 清昭, 郷田 桃代　/　2014年　/　日本建築学会計画系論文集</div>
+      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/79/697/79_693/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/79/697/79_693…</a></div>
+      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 建物間隙間, 建物配置, 画像処理技法, 密度指標, モルフォロジー, クロージング</div>
+      
+      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集住宅地の「住戸群」における路地と隙間の役割に関する研究</span></div>
+      
+    </div><div class="card">
       <div class="card-h">
         <div class="card-t">路上駐車帯の屋外飲食空間としての利用に関する研究 －フレキシブル・ゾーンとパークレットの比較を通して－</div>
         <div class="card-act">
@@ -552,7 +867,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       <div style="margin-top:5px;font-size:11px;color:#888;">🔑 細街路整備対策, 生活道路ネットワーク計画, 防災まちづくり, 特別区</div>
       
       
-      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 街づくり事業地区における細街路整備手法と市街地の地域的特徴と…</span></div>
+      
       
     </div><div class="card">
       <div class="card-h">
@@ -732,7 +1047,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       <div style="margin-top:5px;font-size:11px;color:#888;">🔑 表出, 路地, 領域性, 密集市街地, 私的利用</div>
       <div class="tags"><span class="tag tag-pre" onclick="togF('路地')" title="このタグで絞り込む">路地</span></div>
       
-      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査から…</span><span class="ref-pill">🗎 路地空間における領域化と住居開放性　経年変化にともなう生活領…</span><span class="ref-pill">🗎 開放的路地空間での領域化としてのあふれ出し　路地空間へのあふ…</span></div>
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査から…</span><span class="ref-pill">🗎 路地空間における領域化と住居開放性　経年変化にともなう生活領…</span><span class="ref-pill">🗎 開放的路地空間での領域化としてのあふれ出し　路地空間へのあふ…</span><span class="ref-pill">🗎 密集市街地における鉢植えの緑の配置と形態</span></div>
       
     </div><div class="card">
       <div class="card-h">
@@ -792,7 +1107,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       <div style="margin-top:5px;font-size:11px;color:#888;">🔑 大地震, 道路閉塞, 緊急避難通路, 避難行動, 災害弱者, アクセシビリティ</div>
       
       
-      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における大地震時の避難困難率について</span><span class="ref-pill">🗎 袋路状道路の避難通路整備に関する研究 「計画最小単位」の袋路…</span></div>
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 密集市街地における大地震時の避難困難率について</span><span class="ref-pill">🗎 袋路状道路の避難通路整備に関する研究 「計画最小単位」の袋路…</span><span class="ref-pill">🗎 大地震時における多様な避難行動を考慮した地域防災性能評価手法</span></div>
       
     </div><div class="card">
       <div class="card-h">
@@ -882,7 +1197,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       <div style="margin-top:5px;font-size:11px;color:#888;">🔑 密集市街地，小規模空地，利用実態，広場，緑地，ポケットパーク</div>
       <div class="tags"><span class="tag tag-cus" onclick="togF('ポケットパーク')" title="このタグで絞り込む">ポケットパーク</span></div>
       
-      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 既成住宅地における街角広場の住民による利用と評価に関する研究…</span><span class="ref-pill">🗎 密集市街地における空き家の実態とその「防災空間」としての活用…</span></div>
       
     </div><div class="card">
       <div class="card-h">
@@ -1004,21 +1319,6 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       
       
       <div class="memo">既読250502</div>
-    </div><div class="card">
-      <div class="card-h">
-        <div class="card-t">近隣住民による屋外共用空間の保全・再整備に関する研究　大都市の低層住宅地を対象として</div>
-        <div class="card-act">
-          <button class="btn btn-s" onclick="openEdit(45)">編集</button>
-          <button class="btn btn-s btn-d" onclick="delP(45)">削除</button>
-        </div>
-      </div>
-      <div class="meta">藍澤 宏, 浅野 智, 鈴木 直子　/　1998年　/　日本建築学会計画系論文集</div>
-      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ00004222606/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ0…</a></div>
-      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 屋外共用空間, 近隣住民, 認知領域, 保全, 再整備, 広場</div>
-      
-      
-      
-      
     </div><div class="card">
       <div class="card-h">
         <div class="card-t">平地部水田集落における敷地正面空間の要素と構成　農村集落における屋敷回り空間の「見え方」に関する研究 その1</div>
@@ -1182,7 +1482,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       <div style="margin-top:5px;font-size:11px;color:#888;">🔑 中心市街地, 私的要素, 公的領域, 公私の混交利用</div>
       <div class="tags"><span class="tag tag-cus" onclick="togF('○既読')" title="このタグで絞り込む">○既読</span></div>
       
-      
+      <div class="refs-row"><div class="refs-lbl">参考文献</div><span class="ref-pill">🗎 開放的路地空間での領域化としてのあふれ出し　路地空間へのあふ…</span></div>
       <div class="memo">既読250620</div>
     </div><div class="card">
       <div class="card-h">
@@ -1259,21 +1559,6 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       
       
       <div class="memo">既読250418</div>
-    </div><div class="card">
-      <div class="card-h">
-        <div class="card-t">住宅街路における公私間の仕切り方が人々に与える心理的影響</div>
-        <div class="card-act">
-          <button class="btn btn-s" onclick="openEdit(28)">編集</button>
-          <button class="btn btn-s btn-d" onclick="delP(28)">削除</button>
-        </div>
-      </div>
-      <div class="meta">一海 有里, 清水 忠男, 佐藤 公信, 陳 明石　/　1999年　/　日本建築学会計画系論文集</div>
-      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223561/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ0…</a></div>
-      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 街路空間, 公私間の仕切り方, 囲障, 地域イメージ</div>
-      <div class="tags"><span class="tag tag-cus" onclick="togF('街路空間')" title="このタグで絞り込む">街路空間</span></div>
-      
-      
-      
     </div><div class="card">
       <div class="card-h">
         <div class="card-t">居間と立体街路の視覚上の関係性が居住者の領域形成に与える影響　-実験集合住宅NEXT21における立体街路の利用特性に関する研究 その3-</div>
@@ -1501,21 +1786,6 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
       <div class="memo">既読251114</div>
     </div><div class="card">
       <div class="card-h">
-        <div class="card-t">多様な避難行動を想定した大地震時の緊急避難通路の設定手法に関する研究</div>
-        <div class="card-act">
-          <button class="btn btn-s" onclick="openEdit(9)">編集</button>
-          <button class="btn btn-s btn-d" onclick="delP(9)">削除</button>
-        </div>
-      </div>
-      <div class="meta">楊 葉霊, 郷田 桃代　/　2023年　/　日本建築学会計画系論文集</div>
-      <div style="margin-bottom:4px;"><a class="ulink" href="https://www.jstage.jst.go.jp/article/aija/88/806/88_1334/_pdf/-char/ja" target="_blank">🔗 https://www.jstage.jst.go.jp/article/aija/88/806/88_133…</a></div>
-      <div style="margin-top:5px;font-size:11px;color:#888;">🔑 大地震, 道路閉塞, 緊急避難通路, 避難行動, 災害弱者, アクセシビリティ</div>
-      
-      
-      
-      
-    </div><div class="card">
-      <div class="card-h">
         <div class="card-t">狭小地の解消等に向けた隣地統合事業の運用</div>
         <div class="card-act">
           <button class="btn btn-s" onclick="openEdit(8)">編集</button>
@@ -1643,7 +1913,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
   <div class="graph-hdr">
     <div>
       <div class="graph-title">論文系譜図</div>
-      <div class="graph-hint">参考文献のつながりを時系列で可視化（円の大きさ＝被引用数）</div>
+      <div class="graph-hint">4分類ごとの縦軸年表として可視化（円の大きさ＝被引用数）</div>
     </div>
     <button class="btn" onclick="renderGraph()">↻ 再描画</button>
   </div>
@@ -1652,11 +1922,683 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-se
     <button class="btn btn-s zoom-btn" onclick="changeZoom(-0.3)">− 縮小</button>
     <input type="range" id="zoom-slider" min="0.3" max="6" step="0.1" value="1" oninput="onZoomSlider(this.value)">
     <button class="btn btn-s zoom-btn" onclick="changeZoom(0.3)">拡大 ＋</button>
-    <span class="zoom-val" id="zoom-val">×1.0</span>
+    <span class="zoom-val" id="zoom-val">×0.3</span>
     <button class="btn btn-s" onclick="resetZoom()" style="margin-left:6px;">リセット</button>
   </div>
   <div id="graph-canvas-wrap">
-    <svg id="graph-svg"></svg>
+    <svg id="graph-svg" viewBox="0 0 1200 1686.3999999999999" width="1200" height="1686.3999999999999"><defs><marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#c0b090"></path></marker></defs><line x1="0" y1="52" x2="1200" y2="52" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="45" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">1960</text><line x1="0" y1="286" x2="1200" y2="286" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="279" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">1970</text><line x1="0" y1="520" x2="1200" y2="520" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="513" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">1980</text><line x1="0" y1="754" x2="1200" y2="754" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="747" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">1990</text><line x1="0" y1="988" x2="1200" y2="988" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="981" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">2000</text><line x1="0" y1="1222" x2="1200" y2="1222" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="1215" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">2010</text><line x1="0" y1="1456" x2="1200" y2="1456" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="1449" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">2020</text><line x1="0" y1="1690" x2="1200" y2="1690" stroke="#cfc8ba" stroke-width="1.6"></line><text x="10" y="1683" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">2030</text><line x1="0" y1="52" x2="1200" y2="52" stroke="#cfc8ba" stroke-width="1.6"></line><line x1="0" y1="800.8" x2="1200" y2="800.8" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="797.8" font-size="10" fill="#bbb" font-family="sans-serif">1992</text><line x1="0" y1="824.1999999999999" x2="1200" y2="824.1999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="821.1999999999999" font-size="10" fill="#bbb" font-family="sans-serif">1993</text><line x1="0" y1="847.5999999999999" x2="1200" y2="847.5999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="844.5999999999999" font-size="10" fill="#bbb" font-family="sans-serif">1994</text><line x1="0" y1="871" x2="1200" y2="871" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="868" font-size="10" fill="#bbb" font-family="sans-serif">1995</text><line x1="0" y1="894.4" x2="1200" y2="894.4" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="891.4" font-size="10" fill="#bbb" font-family="sans-serif">1996</text><line x1="0" y1="917.8" x2="1200" y2="917.8" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="914.8" font-size="10" fill="#bbb" font-family="sans-serif">1997</text><line x1="0" y1="941.1999999999999" x2="1200" y2="941.1999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="938.1999999999999" font-size="10" fill="#bbb" font-family="sans-serif">1998</text><line x1="0" y1="964.5999999999999" x2="1200" y2="964.5999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="961.5999999999999" font-size="10" fill="#bbb" font-family="sans-serif">1999</text><line x1="0" y1="988" x2="1200" y2="988" stroke="#cfc8ba" stroke-width="1.6"></line><line x1="0" y1="1011.4" x2="1200" y2="1011.4" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1008.4" font-size="10" fill="#bbb" font-family="sans-serif">2001</text><line x1="0" y1="1058.1999999999998" x2="1200" y2="1058.1999999999998" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1055.1999999999998" font-size="10" fill="#bbb" font-family="sans-serif">2003</text><line x1="0" y1="1105" x2="1200" y2="1105" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1102" font-size="10" fill="#bbb" font-family="sans-serif">2005</text><line x1="0" y1="1128.3999999999999" x2="1200" y2="1128.3999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1125.3999999999999" font-size="10" fill="#bbb" font-family="sans-serif">2006</text><line x1="0" y1="1151.8" x2="1200" y2="1151.8" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1148.8" font-size="10" fill="#bbb" font-family="sans-serif">2007</text><line x1="0" y1="1175.1999999999998" x2="1200" y2="1175.1999999999998" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1172.1999999999998" font-size="10" fill="#bbb" font-family="sans-serif">2008</text><line x1="0" y1="1198.6" x2="1200" y2="1198.6" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1195.6" font-size="10" fill="#bbb" font-family="sans-serif">2009</text><line x1="0" y1="1222" x2="1200" y2="1222" stroke="#cfc8ba" stroke-width="1.6"></line><line x1="0" y1="1245.3999999999999" x2="1200" y2="1245.3999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1242.3999999999999" font-size="10" fill="#bbb" font-family="sans-serif">2011</text><line x1="0" y1="1268.8" x2="1200" y2="1268.8" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1265.8" font-size="10" fill="#bbb" font-family="sans-serif">2012</text><line x1="0" y1="1292.1999999999998" x2="1200" y2="1292.1999999999998" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1289.1999999999998" font-size="10" fill="#bbb" font-family="sans-serif">2013</text><line x1="0" y1="1315.6" x2="1200" y2="1315.6" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1312.6" font-size="10" fill="#bbb" font-family="sans-serif">2014</text><line x1="0" y1="1339" x2="1200" y2="1339" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1336" font-size="10" fill="#bbb" font-family="sans-serif">2015</text><line x1="0" y1="1362.3999999999999" x2="1200" y2="1362.3999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1359.3999999999999" font-size="10" fill="#bbb" font-family="sans-serif">2016</text><line x1="0" y1="1385.8" x2="1200" y2="1385.8" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1382.8" font-size="10" fill="#bbb" font-family="sans-serif">2017</text><line x1="0" y1="1409.1999999999998" x2="1200" y2="1409.1999999999998" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1406.1999999999998" font-size="10" fill="#bbb" font-family="sans-serif">2018</text><line x1="0" y1="1432.6" x2="1200" y2="1432.6" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1429.6" font-size="10" fill="#bbb" font-family="sans-serif">2019</text><line x1="0" y1="1456" x2="1200" y2="1456" stroke="#cfc8ba" stroke-width="1.6"></line><line x1="0" y1="1479.3999999999999" x2="1200" y2="1479.3999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1476.3999999999999" font-size="10" fill="#bbb" font-family="sans-serif">2021</text><line x1="0" y1="1502.8" x2="1200" y2="1502.8" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1499.8" font-size="10" fill="#bbb" font-family="sans-serif">2022</text><line x1="0" y1="1526.1999999999998" x2="1200" y2="1526.1999999999998" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1523.1999999999998" font-size="10" fill="#bbb" font-family="sans-serif">2023</text><line x1="0" y1="1549.6" x2="1200" y2="1549.6" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1546.6" font-size="10" fill="#bbb" font-family="sans-serif">2024</text><line x1="0" y1="1573" x2="1200" y2="1573" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1570" font-size="10" fill="#bbb" font-family="sans-serif">2025</text><line x1="0" y1="1596.3999999999999" x2="1200" y2="1596.3999999999999" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"></line><text x="10" y="1593.3999999999999" font-size="10" fill="#bbb" font-family="sans-serif">2026</text><path d="M573,1550 Q553.5,1499.5 543.147451066717,1495.653051941972" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1479 Q573,1405.5 603.6794970566216,1374.4807544150676" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1433 Q573,1406 597.6633148691708,1413.4112877325629" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1433 Q553.5,1394.5 553.2042534424833,1409.856412518033" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1433 Q573,1125.5 607.9029246771785,878.7280649211617" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1433 Q612,1406 675.1744245352407,1411.280857763809" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1386 Q592.5,1102 609.7586693747928,878.9188686246523" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1386 Q592.5,1090 609.8539156575705,854.9256256524452" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1386 Q592.5,1113.5 609.9611775205129,897.9229122291244" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1386 Q534,1289 503.1606147879559,1239.15821570801" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1175 Q592.5,984.5 608.5766226916797,854.8103957748822" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M456,1526 Q514.5,1195 570.2694967994258,908.7493848099389" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1503 Q612,1183.5 648.5862199748551,912.8460517347855" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1503 Q612,1371 644.99167244568,1287.0249826629597" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1316 Q573,1277.5 573,1292" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1526 Q553.5,1382.5 569.5492342125614,1291.7396617274806" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1526 Q573,1148.5 609.967590585851,819.8909849392053" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1526 Q670.5,1499.5 792.0529525881652,1504.2592750566748" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M534,1409 Q553.5,1382.5 546.2976569951021,1401.747535618273" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M612,1409 Q612,1113.5 612,879" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M612,1409 Q612,1101.5 612,855" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1409 Q651,1113.5 616.2690941451027,878.704638659008" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1409 Q631.5,1382.5 603.4178350615193,1391.979574413803" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1409 Q651,1101.5 616.0970753228215,854.7280649211617" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1409 Q690,1218.5 690,1089" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1245 Q534,1218.5 513.2242196973643,1227.3738083722997" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1245 Q534,1230 514,1245" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1245 Q553.5,1136.5 537.8791026867243,1076.599800061986" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1573 Q651,1534.5 624.8478373243022,1533.7416455672078" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1550 Q592.5,1289 538.3957106228128,1076.4845267215715" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1550 Q612,1488 585.1328769223489,1470.6216721884718" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1550 Q670.5,1254 688.9615720923729,1002.9640124124735" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1550 Q631.5,1289 613.1853063079996,1072.9530949624557" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1596 Q573,1511 573,1475" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1596 Q495,1394 422.7744870553743,1235.8439625558333" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1596 Q592.5,1359 610.6874860447571,1166.9424665673807" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,1596 Q612,1417.5 646.5915694657368,1287.4814972397958" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1269 Q631.5,1020 613.5778641172211,819.9343694066528" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M768,1573 Q670.5,1394 580.665345962459,1257.8935050035207" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M846,1573 Q807,1534.5 780.8478373243022,1533.7416455672078" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M846,1526 Q670.5,1370.5 509.8323838011388,1256.8743585416526" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1503 Q748.5,1441 832.4879857561513,1415.5134837893424" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M729,1503 Q631.5,1476 552.857709207359,1481.320948825521" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1479 Q631.5,1417.5 597.2675208974393,1405.2895678928364" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1479 Q612,1441 548.3875418663403,1437.2424802939208" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1479 Q651,1148.5 615.8030669251709,878.7658362792672" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1456 Q612,1406 596.0715107945343,1406.705201995095" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1456 Q631.5,1125 613.9093427649617,854.9411442937376" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1456 Q631.5,1137 613.9844085614594,878.9364206504438" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M924,1409 Q787.5,1347.5 665.1987355079177,1320.8369318763237" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M729,1316 Q670.5,1078.5 618.8655421398494,897.1125320703671" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M807,1503 Q690,1371 589.2634559672906,1285.2634559672906" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M807,1503 Q690,1394.5 584.7179160681267,1325.3643175416225" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M729,1245 Q651,1218.5 587.8395805538931,1224.1878868765355" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,1222 Q631.5,1148.5 616.7434164902526,1119.2302494707576" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M612,1105 Q690,1020 756.8363657445801,975.0186461266588" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M729,1222 Q670.5,1195.5 626.718307287832,1201.8933424582917" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1105 Q651,961.5 621.0030424757734,877.6638707214588" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1105 Q651,949.5 620.291477065151,853.8705776321463" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1105 Q651,973 620.5381496824547,896.6144490473639" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1105 Q690,1066.5 690,1089" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M612,1339 Q651,1183.5 681.708522934849,1087.8705776321463" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M612,1339 Q651,1207 683.99167244568,1123.0249826629597" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1152 Q690,1090 690,1089" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M1002,1409 Q846,1218.5 710.5952790037275,1081.1696888791935" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1339 Q690,1207 690,1124" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M690,1339 Q690,1183.5 690,1089" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,941 Q592.5,879.5 600.0114730362291,876.5880258366844" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,941 Q592.5,891 598.8590417281878,894.586335359663" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M573,941 Q612,902.5 634.7260727225505,903.8060843851298" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M846,965 Q729,891.5 639.7272429209974,861.8636214604987" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M846,965 Q729,879.5 638.5521971368912,839.999400838896" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><path d="M651,941 Q651,914.5 651,933" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"></path><g>
+      <circle cx="300" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>メインストリートに接続する横道景観の印象評価に関する研究　難波・心斎橋・本町を対象として (2025) 被引用:0</title>
+      </circle>
+      <text x="300" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="300" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1)">メインストリートに接…</text>
+    </g><g>
+      <circle cx="378" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>街路空間の軒先の設えとアクティビティにおける評価・イメージの分析　愛知県岡崎市康生通りの軒先空間を対象として (2025) 被引用:0</title>
+      </circle>
+      <text x="378" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="378" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(2)">街路空間の軒先の設え…</text>
+    </g><g>
+      <circle cx="456" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>大阪市の長屋集積地における路地空間の使われ方 (2025) 被引用:0</title>
+      </circle>
+      <text x="456" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="456" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(3)">大阪市の長屋集積地に…</text>
+    </g><g>
+      <circle cx="534" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>旧街道における建物・部位・設いの層構成からみた街並みの連続性　－日光門前地区の道路整備完了区間におけるセットバック部分に着目して－ (2025) 被引用:0</title>
+      </circle>
+      <text x="534" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="534" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(4)">旧街道における建物・…</text>
+    </g><g>
+      <circle cx="417" cy="1550" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>ウォーカブルなまちづくり推進時における目標及び目的設定のあり方に関する研究　「ウォーカブル推進都市」におけるアンケート調査を対象として (2024) 被引用:0</title>
+      </circle>
+      <text x="417" y="1554" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2024</text>
+      <text class="graph-paper-title" x="417" y="1569" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(5)">ウォーカブルなまちづ…</text>
+    </g><g>
+      <circle cx="495" cy="1550" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>埼玉県入間市のジョンソンタウンにおける屋外空間等の構成要素と利用実態に関する研究 (2024) 被引用:0</title>
+      </circle>
+      <text x="495" y="1554" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2024</text>
+      <text class="graph-paper-title" x="495" y="1569" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(6)">埼玉県入間市のジョン…</text>
+    </g><g>
+      <circle cx="573" cy="1550" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>歩行者アイレベルの沿道ファサード景観の現状と分析に関する研究　-東京・神楽坂地区を対象として- (2024) 被引用:0</title>
+      </circle>
+      <text x="573" y="1554" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2024</text>
+      <text class="graph-paper-title" x="573" y="1569" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(7)">歩行者アイレベルの沿…</text>
+    </g><g>
+      <circle cx="378" cy="1526" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>狭小地の解消等に向けた隣地統合事業の運用 (2023) 被引用:0</title>
+      </circle>
+      <text x="378" y="1530" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="378" y="1545" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(8)">狭小地の解消等に向け…</text>
+    </g><g>
+      <circle cx="417" cy="1503" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>居住地から目的地までの都市空間と交通手段に着目した主観的・客観的評価のウォーカビリティ指標を用いた徒歩回遊を促す要因に関する研究 (2022) 被引用:0</title>
+      </circle>
+      <text x="417" y="1507" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2022</text>
+      <text class="graph-paper-title" x="417" y="1522" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(10)">居住地から目的地まで…</text>
+    </g><g>
+      <circle cx="495" cy="1503" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>東京・代官山の店先にある隣の空間の視覚的印象 (2022) 被引用:0</title>
+      </circle>
+      <text x="495" y="1507" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2022</text>
+      <text class="graph-paper-title" x="495" y="1522" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(11)">東京・代官山の店先に…</text>
+    </g><g>
+      <circle cx="534" cy="1479" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>神楽坂の街路・路地における静的・動的景観の調査と分析に関する研究 (2021) 被引用:2</title>
+      </circle>
+      <text x="534" y="1483" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2021</text>
+      <text class="graph-paper-title" x="534" y="1506" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(13)">神楽坂の街路・路地に…</text>
+    </g><g>
+      <circle cx="573" cy="1456" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>立地的特性と物理的特性による密集市街地の類型化に関する研究　-市街地特性を考慮した密集市街地整備のあり方検討に向けた基礎的調査- (2020) 被引用:2</title>
+      </circle>
+      <text x="573" y="1460" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2020</text>
+      <text class="graph-paper-title" x="573" y="1483" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(14)">立地的特性と物理的特…</text>
+    </g><g>
+      <circle cx="456" cy="1433" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>大都市近郊旧漁師町における空間構造変容と土地所有動態に関する研究　千葉県浦安市元町地域 堀江地区・猫実地区を例に (2019) 被引用:0</title>
+      </circle>
+      <text x="456" y="1437" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2019</text>
+      <text class="graph-paper-title" x="456" y="1452" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(15)">大都市近郊旧漁師町に…</text>
+    </g><g>
+      <circle cx="534" cy="1433" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>あふれ出しにみる共用空間に拡がる住民間相互作用 (2019) 被引用:1</title>
+      </circle>
+      <text x="534" y="1437" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2019</text>
+      <text class="graph-paper-title" x="534" y="1456" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(16)">あふれ出しにみる共用…</text>
+    </g><g>
+      <circle cx="612" cy="1433" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>花街の景観を構成する建築物の分布及び外観特性　-新潟市古町を対象として- (2019) 被引用:0</title>
+      </circle>
+      <text x="612" y="1437" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2019</text>
+      <text class="graph-paper-title" x="612" y="1452" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(17)">花街の景観を構成する…</text>
+    </g><g>
+      <circle cx="690" cy="1433" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>建物の種類及び外観に着目したリノベーションまちづくりに関する研究　～埼玉県入間市ジョンソンタウンを事例として- (2019) 被引用:0</title>
+      </circle>
+      <text x="690" y="1437" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2019</text>
+      <text class="graph-paper-title" x="690" y="1452" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(18)">建物の種類及び外観に…</text>
+    </g><g>
+      <circle cx="768" cy="1433" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>路地空間におけるルールから逸脱する建築的実践　-スラム改善事業地のバンコク・70ライ地区を事例として- (2019) 被引用:0</title>
+      </circle>
+      <text x="768" y="1437" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2019</text>
+      <text class="graph-paper-title" x="768" y="1452" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(19)">路地空間におけるルー…</text>
+    </g><g>
+      <circle cx="222" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>現代公共空間の私的利用にみる生活空間の共用に関する地域特性の継承　浦安市元町地区を対象として (2018) 被引用:0</title>
+      </circle>
+      <text x="222" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="222" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(20)">現代公共空間の私的利…</text>
+    </g><g>
+      <circle cx="300" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>漁村集落における屋外の構成と滞留の場に関する事例研究　瀬戸内海の離島集落における屋外環境整備に関する研究 その1 (2018) 被引用:0</title>
+      </circle>
+      <text x="300" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="300" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(22)">漁村集落における屋外…</text>
+    </g><g>
+      <circle cx="378" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>ネパールの世界文化遺産登録都市における庇タイプから見た都市型住居の外観意匠と増築・建替えプロセス　バクタプル東部のモニュメントゾーン内外を事例として (2018) 被引用:0</title>
+      </circle>
+      <text x="378" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="378" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(24)">ネパールの世界文化遺…</text>
+    </g><g>
+      <circle cx="456" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>近代建築におけるピロティの空間特性と周辺との関係　境界空間としてのピロティに関する研究（その１） (2018) 被引用:0</title>
+      </circle>
+      <text x="456" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="456" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(25)">近代建築におけるピロ…</text>
+    </g><g>
+      <circle cx="573" cy="1386" r="28" fill="#f0a080" stroke="#c05020" stroke-width="1.5" style="cursor:default;">
+        <title>路地空間における領域化と住居開放性　経年変化にともなう生活領域の変化に関する研究(その4) (2017) 被引用:5</title>
+      </circle>
+      <text x="573" y="1390" text-anchor="middle" font-size="8" fill="#c05020" font-weight="bold" font-family="sans-serif" pointer-events="none">2017</text>
+      <text class="graph-paper-title" x="573" y="1425" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(26)">路地空間における領域…</text>
+    </g><g>
+      <circle cx="651" cy="1386" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>居間と立体街路の視覚上の関係性が居住者の領域形成に与える影響　-実験集合住宅NEXT21における立体街路の利用特性に関する研究 その3- (2017) 被引用:0</title>
+      </circle>
+      <text x="651" y="1390" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2017</text>
+      <text class="graph-paper-title" x="651" y="1405" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(27)">居間と立体街路の視覚…</text>
+    </g><g>
+      <circle cx="534" cy="1362" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>城下町旧町人地における近現代の土地所有及び共同利用の実態に関する研究　-山形県鶴岡市銀座八街区に着目して- (2016) 被引用:0</title>
+      </circle>
+      <text x="534" y="1366" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2016</text>
+      <text class="graph-paper-title" x="534" y="1381" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(29)">城下町旧町人地におけ…</text>
+    </g><g>
+      <circle cx="534" cy="1339" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>木造密集地域の共同建替えにおけるデザインコードについて (2015) 被引用:0</title>
+      </circle>
+      <text x="534" y="1343" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2015</text>
+      <text class="graph-paper-title" x="534" y="1358" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(30)">木造密集地域の共同建…</text>
+    </g><g>
+      <circle cx="495" cy="1316" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>住宅市街地の聴覚的景観と嗅覚的景観　都市空間構成要素との関係に着目して (2014) 被引用:0</title>
+      </circle>
+      <text x="495" y="1320" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2014</text>
+      <text class="graph-paper-title" x="495" y="1335" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(31)">住宅市街地の聴覚的景…</text>
+    </g><g>
+      <circle cx="495" cy="1245" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>コンバージョンによる長屋と路地の空間更新　中崎町界隈（大阪市北区）を事例として (2011) 被引用:2</title>
+      </circle>
+      <text x="495" y="1249" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2011</text>
+      <text class="graph-paper-title" x="495" y="1272" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(32)">コンバージョンによる…</text>
+    </g><g>
+      <circle cx="417" cy="1222" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における路地を活かしたまちづくりの導入に関する研究 (2010) 被引用:1</title>
+      </circle>
+      <text x="417" y="1226" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2010</text>
+      <text class="graph-paper-title" x="417" y="1245" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(33)">密集市街地における路…</text>
+    </g><g>
+      <circle cx="573" cy="1175" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>都市における公私の混交利用に関する研究 (2008) 被引用:0</title>
+      </circle>
+      <text x="573" y="1179" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2008</text>
+      <text class="graph-paper-title" x="573" y="1194" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(34)">都市における公私の混…</text>
+    </g><g>
+      <circle cx="651" cy="1175" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>居住者の意識特性からみた木造密集市街地における住居の建替えの可能性に関する研究 (2008) 被引用:0</title>
+      </circle>
+      <text x="651" y="1179" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2008</text>
+      <text class="graph-paper-title" x="651" y="1194" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(35)">居住者の意識特性から…</text>
+    </g><g>
+      <circle cx="534" cy="1152" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>街路歩行者の景観体験における視線方向と景観認識　＜かいまみ景観＞概念の適用性に関する研究 (2007) 被引用:0</title>
+      </circle>
+      <text x="534" y="1156" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2007</text>
+      <text class="graph-paper-title" x="534" y="1171" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(36)">街路歩行者の景観体験…</text>
+    </g><g>
+      <circle cx="612" cy="1128" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>住宅団地バイルマメーアにおける住棟立面と屋外領域の相互関係　第2次世界大戦後に開発されたオランダ住宅団地の再生に関する研究 その2 (2006) 被引用:0</title>
+      </circle>
+      <text x="612" y="1132" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2006</text>
+      <text class="graph-paper-title" x="612" y="1147" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(37)">住宅団地バイルマメー…</text>
+    </g><g>
+      <circle cx="534" cy="1105" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>お隣への信頼からみた密集市街地の外部空間の特性に関する考察 (2005) 被引用:0</title>
+      </circle>
+      <text x="534" y="1109" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2005</text>
+      <text class="graph-paper-title" x="534" y="1124" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(38)">お隣への信頼からみた…</text>
+    </g><g>
+      <circle cx="573" cy="1011" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地居住者の建替え選好意識に関する分析　-墨田区京島地区を対象に- (2001) 被引用:0</title>
+      </circle>
+      <text x="573" y="1015" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2001</text>
+      <text class="graph-paper-title" x="573" y="1030" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(39)">密集市街地居住者の建…</text>
+    </g><g>
+      <circle cx="651" cy="1011" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>外部空間における「行為の跡」からみた生活者の要求実現方法　生活者による物的環境の形成に関する研究(その1) (2001) 被引用:0</title>
+      </circle>
+      <text x="651" y="1015" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2001</text>
+      <text class="graph-paper-title" x="651" y="1030" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(40)">外部空間における「行…</text>
+    </g><g>
+      <circle cx="534" cy="988" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>山間集落における敷地正面空間の要素と構成に関する事例研究　-農村集落における屋敷回り空間の「見え方」に関する研究 その2- (2000) 被引用:0</title>
+      </circle>
+      <text x="534" y="992" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2000</text>
+      <text class="graph-paper-title" x="534" y="1007" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(41)">山間集落における敷地…</text>
+    </g><g>
+      <circle cx="612" cy="988" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>実験集合住宅NEXT21における立体街路の利用特性に関する研究 その2　居住者の活動に影響を与える立体街路の空間特性 (2000) 被引用:0</title>
+      </circle>
+      <text x="612" y="992" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2000</text>
+      <text class="graph-paper-title" x="612" y="1007" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(42)">実験集合住宅NEXT…</text>
+    </g><g>
+      <circle cx="378" cy="965" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>実験集合住宅NEXT21における立体街路の利用特性に関する研究 その1　ビデオ画像による立体街路利用者の活動分析 (1999) 被引用:0</title>
+      </circle>
+      <text x="378" y="969" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="378" y="984" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(43)">実験集合住宅NEXT…</text>
+    </g><g>
+      <circle cx="456" cy="965" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>平地部水田集落における敷地正面空間の要素と構成　農村集落における屋敷回り空間の「見え方」に関する研究 その1 (1999) 被引用:0</title>
+      </circle>
+      <text x="456" y="969" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="456" y="984" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(44)">平地部水田集落におけ…</text>
+    </g><g>
+      <circle cx="573" cy="918" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>建築の外部空間の分節と配置形式　領域的性格からみた建築の外部空間の構成形式に関する研究 (1997) 被引用:0</title>
+      </circle>
+      <text x="573" y="922" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1997</text>
+      <text class="graph-paper-title" x="573" y="937" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(46)">建築の外部空間の分節…</text>
+    </g><g>
+      <circle cx="612" cy="871" r="24" fill="#f0a080" stroke="#c05020" stroke-width="1.5" style="cursor:default;">
+        <title>密集住宅地の「住戸群」における路地と隙間の役割に関する研究 (1995) 被引用:4</title>
+      </circle>
+      <text x="612" y="875" text-anchor="middle" font-size="8" fill="#c05020" font-weight="bold" font-family="sans-serif" pointer-events="none">1995</text>
+      <text class="graph-paper-title" x="612" y="906" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(47)">密集住宅地の「住戸群…</text>
+    </g><g>
+      <circle cx="612" cy="848" r="28" fill="#f0a080" stroke="#c05020" stroke-width="1.5" style="cursor:default;">
+        <title>あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査からみた計画概念の仮説と検証その2 (1994) 被引用:9</title>
+      </circle>
+      <text x="612" y="852" text-anchor="middle" font-size="8" fill="#c05020" font-weight="bold" font-family="sans-serif" pointer-events="none">1994</text>
+      <text class="graph-paper-title" x="612" y="887" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(48)">あふれ出しの社会心理…</text>
+    </g><g>
+      <circle cx="612" cy="824" r="28" fill="#f0a080" stroke="#c05020" stroke-width="1.5" style="cursor:default;">
+        <title>開放的路地空間での領域化としてのあふれ出し　路地空間へのあふれ出し調査からみた計画概念の仮説と検証その1 (1993) 被引用:7</title>
+      </circle>
+      <text x="612" y="828" text-anchor="middle" font-size="8" fill="#c05020" font-weight="bold" font-family="sans-serif" pointer-events="none">1993</text>
+      <text class="graph-paper-title" x="612" y="863" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(49)">開放的路地空間での領…</text>
+    </g><g>
+      <circle cx="534" cy="965" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における外部空間の狭さの実態とその特性についての考察 (1999) 被引用:0</title>
+      </circle>
+      <text x="534" y="969" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="534" y="984" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(50)">密集市街地における外…</text>
+    </g><g>
+      <circle cx="612" cy="965" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>窓まわりが飾られる要因の考察　-木賃アパート建替集合住宅を事例として- (1999) 被引用:0</title>
+      </circle>
+      <text x="612" y="969" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="612" y="984" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(51)">窓まわりが飾られる要…</text>
+    </g><g>
+      <circle cx="690" cy="965" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>下寺・日東改良住宅における外部空間・共有空間利用とその占有化に関する研究 (1999) 被引用:0</title>
+      </circle>
+      <text x="690" y="969" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="690" y="984" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(52)">下寺・日東改良住宅に…</text>
+    </g><g>
+      <circle cx="456" cy="1526" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における小規模空地の整備効果に関する研究 豊島区東池袋地区の辻広場を対象として (2023) 被引用:0</title>
+      </circle>
+      <text x="456" y="1530" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="456" y="1545" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1781091054409)">密集市街地における小…</text>
+    </g><g>
+      <circle cx="573" cy="1503" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における小規模空地の利用実態に関する研究 －墨田区京島 2,3 丁目の広場・緑地・ポケットパークを対象として－ (2022) 被引用:0</title>
+      </circle>
+      <text x="573" y="1507" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2022</text>
+      <text class="graph-paper-title" x="573" y="1522" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1781106170536)">密集市街地における小…</text>
+    </g><g>
+      <circle cx="573" cy="1316" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>広域避難の困難性からみた木造住宅密集地域整備事業の評価 (2014) 被引用:1</title>
+      </circle>
+      <text x="573" y="1320" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2014</text>
+      <text class="graph-paper-title" x="573" y="1339" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783516116629)">広域避難の困難性から…</text>
+    </g><g>
+      <circle cx="573" cy="1269" r="20" fill="#f0a080" stroke="#c05020" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における大地震時の避難困難率について (2012) 被引用:3</title>
+      </circle>
+      <text x="573" y="1273" text-anchor="middle" font-size="8" fill="#c05020" font-weight="bold" font-family="sans-serif" pointer-events="none">2012</text>
+      <text class="graph-paper-title" x="573" y="1300" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783516189903)">密集市街地における大…</text>
+    </g><g>
+      <circle cx="573" cy="894" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>住宅密集市街地のまちづくりにおけるポケットパークと近隣住民の関係に関する考察 (1996) 被引用:1</title>
+      </circle>
+      <text x="573" y="898" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">1996</text>
+      <text class="graph-paper-title" x="573" y="917" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783516430759)">住宅密集市街地のまち…</text>
+    </g><g>
+      <circle cx="651" cy="918" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>防災性能からみた低層高密住宅市街地における小規模空地確保の計画と整備手法に関する研究 世田谷区太子堂地区・豊島区東池袋地区の実例分析を中心に (1997) 被引用:1</title>
+      </circle>
+      <text x="651" y="922" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">1997</text>
+      <text class="graph-paper-title" x="651" y="941" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783516987389)">防災性能からみた低層…</text>
+    </g><g>
+      <circle cx="612" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>京町家割合と街路幅員の違いに着目した街路景観の印象評価の特徴分析 －細街路性の高い街路に京町家が共存することの影響に着目して－ (2025) 被引用:0</title>
+      </circle>
+      <text x="612" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="612" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783517121840)">京町家割合と街路幅員…</text>
+    </g><g>
+      <circle cx="534" cy="1526" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>多様な避難行動を想定した大地震時の緊急避難通路の設定手法に関する研究 (2023) 被引用:0</title>
+      </circle>
+      <text x="534" y="1530" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="534" y="1545" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783517254186)">多様な避難行動を想定…</text>
+    </g><g>
+      <circle cx="612" cy="801" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>袋路状道路の避難通路整備に関する研究 「計画最小単位」の袋路状道路タイプ (1992) 被引用:2</title>
+      </circle>
+      <text x="612" y="805" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">1992</text>
+      <text class="graph-paper-title" x="612" y="828" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783517386434)">袋路状道路の避難通路…</text>
+    </g><g>
+      <circle cx="534" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>既成住宅地における生活領域の経年変化 経年変化にともなう生活領域の変化に関する研究　その５ (2018) 被引用:0</title>
+      </circle>
+      <text x="534" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="534" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783518695405)">既成住宅地における生…</text>
+    </g><g>
+      <circle cx="612" cy="1409" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>都市型集合住宅における共用廊下の使いこなし方に関する研究 江南ハウジングA3ブロックのあふれ出しに着目して (2018) 被引用:1</title>
+      </circle>
+      <text x="612" y="1413" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="612" y="1432" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783518886318)">都市型集合住宅におけ…</text>
+    </g><g>
+      <circle cx="690" cy="1409" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>植木鉢の表出を促す道路空間の物的環境要因 (2018) 被引用:1</title>
+      </circle>
+      <text x="690" y="1413" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="690" y="1432" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783519082137)">植木鉢の表出を促す道…</text>
+    </g><g>
+      <circle cx="495" cy="1222" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>京都東山における路地の空間特性と安心感からみたセキュリティ空間としての可能性 (2010) 被引用:2</title>
+      </circle>
+      <text x="495" y="1226" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2010</text>
+      <text class="graph-paper-title" x="495" y="1249" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783519217459)">京都東山における路地…</text>
+    </g><g>
+      <circle cx="573" cy="1245" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>大阪市空堀地区における路地単位特性と接道不良長屋所有者の居住改善実態 ―木造密集市街地における地域資源を活かした住環境の保全的更新に関する研究― (2011) 被引用:1</title>
+      </circle>
+      <text x="573" y="1249" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2011</text>
+      <text class="graph-paper-title" x="573" y="1268" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783519502477)">大阪市空堀地区におけ…</text>
+    </g><g>
+      <circle cx="534" cy="1058" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における建替え動向と協調建替え概念の検討 墨田区京島地区での考察を中心に (2003) 被引用:2</title>
+      </circle>
+      <text x="534" y="1062" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2003</text>
+      <text class="graph-paper-title" x="534" y="1085" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783519628101)">密集市街地における建…</text>
+    </g><g>
+      <circle cx="690" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>住民の自宅外活動の状況と意識からみる都市型農園の需要に関する研究 東京都墨田区におけるケーススタディ (2025) 被引用:0</title>
+      </circle>
+      <text x="690" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="690" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783519872894)">住民の自宅外活動の状…</text>
+    </g><g>
+      <circle cx="612" cy="1526" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>コミュニティ形成に資する市民活動団体構成員の活動タイプと公園に求める要素の関連性 草津川跡地公園での市民活動促進に関するヒアリング調査 (2023) 被引用:1</title>
+      </circle>
+      <text x="612" y="1530" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="612" y="1549" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783519960838)">コミュニティ形成に資…</text>
+    </g><g>
+      <circle cx="651" cy="1550" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>東京の木造住宅密集地域の縮小と「整備地域」に関する実態考察 (2024) 被引用:0</title>
+      </circle>
+      <text x="651" y="1554" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2024</text>
+      <text class="graph-paper-title" x="651" y="1569" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783520414178)">東京の木造住宅密集地…</text>
+    </g><g>
+      <circle cx="690" cy="988" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>接道困難敷地の実態に対応した接道特例許可の運用のあり方 : 中野区のケース・スタディー (2000) 被引用:1</title>
+      </circle>
+      <text x="690" y="992" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2000</text>
+      <text class="graph-paper-title" x="690" y="1011" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783520514677)">接道困難敷地の実態に…</text>
+    </g><g>
+      <circle cx="612" cy="1058" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>墨田区一寺言問地区における市街地更新、住宅供給実態と地域内の住み替えの関係性 木造密集市街地における住環境整備手法と居住支援プログラムの連携に向けての基礎的研究 (2003) 被引用:1</title>
+      </circle>
+      <text x="612" y="1062" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2003</text>
+      <text class="graph-paper-title" x="612" y="1081" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783520681524)">墨田区一寺言問地区に…</text>
+    </g><g>
+      <circle cx="729" cy="1550" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>地域コモンズとしての「都市の庭」を介した集住環境の再編に関する研究 (2024) 被引用:0</title>
+      </circle>
+      <text x="729" y="1554" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2024</text>
+      <text class="graph-paper-title" x="729" y="1569" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783520787021)">地域コモンズとしての…</text>
+    </g><g>
+      <circle cx="768" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>地震火災および洪水に備えた高齢者の避難対応とケアマネジャーによる支援対応の実態と課題 墨田区北部の密集市街地を事例として (2018) 被引用:0</title>
+      </circle>
+      <text x="768" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="768" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783521152217)">地震火災および洪水に…</text>
+    </g><g>
+      <circle cx="612" cy="1292" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>街づくり事業地区における細街路整備手法と市街地の地域的特徴との関係 －東京区部における地域特性と細街路整備諸施策のあり方に関する研究　(2)－ (2013) 被引用:0</title>
+      </circle>
+      <text x="612" y="1296" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2013</text>
+      <text class="graph-paper-title" x="612" y="1311" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783521350107)">街づくり事業地区にお…</text>
+    </g><g>
+      <circle cx="651" cy="1245" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>東京区部における地域特性と細街路整備諸施策のあり方に関する研究（１） ―23区の細街路整備に関する経年比較と地域間比較の視点から― (2011) 被引用:0</title>
+      </circle>
+      <text x="651" y="1249" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2011</text>
+      <text class="graph-paper-title" x="651" y="1264" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783521398138)">東京区部における地域…</text>
+    </g><g>
+      <circle cx="573" cy="1596" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地整備に関する全国調査を踏まえた地方小都市での実態に関する研究 —地方小都市における密集市街地整備のあり方について— (2026) 被引用:0</title>
+      </circle>
+      <text x="573" y="1600" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2026</text>
+      <text class="graph-paper-title" x="573" y="1615" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783523445237)">密集市街地整備に関す…</text>
+    </g><g>
+      <circle cx="612" cy="1152" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>持続的・段階的整備を可能とするための密集市街地整備制度に関する研究 横浜市「いえ・みち　まち改善事業」を対象として (2007) 被引用:1</title>
+      </circle>
+      <text x="612" y="1156" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2007</text>
+      <text class="graph-paper-title" x="612" y="1175" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783523572026)">持続的・段階的整備を…</text>
+    </g><g>
+      <circle cx="651" cy="1269" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における空き家の実態とその「防災空間」としての活用可能性に関する研究 大阪市鶴橋地区を対象として (2012) 被引用:2</title>
+      </circle>
+      <text x="651" y="1273" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2012</text>
+      <text class="graph-paper-title" x="651" y="1296" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783523679348)">密集市街地における空…</text>
+    </g><g>
+      <circle cx="768" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>福井市新栄地区における小規模連鎖型更新の検討課題と可能性 老朽木造建築が密集する商店街の保全的・創造的再編に向けて (2025) 被引用:0</title>
+      </circle>
+      <text x="768" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="768" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783524235470)">福井市新栄地区におけ…</text>
+    </g><g>
+      <circle cx="690" cy="1526" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>木造密集市街地における消防活動に着目した無電柱化事業の減災効果に関する分析 (2023) 被引用:0</title>
+      </circle>
+      <text x="690" y="1530" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="690" y="1545" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783524392050)">木造密集市街地におけ…</text>
+    </g><g>
+      <circle cx="651" cy="1596" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>街路構成に着目した都市の街路形態の可視化と分析 直交グリッド街路をもつ国内の20都市を対象として (2026) 被引用:0</title>
+      </circle>
+      <text x="651" y="1600" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2026</text>
+      <text class="graph-paper-title" x="651" y="1615" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783524573020)">街路構成に着目した都…</text>
+    </g><g>
+      <circle cx="846" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>旧街道における建物・部位・設いの層構成からみた街並みの連続性 —日光門前地区の道路整備完了区間におけるセットバック部分に着目して— (2025) 被引用:0</title>
+      </circle>
+      <text x="846" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="846" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783526416865)">旧街道における建物・…</text>
+    </g><g>
+      <circle cx="768" cy="1526" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>間口・設い・活動からみた道路空間の浸透性と連続性 −千葉公園通りホコ天の実践を通して− (2023) 被引用:1</title>
+      </circle>
+      <text x="768" y="1530" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="768" y="1549" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783526459570)">間口・設い・活動から…</text>
+    </g><g>
+      <circle cx="924" cy="1573" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>開かれた住宅における接続空間の空間構成に関する研究 －『新建築住宅特集』2006~2023に掲載された事例から－ (2025) 被引用:0</title>
+      </circle>
+      <text x="924" y="1577" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2025</text>
+      <text class="graph-paper-title" x="924" y="1592" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783526610465)">開かれた住宅における…</text>
+    </g><g>
+      <circle cx="612" cy="1362" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>街路認識における物理的要素と人の関係 (2016) 被引用:1</title>
+      </circle>
+      <text x="612" y="1366" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2016</text>
+      <text class="graph-paper-title" x="612" y="1385" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783527290108)">街路認識における物理…</text>
+    </g><g>
+      <circle cx="807" cy="1550" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>木造住宅密集地域における市街地整備の減災効果に関するシミュレーション分析 (2024) 被引用:0</title>
+      </circle>
+      <text x="807" y="1554" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2024</text>
+      <text class="graph-paper-title" x="807" y="1569" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783527439666)">木造住宅密集地域にお…</text>
+    </g><g>
+      <circle cx="846" cy="1526" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>改修による大阪長屋の利活用と開かれた空間で生まれる交流 － オープンナガヤ大阪のネットワークを通じた事例から － (2023) 被引用:0</title>
+      </circle>
+      <text x="846" y="1530" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2023</text>
+      <text class="graph-paper-title" x="846" y="1545" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783527616645)">改修による大阪長屋の…</text>
+    </g><g>
+      <circle cx="651" cy="1503" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>京都の都心部における細街路の分布・消失とその傾向に関する研究 1972年から2018年を対象に (2022) 被引用:0</title>
+      </circle>
+      <text x="651" y="1507" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2022</text>
+      <text class="graph-paper-title" x="651" y="1522" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783527817679)">京都の都心部における…</text>
+    </g><g>
+      <circle cx="846" cy="1409" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>京都の都心部における細街路の消失過程に関する研究 2006年から2016年を対象に (2018) 被引用:1</title>
+      </circle>
+      <text x="846" y="1413" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="846" y="1432" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783527872791)">京都の都心部における…</text>
+    </g><g>
+      <circle cx="729" cy="1503" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>東京・代官山の店先にある隅の空間の視覚的印象 (2022) 被引用:0</title>
+      </circle>
+      <text x="729" y="1507" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2022</text>
+      <text class="graph-paper-title" x="729" y="1522" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783528241349)">東京・代官山の店先に…</text>
+    </g><g>
+      <circle cx="612" cy="1479" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>身近な公共空間としての「まちかど」の印象評価に基づく類型とその立地 －戦災被害を逃れた４地域の分析から－ (2021) 被引用:0</title>
+      </circle>
+      <text x="612" y="1483" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2021</text>
+      <text class="graph-paper-title" x="612" y="1498" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783528303015)">身近な公共空間として…</text>
+    </g><g>
+      <circle cx="690" cy="1479" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>アクティビティから見た中国の集合住宅団地の境界に関する研究 -中国の天津市の都市部を対象として- (2021) 被引用:0</title>
+      </circle>
+      <text x="690" y="1483" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2021</text>
+      <text class="graph-paper-title" x="690" y="1498" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783528463767)">アクティビティから見…</text>
+    </g><g>
+      <circle cx="651" cy="1456" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>既成市街地における住居近傍の音環境 －東大阪市友井地区を対象として－ (2020) 被引用:0</title>
+      </circle>
+      <text x="651" y="1460" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2020</text>
+      <text class="graph-paper-title" x="651" y="1475" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783528723858)">既成市街地における住…</text>
+    </g><g>
+      <circle cx="690" cy="1362" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>京都市都心部における細街路の分布と町家の分布の関係性の分析 －元学区単位の分析と仁和学区・有隣学区におけるケーススタディ－ (2016) 被引用:0</title>
+      </circle>
+      <text x="690" y="1366" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2016</text>
+      <text class="graph-paper-title" x="690" y="1381" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783529212265)">京都市都心部における…</text>
+    </g><g>
+      <circle cx="651" cy="1316" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>歩行者利用可能な路上駐車帯「フレキシブル・ゾーン」を有する街路に関する研究 (2014) 被引用:1</title>
+      </circle>
+      <text x="651" y="1320" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2014</text>
+      <text class="graph-paper-title" x="651" y="1339" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783529511101)">歩行者利用可能な路上…</text>
+    </g><g>
+      <circle cx="924" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>路上駐車帯の屋外飲食空間としての利用に関する研究 －フレキシブル・ゾーンとパークレットの比較を通して－ (2018) 被引用:0</title>
+      </circle>
+      <text x="924" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="924" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783529561615)">路上駐車帯の屋外飲食…</text>
+    </g><g>
+      <circle cx="729" cy="1316" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>建物間の隙間に関する定量的分析 (2014) 被引用:0</title>
+      </circle>
+      <text x="729" y="1320" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2014</text>
+      <text class="graph-paper-title" x="729" y="1335" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783531012210)">建物間の隙間に関する…</text>
+    </g><g>
+      <circle cx="807" cy="1503" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>大地震時における多様な避難行動を考慮した地域防災性能評価手法 (2022) 被引用:1</title>
+      </circle>
+      <text x="807" y="1507" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2022</text>
+      <text class="graph-paper-title" x="807" y="1526" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783531259035)">大地震時における多様…</text>
+    </g><g>
+      <circle cx="573" cy="1222" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>京都の袋路における更新履歴と伝統的景観要素にもとづく空間の類型化 －本能明倫地区における袋路事例と連担建築物設計制度の新規適応事例との比較検討－ (2010) 被引用:1</title>
+      </circle>
+      <text x="573" y="1226" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2010</text>
+      <text class="graph-paper-title" x="573" y="1245" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783531560241)">京都の袋路における更…</text>
+    </g><g>
+      <circle cx="729" cy="1245" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>京都の既成市街地における敷地の接道条件からみた路地空間の特徴 都心地区・今熊野地区・七条地区におけるケーススタディ (2011) 被引用:0</title>
+      </circle>
+      <text x="729" y="1249" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2011</text>
+      <text class="graph-paper-title" x="729" y="1264" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783531622600)">京都の既成市街地にお…</text>
+    </g><g>
+      <circle cx="651" cy="1222" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>アートイベントによって顕在化する歴史的市街地の地域資源 -「からほりまちアート」を事例として- (2010) 被引用:0</title>
+      </circle>
+      <text x="651" y="1226" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2010</text>
+      <text class="graph-paper-title" x="651" y="1241" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783531795219)">アートイベントによっ…</text>
+    </g><g>
+      <circle cx="612" cy="1105" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>折れ曲がり街路空間における期待感最大位置とその強さについて : 街路空間の期待感に関する研究 (2005) 被引用:1</title>
+      </circle>
+      <text x="612" y="1109" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2005</text>
+      <text class="graph-paper-title" x="612" y="1128" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783531916593)">折れ曲がり街路空間に…</text>
+    </g><g>
+      <circle cx="768" cy="965" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>折れ曲がり街路空間の期待感と物的要因の関係 (1999) 被引用:1</title>
+      </circle>
+      <text x="768" y="969" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="768" y="988" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783532001187)">折れ曲がり街路空間の…</text>
+    </g><g>
+      <circle cx="729" cy="1222" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>街路網と画地の形成からみたフォブール・サンタントワーヌ地区の都市組織の特徴 パリにおける街区内部の外部空間の構成に関する研究 その３ (2010) 被引用:0</title>
+      </circle>
+      <text x="729" y="1226" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2010</text>
+      <text class="graph-paper-title" x="729" y="1241" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783532167800)">街路網と画地の形成か…</text>
+    </g><g>
+      <circle cx="612" cy="1199" r="12" fill="#a8d8a8" stroke="#2e6e2e" stroke-width="1.5" style="cursor:default;">
+        <title>フォブール・サンタントワーヌ地区における公開された中庭空間の構成 パリにおける街区内部の外部空間の構成に関する研究 (2009) 被引用:1</title>
+      </circle>
+      <text x="612" y="1203" text-anchor="middle" font-size="8" fill="#2e6e2e" font-weight="bold" font-family="sans-serif" pointer-events="none">2009</text>
+      <text class="graph-paper-title" x="612" y="1222" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783532329073)">フォブール・サンタン…</text>
+    </g><g>
+      <circle cx="690" cy="1105" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>中央区月島を事例とした密集市街地の路地における植物の配置パターンと空間特性 (2005) 被引用:2</title>
+      </circle>
+      <text x="690" y="1109" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">2005</text>
+      <text class="graph-paper-title" x="690" y="1132" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783532775492)">中央区月島を事例とし…</text>
+    </g><g>
+      <circle cx="690" cy="1058" r="28" fill="#f0a080" stroke="#c05020" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における鉢植えの緑の配置と形態 (2003) 被引用:6</title>
+      </circle>
+      <text x="690" y="1062" text-anchor="middle" font-size="8" fill="#c05020" font-weight="bold" font-family="sans-serif" pointer-events="none">2003</text>
+      <text class="graph-paper-title" x="690" y="1097" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783532832424)">密集市街地における鉢…</text>
+    </g><g>
+      <circle cx="612" cy="1339" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>ヴェネツィア・サンタクローチェ地区における街路公共空間と緑の表出の空間的関係 －建築街路境界部の空間的形態の観点からの分析－ (2015) 被引用:0</title>
+      </circle>
+      <text x="612" y="1343" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2015</text>
+      <text class="graph-paper-title" x="612" y="1358" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783532934185)">ヴェネツィア・サンタ…</text>
+    </g><g>
+      <circle cx="690" cy="1152" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>都心の公園際における空間形態とその利用に関する研究 大阪・靭公園内外のつながりに着目して (2007) 被引用:0</title>
+      </circle>
+      <text x="690" y="1156" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2007</text>
+      <text class="graph-paper-title" x="690" y="1171" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783533043260)">都心の公園際における…</text>
+    </g><g>
+      <circle cx="1002" cy="1409" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>路地園芸活動と社会関係資本および密集市街地整備事業の関係性 東京都足立区・荒川区を事例に (2018) 被引用:0</title>
+      </circle>
+      <text x="1002" y="1413" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2018</text>
+      <text class="graph-paper-title" x="1002" y="1428" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783533167828)">路地園芸活動と社会関…</text>
+    </g><g>
+      <circle cx="690" cy="1339" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における接道部緑化と建築年代及び形態の関係 (2015) 被引用:0</title>
+      </circle>
+      <text x="690" y="1343" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2015</text>
+      <text class="graph-paper-title" x="690" y="1358" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783533273360)">密集市街地における接…</text>
+    </g><g>
+      <circle cx="573" cy="941" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>近隣住民による屋外共用空間の保全・再整備に関する研究 : 大都市の低層住宅地を対象として (1998) 被引用:0</title>
+      </circle>
+      <text x="573" y="945" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1998</text>
+      <text class="graph-paper-title" x="573" y="960" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783533424401)">近隣住民による屋外共…</text>
+    </g><g>
+      <circle cx="651" cy="894" r="16" fill="#f8d890" stroke="#b88020" stroke-width="1.5" style="cursor:default;">
+        <title>既成住宅地における街角広場の住民による利用と評価に関する研究 : 世田谷区太子堂地区のポケットパークを事例として (1996) 被引用:2</title>
+      </circle>
+      <text x="651" y="898" text-anchor="middle" font-size="8" fill="#b88020" font-weight="bold" font-family="sans-serif" pointer-events="none">1996</text>
+      <text class="graph-paper-title" x="651" y="921" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783533496748)">既成住宅地における街…</text>
+    </g><g>
+      <circle cx="846" cy="965" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>住宅街路における公私間の仕切り方が人々に与える心理的影響 (1999) 被引用:0</title>
+      </circle>
+      <text x="846" y="969" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1999</text>
+      <text class="graph-paper-title" x="846" y="984" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783533784803)">住宅街路における公私…</text>
+    </g><g>
+      <circle cx="807" cy="1222" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>密集市街地における小規模空地整備による地区防火性能の向上 (2010) 被引用:0</title>
+      </circle>
+      <text x="807" y="1226" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">2010</text>
+      <text class="graph-paper-title" x="807" y="1241" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783534195149)">密集市街地における小…</text>
+    </g><g>
+      <circle cx="612" cy="52" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>戦災復興土地区画整理後における過小画地、袋路地発生経過の分析(都市計画・経済・防災) (1960) 被引用:0</title>
+      </circle>
+      <text x="612" y="56" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1960</text>
+      <text class="graph-paper-title" x="612" y="71" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783534335957)">戦災復興土地区画整理…</text>
+    </g><g>
+      <circle cx="651" cy="941" r="8" fill="#c8d8f0" stroke="#4a6fa5" stroke-width="1.5" style="cursor:default;">
+        <title>低層住宅地における敷地細分化を伴う小規模開発の共用空間に関する研究 (1998) 被引用:0</title>
+      </circle>
+      <text x="651" y="945" text-anchor="middle" font-size="8" fill="#4a6fa5" font-weight="bold" font-family="sans-serif" pointer-events="none">1998</text>
+      <text class="graph-paper-title" x="651" y="960" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(1783534435313)">低層住宅地における敷…</text>
+    </g></svg>
   </div>
   <div class="graph-legend">
     <span class="gl-item"><span class="gl-circle" style="width:9px;height:9px;background:#c8d8f0;border:1.5px solid #4a6fa5;"></span>被引用なし</span>
@@ -2521,11 +3463,77 @@ function renderGraph(){
   const yearMin=Math.min(...withYear.map(n=>n.year));
   const yearMax=Math.max(...withYear.map(n=>n.year));
 
+  const GRAPH_CATEGORIES=[
+    {
+      id:'roji',
+      label:'路地・細街路',
+      color:'#4a6fa5',
+      fill:'#f4f8ff',
+      priorityTerms:['路地','細街路','袋路','生活領域','接道','長屋'],
+      terms:['路地','細街路','袋路','街路','生活領域','接道','長屋','隙間','町家','街路幅員','道路']
+    },
+    {
+      id:'afuredashi',
+      label:'あふれ出し・表出・公私境界',
+      color:'#b88020',
+      fill:'#fff8ea',
+      priorityTerms:['あふれ出し','表出','公私','境界','植木鉢','鉢植え','開放性','共用廊下','軒先','設え','私的利用'],
+      terms:['あふれ出し','表出','公私','境界','領域','植木鉢','鉢植え','開放性','共用廊下','軒先','設え','私的利用']
+    },
+    {
+      id:'dense',
+      label:'密集市街地・防災・更新',
+      color:'#8b5a8c',
+      fill:'#fbf4fc',
+      priorityTerms:['密集','木造','防災','避難','建替','建替え','更新','不燃','狭小','地震','火災','減災'],
+      terms:['密集','木造','防災','避難','建替','建替え','更新','不燃','狭小','接道不良','地震','火災','洪水','減災','整備']
+    },
+    {
+      id:'pocket',
+      label:'小規模空地・ポケットパーク・まちかど',
+      color:'#2f7d57',
+      fill:'#f2fbf6',
+      priorityTerms:['小規模空地','ポケットパーク','辻広場','まちかど','街角広場','空地','緑地'],
+      terms:['小規模空地','ポケットパーク','辻広場','広場','まちかど','街角','角地','空地','緑地','公共空間','公園','コモンズ']
+    }
+  ];
+
+  function graphText(n){
+    return [n.title,n.author,n.journal,n.keywords,n.purpose,n.method,n.result,n.memo,(n.tags||[]).join(' ')].filter(Boolean).join(' ');
+  }
+
+  function classifyGraphNode(n){
+    const coreText=[n.title,n.keywords,(n.tags||[]).join(' ')].filter(Boolean).join(' ');
+    const priorityOrder=['pocket','afuredashi','dense','roji'];
+    for(const id of priorityOrder){
+      const cat=GRAPH_CATEGORIES.find(c=>c.id===id);
+      if(cat.priorityTerms.some(term=>coreText.includes(term)))return cat;
+    }
+    const txt=graphText(n);
+    const scores=GRAPH_CATEGORIES.map((cat,idx)=>{
+      let score=0;
+      cat.terms.forEach(term=>{
+        if(!term)return;
+        if((n.title||'').includes(term))score+=4;
+        if(((n.tags||[]).join(' ')).includes(term))score+=3;
+        if(((n.keywords||'')).includes(term))score+=2;
+        if(txt.includes(term))score+=1;
+      });
+      return{cat,idx,score};
+    });
+    scores.sort((a,b)=>b.score-a.score||a.idx-b.idx);
+    return scores[0].score>0?scores[0].cat:GRAPH_CATEGORIES[0];
+  }
+
+  nodes.forEach(n=>{n.graphCategory=classifyGraphNode(n);});
+
   // ── レイアウト定数（ズームは縦方向のみ） ──
-  const NODE_R_BASE=8;          // ノード基本半径（小さめに固定）
-  const NODE_SPACING_X=78;      // 横間隔（固定）
-  const YEAR_SPACING=78;        // 1年あたりの縦ピクセル（ズームで変化）
-  const MARGIN={top:52,bottom:74,left:72,right:48};
+  const NODE_R_BASE=7;
+  const NODE_SPACING_X=72;
+  const NODE_ROW_SPACING=34;
+  const YEAR_SPACING=96;
+  const LANE_W=390;
+  const MARGIN={top:92,bottom:86,left:92,right:48};
 
   const yearSpacing=YEAR_SPACING*graphZoom;
   const H_INNER=(yearMax-yearMin)*yearSpacing;
@@ -2536,25 +3544,34 @@ function renderGraph(){
     return MARGIN.top+(year-yearMin)*yearSpacing;
   }
 
-  // 同じ年の論文を横に並べる
-  const yearGroups={};
+  // 同じ分類・同じ年の論文をレーン内に並べる
+  const laneYearGroups={};
   nodes.forEach(n=>{
-    const k=String(n.year||'unknown');
-    if(!yearGroups[k])yearGroups[k]=[];
-    yearGroups[k].push(n);
+    const laneIdx=GRAPH_CATEGORIES.findIndex(c=>c.id===n.graphCategory.id);
+    const k=laneIdx+'|'+String(n.year||'unknown');
+    if(!laneYearGroups[k])laneYearGroups[k]=[];
+    laneYearGroups[k].push(n);
   });
 
-  // 横幅：最も多い年の論文数で決定
-  const maxPerYear=Math.max(...Object.values(yearGroups).map(g=>g.length));
-  const W=Math.max(1200, MARGIN.left+MARGIN.right+maxPerYear*NODE_SPACING_X+NODE_SPACING_X*2);
+  const W=MARGIN.left+MARGIN.right+GRAPH_CATEGORIES.length*LANE_W;
 
   const positions={};
-  Object.entries(yearGroups).forEach(([yr,group])=>{
-    const y=yearToY(yr==='unknown'?null:parseInt(yr));
-    const totalW=(group.length-1)*NODE_SPACING_X;
-    const startX=MARGIN.left+(W-MARGIN.left-MARGIN.right-totalW)/2;
+  Object.entries(laneYearGroups).forEach(([key,group])=>{
+    const [laneIdxStr,yr]=key.split('|');
+    const laneIdx=parseInt(laneIdxStr,10);
+    const laneX=MARGIN.left+laneIdx*LANE_W;
+    const laneInnerW=LANE_W-44;
+    const cols=Math.max(1,Math.floor(laneInnerW/NODE_SPACING_X));
+    const rows=Math.ceil(group.length/cols);
+    const yBase=yearToY(yr==='unknown'?null:parseInt(yr,10));
     group.forEach((n,i)=>{
-      positions[n.id]={x:Math.round(startX+i*NODE_SPACING_X),y:Math.round(y)};
+      const row=Math.floor(i/cols);
+      const col=i%cols;
+      const countInRow=Math.min(cols,group.length-row*cols);
+      const totalW=(countInRow-1)*NODE_SPACING_X;
+      const startX=laneX+(LANE_W-totalW)/2;
+      const y=yBase+(row-(rows-1)/2)*NODE_ROW_SPACING;
+      positions[n.id]={x:Math.round(startX+col*NODE_SPACING_X),y:Math.round(y)};
     });
   });
 
@@ -2576,16 +3593,28 @@ function renderGraph(){
 
   let defs='<defs>';
   let lines='';
+  let lanes='';
   let edges='';
   let nodesSvg='';
+
+  GRAPH_CATEGORIES.forEach((cat,i)=>{
+    const x=MARGIN.left+i*LANE_W;
+    const cx=x+LANE_W/2;
+    lanes+=`<rect x="${x+8}" y="12" width="${LANE_W-16}" height="${svgH-24}" fill="${cat.fill}" stroke="#eee4d4" stroke-width="1"/>`;
+    lanes+=`<line x1="${x}" y1="0" x2="${x}" y2="${svgH}" stroke="#e4ded3" stroke-width="1"/>`;
+    lanes+=`<text x="${cx}" y="34" text-anchor="middle" font-size="15" fill="${cat.color}" font-weight="700" font-family="sans-serif">${esc(cat.label)}</text>`;
+    const count=nodes.filter(n=>n.graphCategory.id===cat.id).length;
+    lanes+=`<text x="${cx}" y="54" text-anchor="middle" font-size="11" fill="#9b958b" font-family="sans-serif">${count}本</text>`;
+  });
+  lanes+=`<line x1="${MARGIN.left+GRAPH_CATEGORIES.length*LANE_W}" y1="0" x2="${MARGIN.left+GRAPH_CATEGORIES.length*LANE_W}" y2="${svgH}" stroke="#e4ded3" stroke-width="1"/>`;
 
   // 10年刻みの強いグリッド線
   const decadeStart=Math.floor(yearMin/10)*10;
   const decadeEnd=Math.ceil(yearMax/10)*10;
   for(let yr=decadeStart;yr<=decadeEnd;yr+=10){
     const y=yearToY(yr);
-    lines+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#cfc8ba" stroke-width="1.6"/>`;
-    lines+=`<text x="10" y="${y-7}" font-size="12" fill="#8f8778" font-weight="700" font-family="sans-serif">${yr}</text>`;
+    lines+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#c8b88f" stroke-width="2"/>`;
+    lines+=`<text x="12" y="${y-7}" font-size="13" fill="#7b6f5e" font-weight="700" font-family="sans-serif">${yr}</text>`;
   }
 
   // 年グリッド線＋ラベル
@@ -2593,7 +3622,7 @@ function renderGraph(){
   years.forEach(yr=>{
     const y=yearToY(yr);
     const isDecade=yr%10===0;
-    lines+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="${isDecade?'#cfc8ba':'#ede9e0'}" stroke-width="${isDecade?'1.6':'1'}" ${isDecade?'':'stroke-dasharray="3,4"'}/>`;
+    lines+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="${isDecade?'#c8b88f':'#ede9e0'}" stroke-width="${isDecade?'2':'1'}" ${isDecade?'':'stroke-dasharray="3,4"'}/>`;
     if(!isDecade) lines+=`<text x="10" y="${y-3}" font-size="10" fill="#bbb" font-family="sans-serif">${yr}</text>`;
   });
 
@@ -2620,19 +3649,19 @@ function renderGraph(){
     const pos=positions[n.id];if(!pos)return;
     const r=nodeR(n);
     const col=nodeColor(n);
-    const title=n.title.length>10?n.title.slice(0,10)+'…':n.title;
+    const title=n.title.length>12?n.title.slice(0,12)+'…':n.title;
     const yr=n.year?`${n.year}`:'?';
-    const tooltip=`${n.title} (${yr}) 被引用:${n.citedCount}`;
+    const tooltip=`${n.title} (${yr}) ${n.graphCategory.label} 被引用:${n.citedCount}`;
     nodesSvg+=`<g>
-      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5" style="cursor:default;">
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col.fill}" stroke="${n.graphCategory.color}" stroke-width="1.6" style="cursor:default;">
         <title>${esc(tooltip)}</title>
       </circle>
-      <text x="${pos.x}" y="${pos.y+4}" text-anchor="middle" font-size="8" fill="${col.stroke}" font-weight="bold" font-family="sans-serif" pointer-events="none">${yr}</text>
-      <text class="graph-paper-title" x="${pos.x}" y="${pos.y+r+11}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(${n.id})">${esc(title)}</text>
+      <text x="${pos.x}" y="${pos.y+4}" text-anchor="middle" font-size="8" fill="${n.graphCategory.color}" font-weight="bold" font-family="sans-serif" pointer-events="none">${yr}</text>
+      <text class="graph-paper-title" x="${pos.x}" y="${pos.y+r+12}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" onclick="showPaperDetail(${n.id})">${esc(title)}</text>
     </g>`;
   });
 
-  svg.innerHTML=defs+lines+edges+nodesSvg;
+  svg.innerHTML=defs+lanes+lines+edges+nodesSvg;
 }
 
 /* ════════════════════════════════
@@ -2761,18 +3790,6 @@ function renderGraph(){
     "purpose": "",
     "method": "",
     "result": ""
-  },
-  {
-    "id": 9,
-    "title": "多様な避難行動を想定した大地震時の緊急避難通路の設定手法に関する研究",
-    "author": "楊 葉霊, 郷田 桃代",
-    "year": 2023,
-    "journal": "日本建築学会計画系論文集",
-    "url": "https://www.jstage.jst.go.jp/article/aija/88/806/88_1334/_pdf/-char/ja",
-    "keywords": "大地震, 道路閉塞, 緊急避難通路, 避難行動, 災害弱者, アクセシビリティ",
-    "memo": "",
-    "tags": [],
-    "refs": []
   },
   {
     "id": 10,
@@ -3008,20 +4025,6 @@ function renderGraph(){
     "refs": []
   },
   {
-    "id": 28,
-    "title": "住宅街路における公私間の仕切り方が人々に与える心理的影響",
-    "author": "一海 有里, 清水 忠男, 佐藤 公信, 陳 明石",
-    "year": 1999,
-    "journal": "日本建築学会計画系論文集",
-    "url": "https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223561/_pdf/-char/ja",
-    "keywords": "街路空間, 公私間の仕切り方, 囲障, 地域イメージ",
-    "memo": "",
-    "tags": [
-      "街路空間"
-    ],
-    "refs": []
-  },
-  {
     "id": 29,
     "title": "城下町旧町人地における近現代の土地所有及び共同利用の実態に関する研究　-山形県鶴岡市銀座八街区に着目して-",
     "author": "前田 直哉, 菅野 圭祐, 佐藤 滋",
@@ -3114,7 +4117,9 @@ function renderGraph(){
     "tags": [
       "○既読"
     ],
-    "refs": [],
+    "refs": [
+      49
+    ],
     "purpose": "",
     "method": "",
     "result": ""
@@ -3244,18 +4249,6 @@ function renderGraph(){
     "journal": "日本建築学会計画系論文集",
     "url": "https://www.jstage.jst.go.jp/article/aija/64/520/64_KJ00004225464/_pdf/-char/ja",
     "keywords": "平地部農村集落, 敷地正面空間, 屋敷回り空間, 庭空間, 囲い, 類型化",
-    "memo": "",
-    "tags": [],
-    "refs": []
-  },
-  {
-    "id": 45,
-    "title": "近隣住民による屋外共用空間の保全・再整備に関する研究　大都市の低層住宅地を対象として",
-    "author": "藍澤 宏, 浅野 智, 鈴木 直子",
-    "year": 1998,
-    "journal": "日本建築学会計画系論文集",
-    "url": "https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ00004222606/_pdf/-char/ja",
-    "keywords": "屋外共用空間, 近隣住民, 認知領域, 保全, 再整備, 広場",
     "memo": "",
     "tags": [],
     "refs": []
@@ -3395,7 +4388,10 @@ function renderGraph(){
     "tags": [
       "ポケットパーク"
     ],
-    "refs": [],
+    "refs": [
+      1783533496748,
+      1783523679348
+    ],
     "author": "杉山 和之, 高見沢 実, 野原 卓, 尹 莊植",
     "year": 2022,
     "journal": "日本建築学会技術報告集",
@@ -3448,9 +4444,9 @@ function renderGraph(){
     "journal": "ランドスケープ研究",
     "url": "https://www.jstage.jst.go.jp/article/jila1994/60/5/60_5_695/_pdf/-char/ja",
     "keywords": "",
-    "purpose": "",
-    "method": "",
-    "result": "",
+    "purpose": "住宅密集市街地の住民参加型のまちづくりにおいて, 宅地化できない狭小な土地をポケットパークとして整備する動きが各地に起きている。",
+    "method": "このような状況に対して東京都内の豊島区4・5丁目地区, 世田谷区太子堂2・3丁目地区, 墨田区一寺・言問地区を事例として, ポケットパークができることに対して近隣住民がどのような関わりを持ち現在に至っているのか, ということを明らかにするために, 主に現在管理に関わっている住民を対象としたヒアリングによる調査を行った。",
+    "result": "その結果1. 意識とその表出2. 問題への対応3. 小規模な社会集団の発生と縮小といった点にポケットパークと近隣住民の関わり方の特徴がみられた。",
     "memo": "",
     "id": 1783516430759
   },
@@ -3489,7 +4485,8 @@ function renderGraph(){
     "tags": [],
     "refs": [
       1783516189903,
-      1783517386434
+      1783517386434,
+      1783531259035
     ],
     "author": "楊 葉霊, 郷田 桃代",
     "year": 2023,
@@ -3560,7 +4557,8 @@ function renderGraph(){
     "refs": [
       48,
       26,
-      49
+      49,
+      1783532832424
     ],
     "author": "増田 耕平, 貞広 幸雄, 樋野 公宏, 薄井 宏行",
     "year": 2018,
@@ -4105,6 +5103,358 @@ function renderGraph(){
     "result": "",
     "memo": "",
     "id": 1783529561615
+  },
+  {
+    "title": "建物間の隙間に関する定量的分析",
+    "tags": [],
+    "refs": [
+      47
+    ],
+    "author": "松宮 かおる, 鷲崎 桃子, 及川 清昭, 郷田 桃代",
+    "year": 2014,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/79/697/79_693/_pdf/-char/ja",
+    "keywords": "建物間隙間, 建物配置, 画像処理技法, 密度指標, モルフォロジー, クロージング",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783531012210
+  },
+  {
+    "title": "大地震時における多様な避難行動を考慮した地域防災性能評価手法",
+    "tags": [],
+    "refs": [
+      1783516189903,
+      1783516116629
+    ],
+    "author": "楊 葉霊, 郷田 桃代, 李 厚君",
+    "year": 2022,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/87/802/87_2469/_pdf/-char/ja",
+    "keywords": "大地震, 道路閉塞, 避難行動, 災害弱者, 防災性能評価",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783531259035
+  },
+  {
+    "title": "京都の袋路における更新履歴と伝統的景観要素にもとづく空間の類型化 －本能明倫地区における袋路事例と連担建築物設計制度の新規適応事例との比較検討－",
+    "tags": [],
+    "refs": [],
+    "author": "三森 弘, 貝島 桃代, 花里 俊廣",
+    "year": 2010,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/aija/75/656/75_656_2381/_pdf/-char/ja",
+    "keywords": "連担建築物設計制度, 袋路, 制限緩和, 空間類型, 京都, 景観要素",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783531560241
+  },
+  {
+    "title": "京都の既成市街地における敷地の接道条件からみた路地空間の特徴 都心地区・今熊野地区・七条地区におけるケーススタディ",
+    "tags": [],
+    "refs": [
+      1783531560241
+    ],
+    "author": "三森 弘, 花里 俊廣",
+    "year": 2011,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/76/668/76_668_1839/_pdf/-char/ja",
+    "keywords": "無接道敷地, 路地, 制限緩和, 京都, 街区構造, 景観",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783531622600
+  },
+  {
+    "title": "アートイベントによって顕在化する歴史的市街地の地域資源 -「からほりまちアート」を事例として-",
+    "tags": [],
+    "refs": [
+      1783531916593
+    ],
+    "author": "上段 貴浩, 脇田 祥尚",
+    "year": 2010,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/75/658/75_658_2873/_pdf/-char/ja",
+    "keywords": "ートイベント, 地域資源, 空堀地区, 空間特性, 展示空間",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783531795219
+  },
+  {
+    "title": "折れ曲がり街路空間における期待感最大位置とその強さについて : 街路空間の期待感に関する研究",
+    "tags": [],
+    "refs": [
+      1783532001187
+    ],
+    "author": "松本 直司, 日比 淳, 磯和 孝史, 甲村 和三",
+    "year": 2005,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/aija/70/589/70_KJ00004396994/_pdf/-char/ja",
+    "keywords": "期待感, 期待感最大位置, 期待感強さ, 折れ曲がり空間, 不可視領域, シークエンス",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783531916593
+  },
+  {
+    "title": "折れ曲がり街路空間の期待感と物的要因の関係",
+    "tags": [],
+    "refs": [],
+    "author": "松本 直司, 瀬田 忠之",
+    "year": 1999,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223553/_pdf/-char/ja",
+    "keywords": "期待感, 折れ, 曲がり空間, 物的要因, 不可視領域, スケール補正高さ幅員比",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783532001187
+  },
+  {
+    "title": "街路網と画地の形成からみたフォブール・サンタントワーヌ地区の都市組織の特徴 パリにおける街区内部の外部空間の構成に関する研究 その３",
+    "tags": [],
+    "refs": [
+      1783532329073
+    ],
+    "author": "北原 寛司, 金子 晋也, 是永 美樹, 八木 幸二",
+    "year": 2010,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/aija/75/655/75_655_2175/_pdf/-char/ja",
+    "keywords": "都市組織, 街路, 画地, 形成, フォブール・サンタントワーヌ, パリ",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783532167800
+  },
+  {
+    "title": "フォブール・サンタントワーヌ地区における公開された中庭空間の構成 パリにおける街区内部の外部空間の構成に関する研究",
+    "tags": [],
+    "refs": [],
+    "author": "北原 寛司, 小林 はるか, 金子 晋也, 是永 美樹, 八木 幸二",
+    "year": 2009,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/74/635/74_635_113/_pdf/-char/ja",
+    "keywords": "公開された中庭空間, 配置, 接続, 空間構成, フォブール・サンタントワーヌ, パリ",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783532329073
+  },
+  {
+    "title": "中央区月島を事例とした密集市街地の路地における植物の配置パターンと空間特性",
+    "tags": [],
+    "refs": [
+      48,
+      49,
+      47,
+      1783532832424
+    ],
+    "author": "高橋 俊, 伊藤 弘, 下村 彰男",
+    "year": 2005,
+    "journal": "ランドスケープ研究",
+    "url": "https://www.jstage.jst.go.jp/article/jila/68/5/68_5_879/_pdf/-char/ja",
+    "keywords": "路地, 植物, 配置, 密集市街地, 空間特性",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783532775492
+  },
+  {
+    "title": "密集市街地における鉢植えの緑の配置と形態",
+    "tags": [],
+    "refs": [],
+    "author": "篠塚 香里, 横張 真, 栗田 英治, 渡辺 貴史",
+    "year": 2003,
+    "journal": "ランドスケープ研究",
+    "url": "https://www.jstage.jst.go.jp/article/jila/66/5/66_5_825/_pdf/-char/ja",
+    "keywords": "鉢植えの緑, 緑化, 密集市街地, 道路幅員",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783532832424
+  },
+  {
+    "title": "ヴェネツィア・サンタクローチェ地区における街路公共空間と緑の表出の空間的関係 －建築街路境界部の空間的形態の観点からの分析－",
+    "tags": [],
+    "refs": [
+      1783532832424,
+      1783532775492
+    ],
+    "author": "緑, ヴェネツィア, 街路公共空間, 空間的関係, フォンダメンタ, カンポ／カンピエッロ",
+    "year": 2015,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/80/710/80_883/_pdf/-char/ja",
+    "keywords": "客野 尚志, 加藤 晃規",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783532934185
+  },
+  {
+    "title": "都心の公園際における空間形態とその利用に関する研究 大阪・靭公園内外のつながりに着目して",
+    "tags": [],
+    "refs": [
+      1783532832424
+    ],
+    "author": "青戸 良宏, 嘉名 光市, 藤本 和男, 赤崎 弘平",
+    "year": 2007,
+    "journal": "都市計画学会論文集",
+    "url": "https://www.jstage.jst.go.jp/article/journalcpij/42.3/0/42.3_37/_pdf/-char/ja",
+    "keywords": "際, 空間利用, 空間形態, 靭公園",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783533043260
+  },
+  {
+    "title": "路地園芸活動と社会関係資本および密集市街地整備事業の関係性 東京都足立区・荒川区を事例に",
+    "tags": [],
+    "refs": [
+      1783532832424
+    ],
+    "author": "吉瀬 啓史, 土屋 一彬, 大黒 俊哉",
+    "year": 2018,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/reportscpij/17/2/17_227/_pdf/-char/ja",
+    "keywords": "コミュニティ結合度, 景観評価, 世代交代, 鉢植え",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783533167828
+  },
+  {
+    "title": "密集市街地における接道部緑化と建築年代及び形態の関係",
+    "tags": [],
+    "refs": [
+      1783532775492,
+      1783532832424
+    ],
+    "author": "宇川 裕亮, 土屋 一彬, 大黒 俊哉",
+    "year": 2015,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/reportscpij/14/3/14_192/_pdf/-char/ja",
+    "keywords": "景観形成, 都市緑化, 鉢植え, 密集市街地, 建築物類型",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783533273360
+  },
+  {
+    "title": "近隣住民による屋外共用空間の保全・再整備に関する研究 : 大都市の低層住宅地を対象として",
+    "tags": [],
+    "refs": [
+      48,
+      47,
+      1783533496748
+    ],
+    "author": "藍澤 宏, 浅野 智, 鈴木 直子",
+    "year": 1998,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ00004222606/_pdf/-char/ja",
+    "keywords": "屋外共用空間, 近隣住民, 認知領域, 保全, 再整備, 広場",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783533424401
+  },
+  {
+    "title": "既成住宅地における街角広場の住民による利用と評価に関する研究 : 世田谷区太子堂地区のポケットパークを事例として",
+    "tags": [],
+    "refs": [],
+    "author": "藍澤 宏, 浅野 智",
+    "year": 1996,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/61/490/61_KJ00004221852/_pdf/-char/ja",
+    "keywords": "街角広場, 既成住宅地, 共有空間, 利用, 評価, 自主管理",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783533496748
+  },
+  {
+    "title": "住宅街路における公私間の仕切り方が人々に与える心理的影響",
+    "tags": [],
+    "refs": [
+      48,
+      49
+    ],
+    "author": "一海 有里, 清水 忠男, 佐藤 公信, 陳 明石",
+    "year": 1999,
+    "journal": "日本建築学会計画系論文集",
+    "url": "https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223561/_pdf/-char/ja",
+    "keywords": "街路空間, 公私間の仕切り方, 囲障, 地域イメージ",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783533784803
+  },
+  {
+    "title": "密集市街地における小規模空地整備による地区防火性能の向上",
+    "tags": [],
+    "refs": [],
+    "author": "竹谷 修一",
+    "year": 2010,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/jisss/13/0/13_149/_pdf/-char/ja",
+    "keywords": "",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783534195149
+  },
+  {
+    "title": "戦災復興土地区画整理後における過小画地、袋路地発生経過の分析(都市計画・経済・防災)",
+    "tags": [],
+    "refs": [],
+    "author": "野々村 五四男",
+    "year": 1960,
+    "journal": "日本建築学会計画系論文集報告集",
+    "url": "https://www.jstage.jst.go.jp/article/aijsaxx/66.2/0/66.2_KJ00004443567/_pdf/-char/ja",
+    "keywords": "",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783534335957
+  },
+  {
+    "title": "低層住宅地における敷地細分化を伴う小規模開発の共用空間に関する研究",
+    "tags": [],
+    "refs": [
+      1783516987389
+    ],
+    "author": "天野 克也, 谷口 汎邦",
+    "year": 1998,
+    "journal": "",
+    "url": "https://www.jstage.jst.go.jp/article/uhs1993/1998/23/1998_142/_pdf/-char/ja",
+    "keywords": "共用空間, 小規模開発, 低層住宅地",
+    "purpose": "",
+    "method": "",
+    "result": "",
+    "memo": "",
+    "id": 1783534435313
   }
 ];
   try{
@@ -4121,6 +5471,7 @@ function renderGraph(){
 
 ld();cleanupInvalidReferenceYears(true);loadHistoryAnalysis();render();renderHistoryPanel();
 </script>
+
 
 
 
