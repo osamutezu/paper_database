@@ -1385,22 +1385,45 @@ function currentJournalValue(){
   return sel.value==='__new__'?((newInput&&newInput.value)||'').trim():(sel.value||'').trim();
 }
 
+function replaceLegacyDataBlock(html,data){
+  const marker='\n  const legacy = [';
+  const start=html.indexOf(marker);
+  if(start<0)return null;
+  const arrStart=html.indexOf('[',start);
+  let depth=0,inString=false,quote='',escaped=false,end=-1;
+  for(let i=arrStart;i<html.length;i++){
+    const ch=html[i];
+    if(inString){
+      if(escaped){escaped=false;continue;}
+      if(ch==='\\'){escaped=true;continue;}
+      if(ch===quote){inString=false;quote='';}
+      continue;
+    }
+    if(ch==='"'||ch==="'"||ch==='`'){inString=true;quote=ch;continue;}
+    if(ch==='[')depth++;
+    if(ch===']'){
+      depth--;
+      if(depth===0){end=i+1;break;}
+    }
+  }
+  if(end<0)return null;
+  return html.slice(0,start)+'\n  const legacy = '+data.replace(/</g,'\\u003c')+html.slice(end);
+}
+
 function downloadEmbeddedHtml(){
   const data=JSON.stringify(db,null,2);
   const hist=JSON.stringify(historyAnalysis||'');
   const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-  let updated=html.replace(
-    /const legacy = \[[\s\S]*?\n  \];/,
-    'const legacy = '+data.replace(/</g,'\\u003c')+';'
-  );
-  updated=updated.replace(
-    /const EMBEDDED_HISTORY_ANALYSIS = (?:`[\s\S]*?`|"(?:\\.|[^"\\])*");/,
-    'const EMBEDDED_HISTORY_ANALYSIS = '+hist.replace(/</g,'\\u003c')+';'
-  );
-  if(updated===html){
+  let updated=replaceLegacyDataBlock(html,data);
+  if(!updated){
     alert('HTML書き出し用のデータ位置を見つけられませんでした');
     return;
   }
+  const historyUpdated=updated.replace(
+    /const EMBEDDED_HISTORY_ANALYSIS = (?:`[\s\S]*?`|"(?:\\.|[^"\\])*");/,
+    'const EMBEDDED_HISTORY_ANALYSIS = '+hist.replace(/</g,'\\u003c')+';'
+  );
+  updated=historyUpdated;
   const blob=new Blob([updated],{type:'text/html;charset=utf-8'});
   const a=document.createElement('a');
   const stamp=new Date().toISOString().slice(0,10).replace(/-/g,'');
