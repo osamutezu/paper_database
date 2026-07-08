@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>論文データベース</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif;background:#f5f4f0;color:#1a1a18;min-height:100vh;}
+
+/* ── ページ切替 ── */
+.page{display:none;}.page.active{display:block;}
+.nav-tabs{display:flex;gap:0;margin-bottom:0;border-bottom:2px solid #e0ddd6;}
+.nav-tab{padding:10px 22px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#888;font-family:inherit;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;}
+.nav-tab:hover{color:#1a1a18;}
+.nav-tab.on{color:#1a1a18;border-bottom-color:#1a1a18;}
+
+.app{max-width:900px;margin:0 auto;padding:1.5rem 1rem;}
+.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:10px;}
+.hdr-title{font-size:22px;font-weight:600;letter-spacing:-.01em;}
+.hdr-sub{font-size:12px;color:#888;margin-top:2px;}
+
+/* ── ボタン ── */
+.btn{background:transparent;border:1px solid #ccc;border-radius:8px;padding:8px 16px;font-size:13px;cursor:pointer;color:#1a1a18;font-family:inherit;transition:all .15s;}
+.btn:hover{background:#ebebeb;border-color:#999;}
+.btn-p{background:#1a1a18;color:#f5f4f0;border-color:#1a1a18;}
+.btn-p:hover{background:#333;border-color:#333;}
+.btn-s{padding:4px 10px;font-size:12px;}
+.btn-d{border-color:#e0a0a0;color:#c04040;}
+.btn-d:hover{background:#fff0f0;}
+.btn-sum{background:#4a6fa5;color:#fff;border-color:#4a6fa5;padding:7px 16px;font-size:13px;}
+.btn-sum:hover{background:#3a5f95;}
+.btn-sum.active{background:#e8eff8;color:#2044a0;border-color:#b0c8e8;}
+
+/* ── 統計 ── */
+.stats{display:flex;gap:10px;margin-bottom:1.25rem;}
+.stat{background:#fff;border-radius:10px;padding:.65rem 1rem;flex:1;border:1px solid #e8e6e0;}
+.stat-n{font-size:24px;font-weight:600;}
+.stat-l{font-size:11px;color:#888;margin-top:1px;}
+
+/* ── ツールバー ── */
+.toolbar{display:flex;gap:8px;margin-bottom:.75rem;flex-wrap:wrap;align-items:center;}
+.toolbar input,.toolbar select{border:1px solid #ddd;border-radius:8px;padding:8px 12px;font-size:13px;background:#fff;font-family:inherit;color:#1a1a18;}
+.toolbar input{flex:1;min-width:160px;}
+.toolbar select{width:auto;cursor:pointer;}
+.toolbar input:focus,.toolbar select:focus{outline:2px solid #b5c4e0;outline-offset:-1px;}
+.ord-btn{padding:7px 11px;font-size:14px;line-height:1;}
+
+/* ── フィルターバー（複数選択） ── */
+.fbar-wrap{margin-bottom:1rem;}
+.fbar-label{font-size:12px;color:#888;margin-bottom:5px;}
+.fbar{display:flex;gap:5px;flex-wrap:wrap;align-items:center;min-height:26px;}
+.ftag{padding:4px 11px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #ddd;background:#fff;color:#666;transition:all .12s;user-select:none;}
+.ftag:hover{border-color:#999;color:#333;}
+.ftag.on{background:#1a1a18;color:#f5f4f0;border-color:#1a1a18;}
+.fbar-note{font-size:11px;color:#aaa;margin-top:4px;}
+
+/* ── 論文リスト ── */
+.list{display:flex;flex-direction:column;gap:10px;}
+
+/* 年代区切り */
+.decade-sep{display:flex;align-items:center;gap:10px;margin:6px 0 4px;}
+.decade-line{flex:1;height:1px;background:#d0cdc6;}
+.decade-label{font-size:11px;font-weight:700;color:#999;letter-spacing:.05em;white-space:nowrap;}
+
+.card{background:#fff;border:1px solid #e8e6e0;border-radius:12px;padding:.95rem 1.1rem;transition:border-color .12s,box-shadow .12s;}
+.card:hover{border-color:#ccc;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:5px;}
+.card-t{font-size:14px;font-weight:600;line-height:1.45;flex:1;}
+.card-act{display:flex;gap:4px;flex-shrink:0;}
+.meta{font-size:12px;color:#888;margin-bottom:4px;line-height:1.7;}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.tag{padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;transition:opacity .1s;}
+.tag:hover{opacity:.7;}
+.tag-pre{background:#e8f4e8;border:1px solid #b8ddb8;color:#2e6e2e;}
+.tag-cus{background:#e6eef8;border:1px solid #b0c8e8;color:#2044a0;}
+.memo{font-size:12px;color:#666;margin-top:8px;padding-top:8px;border-top:1px solid #f0eee8;line-height:1.65;}
+.ulink{font-size:12px;color:#4060c0;text-decoration:none;}
+.ulink:hover{text-decoration:underline;}
+.empty{text-align:center;padding:3.5rem 0;color:#bbb;font-size:14px;line-height:2.2;}
+.legend{display:flex;gap:12px;margin-bottom:.75rem;flex-wrap:wrap;}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:#888;}
+.leg-dot{width:10px;height:10px;border-radius:50%;}
+
+/* 論文要約フロー */
+.summary-flow{display:flex;align-items:stretch;gap:0;margin-top:9px;}
+.sf-box{flex:1;min-width:0;background:#f5f8ff;border:1px solid #c8d8f0;border-radius:8px;padding:7px 9px;}
+.sf-lbl{font-size:10px;font-weight:700;color:#4a6fa5;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;}
+.sf-txt{font-size:12px;color:#333;line-height:1.5;}
+.sf-arrow{display:flex;align-items:center;padding:0 4px;color:#9ab;font-size:18px;flex-shrink:0;}
+.sf-empty{color:#bbb;font-style:italic;}
+
+/* 参考文献表示 */
+.refs-row{margin-top:7px;padding-top:7px;border-top:1px solid #f0eee8;}
+.refs-lbl{font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.ref-pill{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:12px;font-size:11px;background:#fdf5e0;border:1px solid #e8d898;color:#7a6020;margin:2px;}
+
+/* 詳細フィールド */
+.detail-fields{margin-top:8px;padding-top:8px;border-top:1px solid #f0eee8;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.df{font-size:12px;line-height:1.5;}
+.df-l{font-size:10px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.04em;}
+.df-v{color:#444;margin-top:1px;}
+
+/* ── モーダル ── */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:200;}
+.modal{background:#fff;border-radius:14px;border:1px solid #e0ddd6;width:min(620px,97vw);max-height:94vh;overflow-y:auto;padding:1.5rem;}
+.m-title{font-size:17px;font-weight:600;margin-bottom:1.2rem;}
+.fr{margin-bottom:11px;}
+.fr label{display:block;font-size:11px;color:#888;margin-bottom:4px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;}
+.fr input,.fr textarea,.fr select{width:100%;border:1px solid #ddd;border-radius:8px;padding:8px 11px;font-size:13px;background:#fafaf8;color:#1a1a18;font-family:inherit;}
+.fr input:focus,.fr textarea:focus,.fr select:focus{outline:2px solid #b5c4e0;outline-offset:-1px;}
+.fr textarea{resize:vertical;min-height:62px;line-height:1.55;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.m-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:1.2rem;padding-top:1rem;border-top:1px solid #f0eee8;}
+.sec-l{font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:.06em;margin:8px 0 5px;}
+.pcheck{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #ddd;background:#fafaf8;color:#666;margin:2px;transition:all .12s;}
+.pcheck:hover{border-color:#999;color:#333;}
+.pcheck.on{background:#e8f4e8;border-color:#b8ddb8;color:#2e6e2e;font-weight:600;}
+.ctrow{display:flex;gap:6px;}
+.ctrow input{flex:1;border:1px solid #ddd;border-radius:8px;padding:7px 11px;font-size:13px;background:#fafaf8;color:#1a1a18;font-family:inherit;}
+.ctrow input:focus{outline:2px solid #b5c4e0;outline-offset:-1px;}
+.ctprev{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.cti{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:12px;background:#e6eef8;border:1px solid #b0c8e8;color:#2044a0;}
+.rx{cursor:pointer;font-size:14px;line-height:1;opacity:.5;}
+.rx:hover{opacity:1;}
+.cat-blk{margin-bottom:10px;}
+.m-section{border-top:1px solid #f0eee8;margin-top:14px;padding-top:12px;}
+.m-sec-title{font-size:13px;font-weight:600;color:#555;margin-bottom:10px;}
+
+/* 参考文献セレクタ */
+.ref-search{width:100%;border:1px solid #ddd;border-radius:8px;padding:7px 11px;font-size:13px;background:#fafaf8;color:#1a1a18;font-family:inherit;margin-bottom:7px;}
+.ref-search:focus{outline:2px solid #b5c4e0;outline-offset:-1px;}
+.ref-list-box{max-height:140px;overflow-y:auto;border:1px solid #eee;border-radius:8px;}
+.ref-item{padding:7px 10px;font-size:12px;cursor:pointer;border-bottom:1px solid #f5f4f0;display:flex;align-items:center;gap:7px;transition:background .1s;}
+.ref-item:last-child{border-bottom:none;}
+.ref-item:hover{background:#f5f8ff;}
+.ref-item.sel{background:#e8f4e8;}
+.ref-chk{width:14px;height:14px;accent-color:#2e6e2e;flex-shrink:0;}
+.ref-sel-prev{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.rsp{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:12px;font-size:12px;background:#fdf5e0;border:1px solid #e8d898;color:#7a6020;}
+
+/* ── 系譜図ページ ── */
+#page-graph{padding:1.5rem 1rem;}
+.graph-hdr{max-width:960px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.graph-title{font-size:18px;font-weight:600;}
+.graph-hint{font-size:12px;color:#888;margin-top:2px;}
+.graph-zoom-bar{max-width:960px;margin:0 auto .75rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid #e8e6e0;border-radius:10px;padding:.55rem 1rem;}
+.zoom-label{font-size:12px;color:#888;white-space:nowrap;}
+.zoom-btn{white-space:nowrap;}
+#zoom-slider{flex:1;min-width:120px;max-width:260px;cursor:pointer;accent-color:#4a6fa5;}
+.zoom-val{font-size:13px;font-weight:600;color:#4a6fa5;min-width:36px;}
+#graph-canvas-wrap{max-width:960px;margin:0 auto;overflow-x:auto;overflow-y:auto;}
+#graph-svg{display:block;background:#fff;border-radius:12px;border:1px solid #e8e6e0;}
+.graph-legend{max-width:960px;margin:.75rem auto 0;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#888;align-items:center;}
+.gl-item{display:flex;align-items:center;gap:5px;}
+.gl-circle{border-radius:50%;display:inline-block;}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<div style="background:#fff;border-bottom:1px solid #e0ddd6;padding:0 1rem;">
+  <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:0;">
+    <div style="font-size:15px;font-weight:700;padding:14px 0;margin-right:24px;letter-spacing:-.01em;">論文DB</div>
+    <div class="nav-tabs" style="border-bottom:none;flex:1;">
+      <button class="nav-tab on" onclick="showPage('list')">一覧</button>
+      <button class="nav-tab" onclick="showPage('graph')">系譜図</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 一覧ページ ===== -->
+<div id="page-list" class="page active">
+<div class="app">
+  <div class="hdr">
+    <div>
+      <div class="hdr-title">論文データベース</div>
+      <div class="hdr-sub">タグで整理・絞り込みができます（複数選択可）</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn btn-sum" id="btn-sum" onclick="toggleSummary()">論文要約</button>
+      <button class="btn btn-p" onclick="openAdd()">＋ 論文を追加</button>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="toolbar">
+    <input type="text" id="q" placeholder="タイトル・著者・メモ・キーワードで検索…" oninput="render()">
+    <select id="srt" onchange="render()">
+      <option value="id">登録順</option>
+      <option value="year">年</option>
+      <option value="title">タイトル（50音）</option>
+    </select>
+    <button class="btn ord-btn" id="ord-btn" onclick="toggleOrder()" title="昇順/降順切替">↓</button>
+  </div>
+  <div class="legend">
+    <span class="leg"><span class="leg-dot" style="background:#b8ddb8;"></span>プリセットタグ</span>
+    <span class="leg"><span class="leg-dot" style="background:#b0c8e8;"></span>自由入力タグ</span>
+    <span style="font-size:11px;color:#aaa;margin-left:4px;">※ タグは複数選択可（AND絞り込み）</span>
+  </div>
+  <div class="fbar-wrap" id="fbar-wrap"></div>
+  <div class="list" id="list"></div>
+</div>
+</div>
+
+<!-- ===== 系譜図ページ ===== -->
+<div id="page-graph" class="page">
+  <div class="graph-hdr">
+    <div>
+      <div class="graph-title">論文系譜図</div>
+      <div class="graph-hint">参考文献のつながりを時系列で可視化（円の大きさ＝被引用数）</div>
+    </div>
+    <button class="btn" onclick="renderGraph()">&#x21bb; 再描画</button>
+  </div>
+  <div class="graph-zoom-bar">
+    <span class="zoom-label">時間軸の伸縮</span>
+    <button class="btn btn-s zoom-btn" onclick="changeZoom(-0.3)">− 縮小</button>
+    <input type="range" id="zoom-slider" min="0.3" max="6" step="0.1" value="1" oninput="onZoomSlider(this.value)">
+    <button class="btn btn-s zoom-btn" onclick="changeZoom(0.3)">拡大 ＋</button>
+    <span class="zoom-val" id="zoom-val">×1.0</span>
+    <button class="btn btn-s" onclick="resetZoom()" style="margin-left:6px;">リセット</button>
+  </div>
+  <div id="graph-canvas-wrap">
+    <svg id="graph-svg"></svg>
+  </div>
+  <div class="graph-legend">
+    <span class="gl-item"><span class="gl-circle" style="width:9px;height:9px;background:#c8d8f0;border:1.5px solid #4a6fa5;"></span>被引用なし</span>
+    <span class="gl-item"><span class="gl-circle" style="width:13px;height:13px;background:#a8d8a8;border:1.5px solid #2e6e2e;"></span>被引用あり</span>
+    <span class="gl-item"><span class="gl-circle" style="width:18px;height:18px;background:#f8d890;border:1.5px solid #b88020;"></span>被引用多い</span>
+    <span style="color:#aaa;">— 矢印：引用元→引用先</span>
+  </div>
+</div>
+
+<!-- ===== 追加/編集モーダル ===== -->
+<div class="ov" id="ov" style="display:none" onclick="if(event.target===this)closeOv()">
+<div class="modal">
+  <div class="m-title" id="m-ttl">論文を追加</div>
+
+  <!-- 基本情報 -->
+  <div class="fr"><label>タイトル *</label><input type="text" id="f-title" placeholder="論文タイトルを入力"></div>
+  <div class="g2">
+    <div class="fr"><label>著者</label><input type="text" id="f-author" placeholder="著者名"></div>
+    <div class="fr"><label>年</label><input type="number" id="f-year" placeholder="2024" min="1900" max="2099"></div>
+  </div>
+  <div class="fr"><label>雑誌名 / 学会名</label><input type="text" id="f-journal" placeholder="例：都市計画論文集"></div>
+  <div class="fr"><label>DOI / URL</label><input type="url" id="f-url" placeholder="https://..."></div>
+  <div class="fr"><label>キーワード</label><input type="text" id="f-keywords" placeholder="例：街路空間、アクティビティ、歩行者（カンマ区切り）"></div>
+
+  <!-- 論文構造 -->
+  <div class="m-section">
+    <div class="m-sec-title">論文の構造</div>
+    <div class="fr"><label>目的</label><textarea id="f-purpose" placeholder="研究の目的・問いを記入…"></textarea></div>
+    <div class="fr"><label>手法</label><textarea id="f-method" placeholder="使用した調査・分析手法を記入…"></textarea></div>
+    <div class="fr"><label>結果</label><textarea id="f-result" placeholder="主な結果・知見を記入…"></textarea></div>
+  </div>
+
+  <!-- メモ -->
+  <div class="m-section">
+    <div class="fr"><label>メモ・要約</label><textarea id="f-memo" placeholder="自分なりの読書メモや要約を書く…"></textarea></div>
+  </div>
+
+  <!-- タグ -->
+  <div class="m-section">
+    <div class="m-sec-title">タグ（小項目）</div>
+    <div id="pgrid"></div>
+    <div class="sec-l" style="margin-top:10px;">自由入力タグ</div>
+    <div class="ctrow">
+      <input type="text" id="ctinp" placeholder="タグを入力してEnterで追加（例: 路地）" onkeydown="if(event.key==='Enter'){event.preventDefault();addCT();}">
+      <button class="btn btn-s" onclick="addCT()">追加</button>
+    </div>
+    <div class="ctprev" id="ctprev"></div>
+  </div>
+
+  <!-- 参考文献 -->
+  <div class="m-section">
+    <div class="m-sec-title">参考文献（このDB内から選択）</div>
+    <input type="text" class="ref-search" id="ref-search" placeholder="タイトル・著者で絞り込み…" oninput="renderRefList()">
+    <div class="ref-list-box" id="ref-list-box"></div>
+    <div class="ref-sel-prev" id="ref-sel-prev"></div>
+  </div>
+
+  <div class="m-foot">
+    <button class="btn" onclick="closeOv()">キャンセル</button>
+    <button class="btn btn-p" onclick="savePaper()">保存</button>
+  </div>
+</div>
+</div>
+
+<script>
+/* ════════════════════════════════
+   データ定義 & 永続化
+════════════════════════════════ */
+const CATS=[
+  {n:"調査手法",t:["聞き取り調査","アンケート","フィールドワーク","文献調査","GIS分析","実験","シミュレーション"]},
+  {n:"空間・場所",t:["路地","広場","商店街","住宅地","公共空間","駅周辺","水辺","農村"]},
+  {n:"現象・概念",t:["あふれ出し","コモンズ","セルフビルド","インフォーマル","ジェントリフィケーション","コミュニティ"]},
+  {n:"スケール",t:["都市","地区","建築","街路"]},
+  {n:"地域",t:["東京","関東","関西","アジア","欧州","アメリカ","国内","海外"]}
+];
+const ALL_PRE=CATS.flatMap(c=>c.t);
+
+let db=[],eid=null,sp=[],ct=[],selRefs=[];
+let activeFilters=[];   // 複数タグフィルター
+let sortOrder='desc';   // 'asc' | 'desc'
+let showSummary=false;
+
+function sv(){try{localStorage.setItem('pdb2',JSON.stringify(db));}catch(e){}}
+function ld(){try{const d=localStorage.getItem('pdb2');if(d)db=JSON.parse(d);}catch(e){}}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function allTags(){const s=new Set();db.forEach(p=>(p.tags||[]).forEach(t=>s.add(t)));return[...s].sort((a,b)=>a.localeCompare(b,'ja'));}
+function isPre(t){return ALL_PRE.includes(t);}
+
+/* ════════════════════════════════
+   ページ切替
+════════════════════════════════ */
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>{if(t.textContent.trim()===(name==='list'?'一覧':'系譜図'))t.classList.add('on');});
+  if(name==='graph')renderGraph();
+}
+
+/* ════════════════════════════════
+   論文要約トグル
+════════════════════════════════ */
+function toggleSummary(){
+  showSummary=!showSummary;
+  const btn=document.getElementById('btn-sum');
+  btn.classList.toggle('active',showSummary);
+  btn.textContent=showSummary?'要約を隠す':'論文要約';
+  render();
+}
+
+/* ════════════════════════════════
+   並べ替え昇降順
+════════════════════════════════ */
+function toggleOrder(){
+  sortOrder=sortOrder==='desc'?'asc':'desc';
+  document.getElementById('ord-btn').textContent=sortOrder==='desc'?'↓':'↑';
+  render();
+}
+
+/* ════════════════════════════════
+   統計
+════════════════════════════════ */
+function renderStats(){
+  document.getElementById('stats').innerHTML=`
+    <div class="stat"><div class="stat-n">${db.length}</div><div class="stat-l">登録論文数</div></div>
+    <div class="stat"><div class="stat-n">${allTags().length}</div><div class="stat-l">タグ種類数</div></div>`;
+}
+
+/* ════════════════════════════════
+   フィルターバー（複数選択）
+════════════════════════════════ */
+function renderFbar(){
+  const tags=allTags();
+  const wrap=document.getElementById('fbar-wrap');
+  if(!tags.length){wrap.innerHTML='';return;}
+  const active=activeFilters.length>0?`<span style="font-size:11px;color:#4a6fa5;margin-left:4px;">（${activeFilters.length}個選択中）<span style="cursor:pointer;text-decoration:underline;" onclick="clearFilters()">クリア</span></span>`:'';
+  wrap.innerHTML=`<div class="fbar-label">タグで絞り込み（複数AND）：${active}</div><div class="fbar">${
+    tags.map(t=>`<span class="ftag${activeFilters.includes(t)?' on':''}" onclick="togF('${esc(t)}')">${esc(t)}</span>`).join('')
+  }</div>`;
+}
+
+function togF(t){
+  const i=activeFilters.indexOf(t);
+  if(i>=0)activeFilters.splice(i,1);else activeFilters.push(t);
+  render();
+}
+function clearFilters(){activeFilters=[];render();}
+
+/* ════════════════════════════════
+   メインレンダリング
+════════════════════════════════ */
+function render(){
+  renderStats();
+  renderFbar();
+  const q=(document.getElementById('q').value||'').toLowerCase();
+  const srt=document.getElementById('srt').value;
+  let list=[...db];
+
+  // 複数タグANDフィルター
+  if(activeFilters.length>0){
+    list=list.filter(p=>activeFilters.every(f=>(p.tags||[]).includes(f)));
+  }
+
+  // テキスト検索
+  if(q){
+    list=list.filter(p=>[p.title,p.author,p.memo,p.journal,p.keywords,p.purpose,p.method,p.result].join(' ').toLowerCase().includes(q));
+  }
+
+  // ソート
+  if(srt==='year'){
+    list.sort((a,b)=>sortOrder==='desc'?(b.year||0)-(a.year||0):(a.year||0)-(b.year||0));
+  } else if(srt==='title'){
+    list.sort((a,b)=>sortOrder==='desc'?
+      (b.title||'').localeCompare(a.title||'','ja'):
+      (a.title||'').localeCompare(b.title||'','ja'));
+  } else {
+    list.sort((a,b)=>sortOrder==='desc'?b.id-a.id:a.id-b.id);
+  }
+
+  const el=document.getElementById('list');
+  if(!list.length){
+    el.innerHTML=`<div class="empty">${db.length?'条件に一致する論文がありません':'「＋ 論文を追加」ボタンから<br>最初の論文を登録してください'}</div>`;
+    return;
+  }
+
+  // 年ソートのとき10年区切り
+  const useDecade=(srt==='year');
+  let lastDecade=null;
+  let html='';
+
+  list.forEach(p=>{
+    // 年代区切り
+    if(useDecade && p.year){
+      const dec=Math.floor(p.year/10)*10;
+      if(dec!==lastDecade){
+        html+=`<div class="decade-sep"><div class="decade-line"></div><span class="decade-label">${dec}年代</span><div class="decade-line"></div></div>`;
+        lastDecade=dec;
+      }
+    } else if(useDecade && !p.year && lastDecade!==null){
+      // 年不明のもの
+      html+=`<div class="decade-sep"><div class="decade-line"></div><span class="decade-label">年不明</span><div class="decade-line"></div></div>`;
+      lastDecade=null;
+    }
+
+    const meta=[p.author,p.year?p.year+'年':'',p.journal].filter(Boolean).join('　/　');
+    const thtml=(p.tags||[]).map(t=>`<span class="tag ${isPre(t)?'tag-pre':'tag-cus'}" onclick="togF('${esc(t)}')" title="このタグで絞り込む">${esc(t)}</span>`).join('');
+    const ulink=p.url?`<div style="margin-bottom:4px;"><a class="ulink" href="${esc(p.url)}" target="_blank">&#128279; ${esc(p.url.length>55?p.url.slice(0,55)+'…':p.url)}</a></div>`:'';
+    const memo=p.memo?`<div class="memo">${esc(p.memo)}</div>`:'';
+
+    // キーワード
+    const kwds=p.keywords?`<div style="margin-top:5px;font-size:11px;color:#888;">&#128273; ${esc(p.keywords)}</div>`:'';
+
+    // 論文要約フロー
+    let sumFlow='';
+    if(showSummary){
+      const hasSummary=p.purpose||p.method||p.result;
+      if(hasSummary){
+        sumFlow=`<div class="summary-flow">
+          <div class="sf-box"><div class="sf-lbl">目的</div><div class="sf-txt${!p.purpose?' sf-empty':''}"> ${esc(p.purpose||'未記入')}</div></div>
+          <div class="sf-arrow">→</div>
+          <div class="sf-box"><div class="sf-lbl">手法</div><div class="sf-txt${!p.method?' sf-empty':''}"> ${esc(p.method||'未記入')}</div></div>
+          <div class="sf-arrow">→</div>
+          <div class="sf-box"><div class="sf-lbl">結果</div><div class="sf-txt${!p.result?' sf-empty':''}"> ${esc(p.result||'未記入')}</div></div>
+        </div>`;
+      } else {
+        sumFlow=`<div style="margin-top:7px;font-size:12px;color:#ccc;font-style:italic;">目的・手法・結果が未入力です</div>`;
+      }
+    }
+
+    // 参考文献
+    let refsHtml='';
+    if(p.refs && p.refs.length>0){
+      const refTitles=p.refs.map(rid=>{const rp=db.find(x=>x.id===rid);return rp?`<span class="ref-pill">&#128462; ${esc(rp.title.length>30?rp.title.slice(0,30)+'…':rp.title)}</span>`:''}).filter(Boolean).join('');
+      if(refTitles) refsHtml=`<div class="refs-row"><div class="refs-lbl">参考文献</div>${refTitles}</div>`;
+    }
+
+    html+=`<div class="card">
+      <div class="card-h">
+        <div class="card-t">${esc(p.title)}</div>
+        <div class="card-act">
+          <button class="btn btn-s" onclick="openEdit(${p.id})">編集</button>
+          <button class="btn btn-s btn-d" onclick="delP(${p.id})">削除</button>
+        </div>
+      </div>
+      ${meta?`<div class="meta">${esc(meta)}</div>`:''}
+      ${ulink}
+      ${kwds}
+      ${thtml?`<div class="tags">${thtml}</div>`:''}
+      ${sumFlow}
+      ${refsHtml}
+      ${memo}
+    </div>`;
+  });
+
+  el.innerHTML=html;
+}
+
+/* ════════════════════════════════
+   モーダル：プリセットタグ
+════════════════════════════════ */
+function buildPGrid(){
+  document.getElementById('pgrid').innerHTML=CATS.map(c=>`
+    <div class="cat-blk">
+      <div class="sec-l">${c.n}</div>
+      <div>${c.t.map(t=>`<span class="pcheck${sp.includes(t)?' on':''}" onclick="togP('${esc(t)}')">${esc(t)}</span>`).join('')}</div>
+    </div>`).join('');
+}
+function togP(t){const i=sp.indexOf(t);i>=0?sp.splice(i,1):sp.push(t);buildPGrid();}
+
+/* ════════════════════════════════
+   モーダル：自由入力タグ
+════════════════════════════════ */
+function addCT(){
+  const inp=document.getElementById('ctinp');
+  const v=(inp.value||'').trim();
+  if(!v)return;
+  if(!ct.includes(v)&&!sp.includes(v))ct.push(v);
+  inp.value='';renderCT();
+}
+function removeCT(t){ct=ct.filter(x=>x!==t);renderCT();}
+function renderCT(){
+  document.getElementById('ctprev').innerHTML=ct.map(t=>`<span class="cti">${esc(t)}<span class="rx" onclick="removeCT('${esc(t)}')">&#215;</span></span>`).join('');
+}
+
+/* ════════════════════════════════
+   モーダル：参考文献セレクタ
+════════════════════════════════ */
+function renderRefList(){
+  const q=(document.getElementById('ref-search').value||'').toLowerCase();
+  const candidates=db.filter(p=>p.id!==eid);
+  const filtered=q?candidates.filter(p=>(p.title+' '+(p.author||'')).toLowerCase().includes(q)):candidates;
+  const box=document.getElementById('ref-list-box');
+  if(!filtered.length){box.innerHTML=`<div style="padding:10px;font-size:12px;color:#bbb;text-align:center;">該当する論文がありません</div>`;return;}
+  box.innerHTML=filtered.map(p=>{
+    const sel=selRefs.includes(p.id);
+    return`<div class="ref-item${sel?' sel':''}" onclick="togRef(${p.id})">
+      <input type="checkbox" class="ref-chk" ${sel?'checked':''} onclick="event.stopPropagation();togRef(${p.id})">
+      <span><span style="font-size:12px;font-weight:600;">${esc(p.title.length>40?p.title.slice(0,40)+'…':p.title)}</span><span style="font-size:11px;color:#999;margin-left:6px;">${p.author||''}${p.year?' '+p.year+'年':''}</span></span>
+    </div>`;
+  }).join('');
+}
+
+function togRef(id){
+  const i=selRefs.indexOf(id);
+  if(i>=0)selRefs.splice(i,1);else selRefs.push(id);
+  renderRefList();renderRefPrev();
+}
+
+function renderRefPrev(){
+  document.getElementById('ref-sel-prev').innerHTML=selRefs.map(id=>{
+    const p=db.find(x=>x.id===id);
+    return p?`<span class="rsp">&#128462; ${esc(p.title.length>25?p.title.slice(0,25)+'…':p.title)}<span class="rx" onclick="togRef(${id})">&#215;</span></span>`:'';
+  }).filter(Boolean).join('');
+}
+
+/* ════════════════════════════════
+   モーダル open/close
+════════════════════════════════ */
+function resetForm(){
+  ['title','author','year','journal','url','keywords','purpose','method','result','memo'].forEach(f=>{
+    const el=document.getElementById('f-'+f);if(el)el.value='';
+  });
+  document.getElementById('ctinp').value='';
+  document.getElementById('ref-search').value='';
+}
+
+function openAdd(){
+  eid=null;sp=[];ct=[];selRefs=[];
+  document.getElementById('m-ttl').textContent='論文を追加';
+  resetForm();buildPGrid();renderCT();renderRefList();renderRefPrev();
+  document.getElementById('ov').style.display='flex';
+}
+
+function openEdit(id){
+  const p=db.find(x=>x.id===id);if(!p)return;
+  eid=id;
+  sp=(p.tags||[]).filter(t=>isPre(t));
+  ct=(p.tags||[]).filter(t=>!isPre(t));
+  selRefs=[...(p.refs||[])];
+  document.getElementById('m-ttl').textContent='論文を編集';
+  document.getElementById('f-title').value=p.title||'';
+  document.getElementById('f-author').value=p.author||'';
+  document.getElementById('f-year').value=p.year||'';
+  document.getElementById('f-journal').value=p.journal||'';
+  document.getElementById('f-url').value=p.url||'';
+  document.getElementById('f-keywords').value=p.keywords||'';
+  document.getElementById('f-purpose').value=p.purpose||'';
+  document.getElementById('f-method').value=p.method||'';
+  document.getElementById('f-result').value=p.result||'';
+  document.getElementById('f-memo').value=p.memo||'';
+  document.getElementById('ref-search').value='';
+  buildPGrid();renderCT();renderRefList();renderRefPrev();
+  document.getElementById('ov').style.display='flex';
+}
+
+function savePaper(){
+  const title=(document.getElementById('f-title').value||'').trim();
+  if(!title){alert('タイトルを入力してください');return;}
+  const data={title,tags:[...sp,...ct],refs:[...selRefs],
+    author:(document.getElementById('f-author').value||'').trim(),
+    year:parseInt(document.getElementById('f-year').value)||null,
+    journal:(document.getElementById('f-journal').value||'').trim(),
+    url:(document.getElementById('f-url').value||'').trim(),
+    keywords:(document.getElementById('f-keywords').value||'').trim(),
+    purpose:(document.getElementById('f-purpose').value||'').trim(),
+    method:(document.getElementById('f-method').value||'').trim(),
+    result:(document.getElementById('f-result').value||'').trim(),
+    memo:(document.getElementById('f-memo').value||'').trim()};
+  if(eid!==null){const i=db.findIndex(p=>p.id===eid);if(i>=0)db[i]={...db[i],...data};}
+  else{data.id=Date.now();db.push(data);}
+  sv();closeOv();render();
+}
+
+function delP(id){
+  if(!confirm('この論文を削除しますか？'))return;
+  db=db.filter(p=>p.id!==id);
+  db.forEach(p=>{if(p.refs)p.refs=p.refs.filter(r=>r!==id);});
+  activeFilters=activeFilters.filter(f=>allTags().includes(f));
+  sv();render();
+}
+
+function closeOv(){document.getElementById('ov').style.display='none';}
+
+/* ════════════════════════════════
+   系譜図
+════════════════════════════════ */
+let graphZoom=1.0;
+
+function changeZoom(delta){
+  graphZoom=Math.min(6,Math.max(0.3,graphZoom+delta));
+  graphZoom=Math.round(graphZoom*10)/10;
+  document.getElementById('zoom-slider').value=graphZoom;
+  document.getElementById('zoom-val').textContent='×'+graphZoom.toFixed(1);
+  renderGraph();
+}
+function onZoomSlider(v){
+  graphZoom=Math.round(parseFloat(v)*10)/10;
+  document.getElementById('zoom-val').textContent='×'+graphZoom.toFixed(1);
+  renderGraph();
+}
+function resetZoom(){
+  graphZoom=1.0;
+  document.getElementById('zoom-slider').value=1;
+  document.getElementById('zoom-val').textContent='×1.0';
+  renderGraph();
+}
+
+function renderGraph(){
+  const svg=document.getElementById('graph-svg');
+  if(!db.length){
+    svg.setAttribute('width','600');svg.setAttribute('height','200');
+    svg.innerHTML='<text x="300" y="100" text-anchor="middle" font-size="14" fill="#bbb">論文を登録すると系譜図が表示されます</text>';
+    return;
+  }
+
+  // 被引用数を計算
+  const cited={};
+  db.forEach(p=>(p.refs||[]).forEach(rid=>{cited[rid]=(cited[rid]||0)+1;}));
+  const nodes=db.map(p=>({...p,citedCount:cited[p.id]||0}));
+
+  const withYear=nodes.filter(n=>n.year);
+  if(!withYear.length){
+    svg.setAttribute('width','600');svg.setAttribute('height','200');
+    svg.innerHTML='<text x="300" y="100" text-anchor="middle" font-size="14" fill="#bbb">年が入力された論文がありません</text>';
+    return;
+  }
+
+  const yearMin=Math.min(...withYear.map(n=>n.year));
+  const yearMax=Math.max(...withYear.map(n=>n.year));
+
+  // ── レイアウト定数（ズームは縦方向のみ） ──
+  const NODE_R_BASE=8;          // ノード基本半径（小さめに固定）
+  const NODE_SPACING_X=46;      // 横間隔（固定）
+  const YEAR_SPACING=60;        // 1年あたりの縦ピクセル（ズームで変化）
+  const MARGIN={top:40,bottom:60,left:52,right:20};
+
+  const yearSpacing=YEAR_SPACING*graphZoom;
+  const H_INNER=(yearMax-yearMin)*yearSpacing;
+
+  // 年を縦位置にマップ（年ごと均等配置）
+  function yearToY(year){
+    if(!year) return MARGIN.top+H_INNER+30;
+    return MARGIN.top+(year-yearMin)*yearSpacing;
+  }
+
+  // 同じ年の論文を横に並べる
+  const yearGroups={};
+  nodes.forEach(n=>{
+    const k=String(n.year||'unknown');
+    if(!yearGroups[k])yearGroups[k]=[];
+    yearGroups[k].push(n);
+  });
+
+  // 横幅：最も多い年の論文数で決定
+  const maxPerYear=Math.max(...Object.values(yearGroups).map(g=>g.length));
+  const W=Math.max(600, MARGIN.left+MARGIN.right+maxPerYear*NODE_SPACING_X+NODE_SPACING_X);
+
+  const positions={};
+  Object.entries(yearGroups).forEach(([yr,group])=>{
+    const y=yearToY(yr==='unknown'?null:parseInt(yr));
+    const totalW=(group.length-1)*NODE_SPACING_X;
+    const startX=MARGIN.left+(W-MARGIN.left-MARGIN.right-totalW)/2;
+    group.forEach((n,i)=>{
+      positions[n.id]={x:Math.round(startX+i*NODE_SPACING_X),y:Math.round(y)};
+    });
+  });
+
+  // ノードサイズ（被引用数に応じて、小さめ）
+  function nodeR(n){return NODE_R_BASE+Math.min(n.citedCount,5)*4;}
+
+  // ノードカラー
+  function nodeColor(n){
+    if(n.citedCount===0)return{fill:'#c8d8f0',stroke:'#4a6fa5'};
+    if(n.citedCount===1)return{fill:'#a8d8a8',stroke:'#2e6e2e'};
+    if(n.citedCount===2)return{fill:'#f8d890',stroke:'#b88020'};
+    return{fill:'#f0a080',stroke:'#c05020'};
+  }
+
+  const svgH=MARGIN.top+H_INNER+MARGIN.bottom+16;
+  svg.setAttribute('viewBox',`0 0 ${W} ${svgH}`);
+  svg.setAttribute('width',W);
+  svg.setAttribute('height',svgH);
+
+  let defs='<defs>';
+  let lines='';
+  let edges='';
+  let nodesSvg='';
+
+  // 年グリッド線＋ラベル
+  const years=[...new Set(withYear.map(n=>n.year))].sort((a,b)=>a-b);
+  years.forEach(yr=>{
+    const y=yearToY(yr);
+    lines+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#ede9e0" stroke-width="1" stroke-dasharray="3,4"/>`;
+    lines+=`<text x="4" y="${y-3}" font-size="10" fill="#bbb" font-family="sans-serif">${yr}</text>`;
+  });
+
+  // エッジ（矢印定義はまとめて）
+  defs+=`<marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#c0b090"/></marker>`;
+  defs+='</defs>';
+
+  db.forEach(p=>(p.refs||[]).forEach(rid=>{
+    const from=positions[p.id];
+    const to=positions[rid];
+    if(!from||!to)return;
+    const tn=nodes.find(n=>n.id===rid)||{citedCount:0};
+    const r=nodeR(tn);
+    const dx=to.x-from.x, dy=to.y-from.y;
+    const len=Math.sqrt(dx*dx+dy*dy)||1;
+    const ex=to.x-dx/len*(r+3);
+    const ey=to.y-dy/len*(r+3);
+    const mx=(from.x+to.x)/2, my=(from.y+to.y)/2-15;
+    edges+=`<path d="M${from.x},${from.y} Q${mx},${my} ${ex},${ey}" stroke="#d0c090" stroke-width="1.2" fill="none" marker-end="url(#arrowhead)" opacity="0.75"/>`;
+  }));
+
+  // ノード描画
+  nodes.forEach(n=>{
+    const pos=positions[n.id];if(!pos)return;
+    const r=nodeR(n);
+    const col=nodeColor(n);
+    const title=n.title.length>10?n.title.slice(0,10)+'…':n.title;
+    const yr=n.year?`${n.year}`:'?';
+    const tooltip=`${n.title} (${yr}) 被引用:${n.citedCount}`;
+    nodesSvg+=`<g>
+      <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5" style="cursor:default;">
+        <title>${esc(tooltip)}</title>
+      </circle>
+      <text x="${pos.x}" y="${pos.y+4}" text-anchor="middle" font-size="8" fill="${col.stroke}" font-weight="bold" font-family="sans-serif" pointer-events="none">${yr}</text>
+      <text x="${pos.x}" y="${pos.y+r+11}" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif" pointer-events="none">${esc(title)}</text>
+    </g>`;
+  });
+
+  svg.innerHTML=defs+lines+edges+nodesSvg;
+}
+
+/* ════════════════════════════════
+   初期化
+════════════════════════════════ */
+// 既存データの移行：localStorageにデータがなければ初期データを投入
+(function injectLegacyData(){
+  try{
+    const existing = localStorage.getItem('pdb2');
+    if(existing && existing !== 'null' && JSON.parse(existing).length > 0) return;
+  }catch(e){}
+  const legacy = [
+    {id:1,title:"メインストリートに接続する横道景観の印象評価に関する研究　難波・心斎橋・本町を対象として",author:"山東 美心, 高木 悠里, 嘉名 光市",year:2025,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/60/3/60_8019/_pdf/-char/ja",keywords:"横道, 景観印象評価, SD法",memo:"既読251121",tags:["○既読","街路空間"],refs:[]},
+    {id:2,title:"街路空間の軒先の設えとアクティビティにおける評価・イメージの分析　愛知県岡崎市康生通りの軒先空間を対象として",author:"正村 優衣, 伊藤 孝紀, 西本 帆乃加",year:2025,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/90/833/90_1518/_pdf/-char/ja",keywords:"軒先活用, 街路空間, 印象評価, シェアリング, アクティビティ",memo:"未読",tags:[],refs:[]},
+    {id:3,title:"大阪市の長屋集積地における路地空間の使われ方",author:"山下 恵未莉, 橋本 健太郎, 中野 茂夫",year:2025,journal:"日本建築学会技術報告集",url:"https://www.jstage.jst.go.jp/article/aijt/31/78/31_1087/_pdf/-char/ja",keywords:"大阪長屋, 路地空間, あふれ出し",memo:"",tags:["路地","あふれ出し"],refs:[]},
+    {id:4,title:"旧街道における建物・部位・設いの層構成からみた街並みの連続性　－日光門前地区の道路整備完了区間におけるセットバック部分に着目して－",author:"渡邊 和樹, 安森 亮雄, 大嶽 陽徳, 遠藤 康一",year:2025,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/90/831/90_1101/_pdf/-char/ja",keywords:"日光街道, 街並み, 層構成, 連続性, 部位, 設い",memo:"",tags:[],refs:[]},
+    {id:5,title:"ウォーカブルなまちづくり推進時における目標及び目的設定のあり方に関する研究　「ウォーカブル推進都市」におけるアンケート調査を対象として",author:"金 銀英, 野原 卓, 黒川 春香",year:2024,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/59/3/59_8012/_pdf/-char/ja",keywords:"ウォーカブルなまちづくり, 道路政策, Walkability, 政策目標",memo:"既読251107",tags:["○既読"],refs:[]},
+    {id:6,title:"埼玉県入間市のジョンソンタウンにおける屋外空間等の構成要素と利用実態に関する研究",author:"渡邊 麗子, 川田 諒, 松浦 健治郎",year:2024,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/89/821/89_1326/_pdf/-char/ja",keywords:"ジョンソンタウン, 屋外空間, 物理的環境特性, マネジメント, 利用実態",memo:"",purpose:"ジョンソンタウンの魅力のひとつとして屋外空間に着目し、1）屋外空間等の構成要素を明らかにし、2）建物の屋外空間に対する開き方を明らかにし、3）屋外空間の利用実態を明らかにする",tags:[],refs:[]},
+    {id:7,title:"歩行者アイレベルの沿道ファサード景観の現状と分析に関する研究　-東京・神楽坂地区を対象として-",author:"鈴木 俊治",year:2024,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/89/822/89_1494/_pdf/-char/ja",keywords:"景観分析, 歩行者, アイレベル, ファサード, 商店街, 伝統的路地",memo:"",tags:[],refs:[]},
+    {id:8,title:"狭小地の解消等に向けた隣地統合事業の運用",author:"樋口 駿, 松本 邦彦, 澤木 昌典",year:2023,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/58/3/58_1266/_pdf/-char/ja",keywords:"隣地統合事業, 狭小地の解消, 建物更新, 密集市街地",memo:"",tags:["密集市街地"],refs:[]},
+    {id:9,title:"多様な避難行動を想定した大地震時の緊急避難通路の設定手法に関する研究",author:"楊 葉霊, 郷田 桃代",year:2023,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/88/806/88_1334/_pdf/-char/ja",keywords:"大地震, 道路閉塞, 緊急避難通路, 避難行動, 災害弱者, アクセシビリティ",memo:"",tags:[],refs:[]},
+    {id:10,title:"居住地から目的地までの都市空間と交通手段に着目した主観的・客観的評価のウォーカビリティ指標を用いた徒歩回遊を促す要因に関する研究",author:"安藤 亮介, 氏原 岳人",year:2022,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/57/2/57_390/_pdf/-char/ja",keywords:"歩行者中心の空間, ウォーカビリティ, 徒歩回遊行動, 生活圏",memo:"既読251114",tags:["〇既読"],refs:[]},
+    {id:11,title:"東京・代官山の店先にある隣の空間の視覚的印象",author:"グェン トラン イェン カン, マルサティヤスティ ナヤ, 村田 涼",year:2022,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/87/800/87_1922/_pdf/-char/ja",keywords:"視覚的印象, 隣の空間, 店先, 街並み, 東京",memo:"",tags:[],refs:[]},
+    {id:12,title:"アクティビティから見た中国の集合住宅団地の境界に関する研究　-中国の天津市の都市部を対象として-",author:"徐 小雨, 太幡 英亮",year:2021,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/86/783/86_1326/_pdf/-char/ja",keywords:"境界, 集合住宅団地, 表層, 閉鎖的, あふれ出し, オープンスペース",memo:"",tags:["あふれ出し"],refs:[]},
+    {id:13,title:"神楽坂の街路・路地における静的・動的景観の調査と分析に関する研究",author:"鈴木 俊治",year:2021,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/86/779/86_173/_pdf/-char/ja",keywords:"街路景観, 一次景観, 二次景観, 静的景観, 動的景観",memo:"",tags:[],refs:[]},
+    {id:14,title:"立地的特性と物理的特性による密集市街地の類型化に関する研究　-市街地特性を考慮した密集市街地整備のあり方検討に向けた基礎的調査-",author:"芳原 拓実, 田中 貴宏",year:2020,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/55/3/55_274/_pdf/-char/ja",keywords:"密集市街地, 類型化, 立地的特性, 物理的特性",memo:"",tags:["密集市街地"],refs:[]},
+    {id:15,title:"大都市近郊旧漁師町における空間構造変容と土地所有動態に関する研究　千葉県浦安市元町地域 堀江地区・猫実地区を例に",author:"永門 航, 窪田 亜矢",year:2019,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/54/3/54_1351/_pdf/-char/ja",keywords:"旧漁師町, 密集市街地, 町割・敷地割, 土地所有",memo:"既読250711",tags:["〇既読"],refs:[]},
+    {id:16,title:"あふれ出しにみる共用空間に拡がる住民間相互作用",author:"久保田 愛, 本間 健太郎, 今井 公太郎",year:2019,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/84/758/84_819/_pdf/-char/ja",keywords:"あふれ出し, 共用廊下, 住戸間相関, 住民間相互作用",memo:"",tags:["あふれ出し"],refs:[]},
+    {id:17,title:"花街の景観を構成する建築物の分布及び外観特性　-新潟市古町を対象として-",author:"久保 有朋, 岡崎 篤行, 松井 大輔",year:2019,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/84/763/84_1957/_pdf/-char/ja",keywords:"歴史的町並み, 花街, 景観, 新潟, 歴史的建造物, 料亭",memo:"",tags:[],refs:[]},
+    {id:18,title:"建物の種類及び外観に着目したリノベーションまちづくりに関する研究　～埼玉県入間市ジョンソンタウンを事例として-",author:"松浦 健治郎, 杉浦 匡",year:2019,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/84/758/84_905/_pdf/-char/ja",keywords:"都市形態学, リノベーションまちづくり, ジョンソンタウン, 米軍ハウス, セキスイハイムＭ１",memo:"",tags:[],refs:[]},
+    {id:19,title:"路地空間におけるルールから逸脱する建築的実践　-スラム改善事業地のバンコク・70ライ地区を事例として-",author:"阿部 拓也, 清水 郁郎",year:2019,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/84/758/84_753/_pdf/-char/ja",keywords:"ルールから逸脱する建築的実践, 路地空間, スラム改善事業地, 建物形式",memo:"",tags:["路地"],refs:[]},
+    {id:20,title:"現代公共空間の私的利用にみる生活空間の共用に関する地域特性の継承　浦安市元町地区を対象として",author:"安藤 理紗, 福島 秀哉",year:2018,journal:"実践政策学",url:"https://www.jstage.jst.go.jp/article/ppseb/4/2/4_223/_pdf/-char/ja",keywords:"公共空間の私的利用, 漁業集落, 共用, 浦安, 元町地区",memo:"既読250704",tags:["〇既読"],refs:[]},
+    {id:21,title:"植木鉢の表出を促す道路空間の物的環境要因",author:"増田 耕平, 貞広 幸雄, 樋野 公宏, 薄井 宏行",year:2018,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/83/745/83_447/_pdf/-char/ja",keywords:"表出, 路地, 領域性, 密集市街地, 私的利用",memo:"",tags:["表出","路地","密集市街地"],refs:[]},
+    {id:22,title:"漁村集落における屋外の構成と滞留の場に関する事例研究　瀬戸内海の離島集落における屋外環境整備に関する研究 その1",author:"藤井 容子, 田中 正道",year:2018,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/83/752/83_1897/_article/-char/ja",keywords:"滞留空間, 高齢者, 漁村集落, 屋外空間, 地域居住",memo:"",tags:[],refs:[]},
+    {id:23,title:"都市型集合住宅における共用廊下の使いこなし方に関する研究　江南ハウジングA3ブロックのあふれ出しに着目して",author:"久保田 愛, 本間 健太郎, 今井 公太郎",year:2018,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/83/748/83_1015/_pdf/-char/ja",keywords:"あふれ出し, 共用廊下, ソウル江南ハウジングA3ブロック",memo:"",tags:["あふれ出し"],refs:[]},
+    {id:24,title:"ネパールの世界文化遺産登録都市における庇タイプから見た都市型住居の外観意匠と増築・建替えプロセス　バクタプル東部のモニュメントゾーン内外を事例として",author:"山本 直彦, 高橋 佳代, 増井 正哉, 宮内 杏里, 向井 洋一",year:2018,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/83/744/83_263/_pdf/-char/ja",keywords:"ネパール, バクタプル, 都市型住居, 世界文化遺産, 外観意匠, 庇タイプ",memo:"",tags:[],refs:[]},
+    {id:25,title:"近代建築におけるピロティの空間特性と周辺との関係　境界空間としてのピロティに関する研究（その１）",author:"武井 誠, 千葉 学, 田中 義之, 酒谷 粋将",year:2018,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/83/754/83_2429/_pdf/-char/ja",keywords:"ピロティ, 境界空間, 中間領域, 閾",memo:"既読250425",tags:["〇既読"],refs:[]},
+    {id:26,title:"路地空間における領域化と住居開放性　経年変化にともなう生活領域の変化に関する研究(その4)",author:"小林 秀樹, 藤谷 英孝",year:2017,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/82/732/82_311/_pdf",keywords:"生活領域, 路地, 住民開放性, 表出, あふれ出し",memo:"既読250517",tags:["〇既読","路地","あふれ出し","表出"],refs:[]},
+    {id:27,title:"居間と立体街路の視覚上の関係性が居住者の領域形成に与える影響　-実験集合住宅NEXT21における立体街路の利用特性に関する研究 その3-",author:"井上 晋一, 髙田 光雄",year:2017,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/82/738/82_1881/_pdf/-char/ja",keywords:"居間, 立体街路, 中間領域, 関係性, 領域形成, 視覚上の関係性",memo:"",tags:[],refs:[]},
+    {id:28,title:"住宅街路における公私間の仕切り方が人々に与える心理的影響",author:"一海 有里, 清水 忠男, 佐藤 公信, 陳 明石",year:1999,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223561/_pdf/-char/ja",keywords:"街路空間, 公私間の仕切り方, 囲障, 地域イメージ",memo:"",tags:["街路空間"],refs:[]},
+    {id:29,title:"城下町旧町人地における近現代の土地所有及び共同利用の実態に関する研究　-山形県鶴岡市銀座八街区に着目して-",author:"前田 直哉, 菅野 圭祐, 佐藤 滋",year:2016,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/51/3/51_1086/_pdf",keywords:"近世城下町, 曖昧な空間, 共同利用, 町人地, 歴史的背景",memo:"既読250418",tags:["〇既読","共同利用","曖昧な空間"],refs:[]},
+    {id:30,title:"木造密集地域の共同建替えにおけるデザインコードについて",author:"織山 和久, 小滝 晃",year:2015,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/80/710/80_863/_pdf/-char/ja",keywords:"木造密集地域, 防災, デザインコード, コモンスペース, 路地",memo:"",tags:["路地"],refs:[]},
+    {id:31,title:"住宅市街地の聴覚的景観と嗅覚的景観　都市空間構成要素との関係に着目して",author:"松井 紀莉子, 讃岐 亮, 吉川 徹, 市川 憲良, 上野 淳",year:2014,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/79/699/79_1139/_pdf/-char/ja",keywords:"音, におい, 感性的評価, 生活の気配, 赤池情報量規準, ポアソン回帰",memo:"",tags:[],refs:[]},
+    {id:32,title:"コンバージョンによる長屋と路地の空間更新　中崎町界隈（大阪市北区）を事例として",author:"脇田 祥尚",year:2011,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/76/660/76_660_287/_pdf/-char/ja",keywords:"中崎町, 長屋, 路地, 空間更新, コンバージョン",memo:"既読250627",tags:["〇既読","路地"],refs:[]},
+    {id:33,title:"密集市街地における路地を活かしたまちづくりの導入に関する研究",author:"鶴谷 一貴, 赤崎 弘平",year:2010,journal:"日本都市計画学会 都市計画論文集",url:"https://www.jstage.jst.go.jp/article/journalcpij/45.3/0/45.3_1/_pdf/-char/ja",keywords:"路地, 密集市街地整備, 路地整備モデル",memo:"",tags:["路地","密集市街地"],refs:[]},
+    {id:34,title:"都市における公私の混交利用に関する研究",author:"丹羽 貴之, 若山 滋, 夏目 欣昇",year:2008,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/73/628/73_628_1259/_pdf/-char/ja",keywords:"中心市街地, 私的要素, 公的領域, 公私の混交利用",memo:"既読250620",tags:["〇既読"],refs:[]},
+    {id:35,title:"居住者の意識特性からみた木造密集市街地における住居の建替えの可能性に関する研究",author:"大村 敏, 川岸 梅和",year:2008,journal:"都市住宅学",url:"https://www.jstage.jst.go.jp/article/uhs1993/2008/63/2008_69/_pdf/-char/ja",keywords:"木造密集市街地, 意識特性, 建替え",memo:"",tags:["密集市街地"],refs:[]},
+    {id:36,title:"街路歩行者の景観体験における視線方向と景観認識　＜かいまみ景観＞概念の適用性に関する研究",author:"永瀬 節治",year:2007,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/72/619/72_KJ00004694705/_pdf/-char/ja",keywords:"街路歩行者, 視線方向, <かいまみ景観>, 面的な都市環境, 景観の相対性, 写真投影法",memo:"",tags:[],refs:[]},
+    {id:37,title:"住宅団地バイルマメーアにおける住棟立面と屋外領域の相互関係　第2次世界大戦後に開発されたオランダ住宅団地の再生に関する研究 その2",author:"田口 陽子, 川上 正倫, 服部 拓膳, 是永 美樹, 八木 幸二",year:2006,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/71/606/71_KJ00004363868/_pdf/-char/ja",keywords:"オランダ住宅団地, 空間的再生, 断面構成, 状況, 表出要素",memo:"",tags:[],refs:[]},
+    {id:38,title:"お隣への信頼からみた密集市街地の外部空間の特性に関する考察",author:"真境名 達哉, 服部 岑生, 橘 弘志",year:2005,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/70/589/70_KJ00004396983/_pdf/-char/ja",keywords:"密集市街地, 外部空間, 居住の安定性, お隣への信頼, お隣の生活情報",memo:"既読250523",tags:["〇既読"],refs:[]},
+    {id:39,title:"密集市街地居住者の建替え選好意識に関する分析　-墨田区京島地区を対象に-",author:"高木 和歌子, 大村 謙二郎",year:2001,journal:"都市住宅学",url:"https://www.jstage.jst.go.jp/article/uhs1993/2001/35/2001_99/_pdf/-char/ja",keywords:"共同建替え, ロジットモデル, 密集市街地",memo:"",tags:["密集市街地"],refs:[]},
+    {id:40,title:"外部空間における「行為の跡」からみた生活者の要求実現方法　生活者による物的環境の形成に関する研究(その1)",author:"加藤 拓道, 宮田 紀元, 高橋 正樹",year:2001,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/66/545/66_KJ00004226248/_pdf/-char/ja",keywords:"行為の跡, 外部空間, 生活者の要求実現方法, 生活要求, 環境制約",memo:"",tags:[],refs:[]},
+    {id:41,title:"山間集落における敷地正面空間の要素と構成に関する事例研究　-農村集落における屋敷回り空間の「見え方」に関する研究 その2-",author:"小野寺 淳, 鎌田 元弘, 宮澤 鉄蔵",year:2000,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/65/534/65_KJ00004225941/_pdf/-char/ja",keywords:"山間集落, 屋敷回り空間, 敷地正面空間, 庭空間, 囲い, 類型化",memo:"",tags:[],refs:[]},
+    {id:42,title:"実験集合住宅NEXT21における立体街路の利用特性に関する研究 その2　居住者の活動に影響を与える立体街路の空間特性",author:"井上 晋一, 髙田 光雄",year:2000,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/65/532/65_KJ00004223691/_pdf/-char/ja",keywords:"実験集合住宅, 立体街路, 活動, 空間特性, 利用特性",memo:"",tags:[],refs:[]},
+    {id:43,title:"実験集合住宅NEXT21における立体街路の利用特性に関する研究 その1　ビデオ画像による立体街路利用者の活動分析",author:"井上 晋一, 髙田 光雄",year:1999,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/63/511/63_KJ00004222736/_pdf/-char/ja",keywords:"実験集合住宅, 立体街路, ビデオ観察, 社会活動, 選択性, 回遊性",memo:"",tags:[],refs:[]},
+    {id:44,title:"平地部水田集落における敷地正面空間の要素と構成　農村集落における屋敷回り空間の「見え方」に関する研究 その1",author:"鎌田 元弘, 小野寺 淳, 宮澤 鉄蔵",year:1999,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/64/520/64_KJ00004225464/_pdf/-char/ja",keywords:"平地部農村集落, 敷地正面空間, 屋敷回り空間, 庭空間, 囲い, 類型化",memo:"",tags:[],refs:[]},
+    {id:45,title:"近隣住民による屋外共用空間の保全・再整備に関する研究　大都市の低層住宅地を対象として",author:"藍澤 宏, 浅野 智, 鈴木 直子",year:1998,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/63/508/63_KJ00004222606/_pdf/-char/ja",keywords:"屋外共用空間, 近隣住民, 認知領域, 保全, 再整備, 広場",memo:"",tags:[],refs:[]},
+    {id:46,title:"建築の外部空間の分節と配置形式　領域的性格からみた建築の外部空間の構成形式に関する研究",author:"寺内 美紀子, 坂本 一成, 奥山 信一",year:1997,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/62/491/62_KJ00004221883/_pdf/-char/ja",keywords:"現代日本建築, 外部空間, 配置形式, 構成材, アプローチ動線",memo:"既読250502",tags:["〇既読"],refs:[]},
+    {id:47,title:"密集住宅地の「住戸群」における路地と隙間の役割に関する研究",author:"金 栄爽, 高橋 鷹志",year:1995,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/60/469/60_KJ00004221114/_pdf/-char/ja",keywords:"住戸群, 路地, 隙間, 密集住宅地のコミュニケーション",memo:"",tags:["路地","密集市街地"],refs:[]},
+    {id:48,title:"あふれ出しの社会心理学的効果　路地空間へのあふれ出し調査からみた計画概念の仮説と検証その2",author:"青木 義次, 湯浅 義晴, 大佛 俊泰",year:1994,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/59/457/59_KJ00004220763/_pdf",keywords:"路地, あふれ出し, 私的利用, ハイダー理論, 人間関係",memo:"既読250606",tags:["〇既読","路地","あふれ出し"],refs:[]},
+    {id:49,title:"開放的路地空間での領域化としてのあふれ出し　路地空間へのあふれ出し調査からみた計画概念の仮説と検証その1",author:"青木 義次, 湯浅 義晴",year:1993,journal:"日本建築学会計画系論文集報告集",url:"https://www.jstage.jst.go.jp/article/aijax/449/0/449_KJ00004077322/_pdf/-char/ja",keywords:"路地, あふれ出し, 私的利用, 領域",memo:"既読250530",tags:["〇既読","路地","あふれ出し"],refs:[]},
+    {id:50,title:"密集市街地における外部空間の狭さの実態とその特性についての考察",author:"真境名 達哉, 服部 岑生",year:1999,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/64/526/64_KJ00004223549/_pdf",keywords:"密集市街地, 外部空間, 屋外生活利用, 構築行為, 規模の狭さ, 形態的狭さ",memo:"既読251024",tags:["〇既読"],refs:[]},
+    {id:51,title:"窓まわりが飾られる要因の考察　-木賃アパート建替集合住宅を事例として-",author:"吉田 哲, 宗本 順三, 豊田 裕崇",year:1999,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/64/523/64_KJ00004225563/_pdf/-char/ja",keywords:"窓飾り, 視線, プライバシー, 集合住宅, 既成市街地",memo:"",tags:[],refs:[]},
+    {id:52,title:"下寺・日東改良住宅における外部空間・共有空間利用とその占有化に関する研究",author:"安藤 元夫, 寺川 政司, 幸田 稔",year:1999,journal:"日本建築学会計画系論文集",url:"https://www.jstage.jst.go.jp/article/aija/64/517/64_KJ00004223000/_pdf/-char/ja",keywords:"戦前改良住宅, 外部空間変容, 共有空間の占有, あふれ出し, 都市居住",memo:"",tags:["あふれ出し"],refs:[]}
+  ];
+  try{
+    localStorage.setItem('pdb2', JSON.stringify(legacy));
+    db = legacy;
+  }catch(e){console.error('データ移行失敗',e);}
+})();
+
+ld();render();
+</script>
+</body>
+</html>
