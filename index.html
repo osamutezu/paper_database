@@ -3615,11 +3615,10 @@ function enhanceGraphCloneForExport(clone){
   clone.querySelectorAll('text').forEach(text=>{
     const current=parseFloat(text.getAttribute('font-size'))||10;
     if(current<13)text.setAttribute('font-size','13');
-    text.setAttribute('font-weight',text.getAttribute('font-weight')||'600');
   });
   clone.querySelectorAll('.graph-paper-number').forEach(text=>{
     text.setAttribute('font-size','13');
-    text.setAttribute('font-weight','800');
+    text.setAttribute('font-weight','bold');
     text.setAttribute('letter-spacing','0.2');
     const y=parseFloat(text.getAttribute('y'));
     if(Number.isFinite(y))text.setAttribute('y',String(y+1.3));
