@@ -3751,8 +3751,45 @@ function renderGraph(){
     });
   });
 
-  // ノードサイズ（被引用数に応じて、小さめ）
-  function nodeR(n){return NODE_R_BASE+Math.min(n.citedCount,5)*4;}
+  // ノードサイズ。低倍率では基本半径を保ちつつ、被引用数による拡大量だけを抑える。
+  // これにより3桁番号の可読性を保ったまま、密集時の重なりを減らす。
+  const citationRadiusScale=Math.min(1,Math.max(0.35,graphZoom/0.8));
+  function nodeR(n){return NODE_R_BASE+Math.min(n.citedCount,5)*4*citationRadiusScale;}
+
+  // 時間軸を縮めたとき、同一レーン内で近接する円を横方向へ退避させる。
+  // Y座標（年代）は変えず、レーンの外へ出ない範囲で反復的に衝突を解消する。
+  if(graphZoom<0.8){
+    GRAPH_CATEGORIES.forEach((cat,laneIdx)=>{
+      const laneNodes=nodes.filter(n=>n.graphCategory.id===cat.id&&positions[n.id]);
+      const laneLeft=MARGIN.left+laneIdx*LANE_W+12;
+      const laneRight=laneLeft+LANE_W-24;
+      for(let pass=0;pass<48;pass++){
+        let moved=false;
+        for(let i=0;i<laneNodes.length;i++){
+          for(let j=i+1;j<laneNodes.length;j++){
+            const a=laneNodes[i],b=laneNodes[j];
+            const pa=positions[a.id],pb=positions[b.id];
+            const dy=pb.y-pa.y;
+            const minDist=nodeR(a)+nodeR(b)+6;
+            if(Math.abs(dy)>=minDist)continue;
+            const requiredX=Math.sqrt(Math.max(0,minDist*minDist-dy*dy));
+            const dx=pb.x-pa.x;
+            if(Math.abs(dx)>=requiredX)continue;
+            const dir=dx===0?(String(a.id)<String(b.id)?-1:1):Math.sign(dx);
+            const push=(requiredX-Math.abs(dx))/2+0.15;
+            pa.x-=dir*push;
+            pb.x+=dir*push;
+            moved=true;
+          }
+        }
+        laneNodes.forEach(n=>{
+          const p=positions[n.id],r=nodeR(n);
+          p.x=Math.max(laneLeft+r,Math.min(laneRight-r,p.x));
+        });
+        if(!moved)break;
+      }
+    });
+  }
 
   // ノードカラー
   function nodeColor(n){
@@ -3829,8 +3866,9 @@ function renderGraph(){
     const r=nodeR(tn);
     const dx=to.x-from.x, dy=to.y-from.y;
     const len=Math.sqrt(dx*dx+dy*dy)||1;
-    const ex=to.x-dx/len*(r+3);
-    const ey=to.y-dy/len*(r+3);
+    // 矢印先端を円周から離し、ノードの下に隠れないようにする。
+    const ex=to.x-dx/len*(r+7);
+    const ey=to.y-dy/len*(r+7);
     const mx=(from.x+to.x)/2, my=(from.y+to.y)/2-15;
     const active=isFocusedEdge(p.id,rid);
     edges+=`<path d="M${from.x},${from.y} Q${mx},${my} ${ex},${ey}" stroke="${active?'#c8a45f':'#d8d8d8'}" stroke-width="${active?'1.8':'1'}" fill="none" marker-end="url(#${active?'arrowhead':'arrowhead-muted'})" opacity="${active?'0.9':'0.18'}"/>`;
