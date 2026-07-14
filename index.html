@@ -3703,7 +3703,8 @@ function renderGraph(){
   });
 
   // ── レイアウト定数（ズームは縦方向のみ） ──
-  const NODE_R_BASE=7;
+  // 3桁の論文番号が小さいノードからはみ出さない円サイズ
+  const NODE_R_BASE=10;
   const NODE_SPACING_X=72;
   const NODE_ROW_SPACING=44;
   const YEAR_SPACING=96;
