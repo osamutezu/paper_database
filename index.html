@@ -5541,7 +5541,9 @@ function renderGraph(){
   try{
     const existing = localStorage.getItem(STORAGE_KEY);
     const parsed = existing && existing !== 'null' ? JSON.parse(existing) : [];
-    if(Array.isArray(parsed) && parsed.length >= legacy.length){
+    const legacySignature = legacy.map(p=>p.id).sort().join('|');
+    const parsedSignature = Array.isArray(parsed) ? parsed.map(p=>p.id).sort().join('|') : '';
+    if(Array.isArray(parsed) && parsedSignature === legacySignature){
       db = parsed;
       return;
     }
