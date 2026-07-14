@@ -3840,7 +3840,6 @@ function renderGraph(){
     const pos=positions[n.id];if(!pos)return;
     const r=nodeR(n);
     const col=nodeColor(n);
-    const title=n.title.length>12?n.title.slice(0,12)+'…':n.title;
     const yr=n.year?`${n.year}`:'?';
     const paperNo=n.paperNo||'---';
     const cats=n.graphCategories||[n.graphCategory];
@@ -3857,9 +3856,8 @@ function renderGraph(){
       <circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${dim?'#eeeeee':col.fill}" stroke="${dim?'#bdbdbd':focusStroke}" stroke-width="${focusWidth}">
         <title>${esc(tooltip)}</title>
       </circle>
-      <text x="${pos.x}" y="${pos.y+3}" text-anchor="middle" font-size="7" fill="${dim?'#999':n.graphCategory.color}" font-weight="bold" font-family="sans-serif" pointer-events="none">${paperNo}</text>
+      <text x="${pos.x}" y="${pos.y+3.2}" text-anchor="middle" font-size="8.75" fill="${dim?'#999':n.graphCategory.color}" font-weight="bold" font-family="sans-serif" pointer-events="none">${paperNo}</text>
       ${chips}
-      <text class="graph-paper-title" x="${pos.x}" y="${pos.y+r+22}" text-anchor="middle" font-size="9" fill="${dim?'#999':'#555'}" font-family="sans-serif">${esc(title)}</text>
     </g>`;
   });
 
