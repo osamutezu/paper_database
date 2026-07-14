@@ -2938,10 +2938,11 @@ function comparePapersByYear(a,b,direction='asc'){
   return direction==='desc'?-diff:diff;
 }
 
-// 一覧を「年順・古い順」にした場合と完全に同じ順番で通し番号を振る。
+// 一覧を「年順・降順」にした並びを下から上へたどって通し番号を振る。
+// 同一年の論文も降順一覧の下側からの順番に一致させる。
 // 保存値ではなく表示のたびに再計算するため、論文の追加・編集後も自動更新される。
 function chronologicalNumberMap(){
-  const ordered=[...db].sort((a,b)=>comparePapersByYear(a,b,'asc'));
+  const ordered=[...db].sort((a,b)=>comparePapersByYear(a,b,'desc')).reverse();
   return new Map(ordered.map((p,i)=>[p.id,String(i+1).padStart(3,'0')]));
 }
 
